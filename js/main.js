@@ -7,15 +7,18 @@ document.addEventListener('DOMContentLoaded', function () {
   const sidebarToggle = document.getElementById('sidebarToggle');
   const markdownContent = document.getElementById('markdown-content');
 
-  // ضبط الوضع من localStorage أو تعيين الوضع الداكن كإفتراضي
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'light-mode') {
-    body.classList.add('light-mode');
-    themeToggle.textContent = '🌙';
-  } else {
-    body.classList.add('dark-mode');
-    themeToggle.textContent = '🌞';
-  }
+// ضبط الوضع من localStorage
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+  body.classList.add(savedTheme);
+  themeToggle.textContent = savedTheme === 'dark-mode' ? '🌞' : '🌙';
+} else {
+  // إذا لم يكن هناك وضع محفوظ، افتراضيًا وضع ليلي
+  body.classList.add('dark-mode');
+  themeToggle.textContent = '🌞';
+}
+
+
 
   // تحميل أول مقال تلقائيًا
   loadArticle('home');
