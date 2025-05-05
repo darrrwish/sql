@@ -254,3 +254,13 @@ pre code {
 body.light-mode pre code {
   color: var(--dart-blue); /* لون النص الأزرق الداكن */
 }
+
+@media (max-width: 768px) {
+  .sidebar:not(.visible) {
+    transform: translateX(100%);
+  }
+  
+  .sidebar.visible {
+    transform: translateX(0);
+  }
+}

@@ -7,6 +7,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const sidebarToggle = document.getElementById('sidebarToggle');
   const markdownContent = document.getElementById('markdown-content');
 
+  // إغلاق السايدبار تلقائياً على الجوال
+  if (window.innerWidth <= 768) {
+    sidebar.classList.remove('visible');
+    sidebarToggle.textContent = '☰';
+  }
+
 // ضبط الوضع من localStorage
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme) {
@@ -77,5 +83,14 @@ if (savedTheme) {
         </div>
       `;
     }
+  }
+});
+window.addEventListener('resize', function() {
+  if (window.innerWidth <= 768) {
+    sidebar.classList.remove('visible');
+    sidebarToggle.textContent = '☰';
+  } else {
+    sidebar.classList.add('visible');
+    sidebarToggle.textContent = '✕';
   }
 });
