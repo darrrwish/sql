@@ -106,3 +106,19 @@ window.addEventListener('resize', function() {
     sidebarToggle.textContent = '✕';
   }
 });
+
+// أضف هذا الكود بعد تحميل DOM
+document.querySelectorAll('.sidebar-title').forEach(title => {
+  title.addEventListener('click', function() {
+    this.classList.toggle('collapsed');
+    const list = this.nextElementSibling;
+    list.classList.toggle('expanded');
+  });
+  
+  // إغلاق القوائم افتراضيًا على الجوال
+  if (window.innerWidth <= 768) {
+    title.classList.add('collapsed');
+    title.nextElementSibling.classList.remove('expanded');
+  }
+});
+

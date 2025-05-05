@@ -103,6 +103,8 @@ body.light-mode .sidebar {
 
 
 .sidebar-title {
+  text-align: center; /* محاذاة النص للمنتصف */
+
   color: var(--dart-blue-light);
   cursor: pointer;
   padding: 0.5rem 0;
@@ -286,4 +288,121 @@ body.light-mode pre code {
     transform: translateX(0);
   }
 }
+
+
+
+/* تصغير عرض السايدبار */
+.sidebar {
+  width: 250px; /* كان 300px */
+  transition: all 0.3s ease;
+}
+
+/* تحويل القوائم إلى منسدلة */
+.sidebar-section {
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-title {
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.sidebar-title::after {
+  content: "▼";
+  font-size: 0.8rem;
+  transition: transform 0.3s;
+}
+
+.sidebar-title.collapsed::after {
+  transform: rotate(-90deg);
+}
+
+.sidebar-list {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding-left: 1rem;
+}
+
+.sidebar-list.expanded {
+  max-height: 500px; /* قيمة كافية لعرض جميع العناصر */
+}
+
+/* إزالة السهم تماماً */
+.sidebar-title::after {
+  content: "" !important;
+}
+
+/* تنسيق عناوين الأقسام */
+.sidebar-title {
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: var(--darker-bg);
+  transition: all 0.3s ease;
+  margin-bottom: 0.5rem;
+  display: block;
+  font-weight: bold;
+  color: var(--dart-blue-light);
+}
+
+body.light-mode .sidebar-title {
+  background-color: var(--lighter-bg);
+  color: var(--dart-blue);
+}
+
+/* تنسيق القوائم المنسدلة */
+.sidebar-list {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  padding-left: 0.5rem;
+  margin-left: 0.5rem;
+  border-left: 2px solid var(--dart-blue-light);
+}
+
+.sidebar-list.expanded {
+  max-height: 1000px;
+}
+
+/* تنسيق العناصر المفعلة */
+.sidebar-item.active {
+  background-color: var(--dart-blue-light);
+  color: white !important;
+  font-weight: bold;
+  border-radius: 4px;
+  position: relative;
+}
+
+.sidebar-item.active::before {
+  content: "▶";
+  position: absolute;
+  left: 0.5rem;
+  font-size: 0.8rem;
+}
+
+body.light-mode .sidebar-item.active {
+  background-color: var(--dart-blue);
+}
+
+/* تأثيرات العناصر عند التحويم */
+.sidebar-item:hover:not(.active) {
+  background-color: rgba(77, 168, 218, 0.2);
+}
+
+.sidebar-title:hover {
+  background-color: rgba(77, 168, 218, 0.1);
+}
+
+
+
+
+
+
+
+
+
 
