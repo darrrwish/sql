@@ -264,3 +264,26 @@ body.light-mode pre code {
     transform: translateX(0);
   }
 }
+/* للشاشات الكبيرة (لابتوب) */
+@media (min-width: 769px) {
+  .sidebar {
+    transform: translateX(0) !important;
+    display: block !important;
+  }
+  
+  .sidebar-toggle {
+    display: none !important;
+  }
+}
+
+/* للجوال */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(100%);
+  }
+  
+  .sidebar.visible {
+    transform: translateX(0);
+  }
+}
+

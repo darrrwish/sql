@@ -7,11 +7,23 @@ document.addEventListener('DOMContentLoaded', function () {
   const sidebarToggle = document.getElementById('sidebarToggle');
   const markdownContent = document.getElementById('markdown-content');
 
-  // إغلاق السايدبار تلقائياً على الجوال
+// التحكم في السايدبار حسب حجم الشاشة
+function handleSidebarVisibility() {
   if (window.innerWidth <= 768) {
     sidebar.classList.remove('visible');
     sidebarToggle.textContent = '☰';
+    sidebarToggle.style.display = 'block';
+  } else {
+    sidebar.classList.add('visible');
+    sidebarToggle.style.display = 'none';
   }
+}
+
+// تنفيذ عند التحميل
+handleSidebarVisibility();
+
+// تنفيذ عند تغيير حجم النافذة
+window.addEventListener('resize', handleSidebarVisibility);
 
 // ضبط الوضع من localStorage
 const savedTheme = localStorage.getItem('theme');
