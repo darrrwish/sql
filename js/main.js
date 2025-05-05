@@ -7,11 +7,14 @@ document.addEventListener('DOMContentLoaded', function () {
   const sidebarToggle = document.getElementById('sidebarToggle');
   const markdownContent = document.getElementById('markdown-content');
 
-  // ضبط الوضع من localStorage
+  // ضبط الوضع من localStorage أو تعيين الوضع الداكن كإفتراضي
   const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) {
-    body.classList.add(savedTheme);
-    themeToggle.textContent = savedTheme === 'dark-mode' ? '🌞' : '🌙';
+  if (savedTheme === 'light-mode') {
+    body.classList.add('light-mode');
+    themeToggle.textContent = '🌙';
+  } else {
+    body.classList.add('dark-mode');
+    themeToggle.textContent = '🌞';
   }
 
   // تحميل أول مقال تلقائيًا
@@ -20,8 +23,9 @@ document.addEventListener('DOMContentLoaded', function () {
   themeToggle.addEventListener('click', function () {
     body.classList.toggle('dark-mode');
     body.classList.toggle('light-mode');
-    localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode');
-    themeToggle.textContent = body.classList.contains('dark-mode') ? '🌞' : '🌙';
+    const currentTheme = body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
+    localStorage.setItem('theme', currentTheme);
+    themeToggle.textContent = currentTheme === 'dark-mode' ? '🌞' : '🌙';
   });
 
   sidebarToggle.addEventListener('click', function () {
@@ -47,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const response = await fetch(`articles/${articleName}.md`);
       if (!response.ok) throw new Error('Network response was not ok');
       const markdown = await response.text();
-  
+
       markdownContent.innerHTML = marked.parse(markdown, {
         langPrefix: 'language-',
         highlight: function(code, lang) {
@@ -55,12 +59,12 @@ document.addEventListener('DOMContentLoaded', function () {
           return hljs.highlight(code, { language }).value;
         }
       });
-  
+
       document.querySelectorAll('pre code').forEach(block => {
         block.setAttribute("dir", "ltr");
         hljs.highlightElement(block);
       });
-  
+
     } catch (error) {
       markdownContent.innerHTML = `
         <div class="error">
