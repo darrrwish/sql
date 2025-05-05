@@ -400,9 +400,85 @@ body.light-mode .sidebar-item.active {
 
 
 
+.footer-text {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--text-light);
+  margin: 0;
+  padding: 1px;
+
+}
+
+
+.plain-link {
+  color: var(  --dart-blue-light);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+
+body.dark-mode .footer-text {
+  background-color: var(--darker-bg);
+  color: var(--text-light);
+}
+
+body.light-mode .footer-text {
+  background-color: var(--lighter-bg);
+  color: var(--text-dark);
+}
 
 
 
 
 
 
+/* Accordion container */
+details {
+  border: 1px solid rgba(77, 168, 218, 0.3); /* نفس لون إطارات الأكواد */
+  border-radius: 8px;
+  margin-bottom: 12px;
+  background-color: var(--darker-bg);
+  padding: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+body.light-mode details {
+  background-color: var(--lighter-bg);
+  border-color: var(--dart-blue);
+}
+
+/* Accordion summary */
+summary {
+  background-color: transparent;
+  color: var(--dart-blue-light);
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.light-mode summary {
+  color: var(--dart-blue);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Accordion content */
+details[open] > div {
+  padding: 1rem;
+  color: var(--text-light);
+}
+
+body.light-mode details[open] > div {
+  color: var(--text-dark);
+}
