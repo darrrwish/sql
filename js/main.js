@@ -123,3 +123,19 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+// في ملف main.js أو داخل وسم <script>
+document.querySelectorAll('.course-item').forEach(item => {
+  item.addEventListener('click', function(e) {
+    // الانتقال لأعلى الصفحة بسلاسة
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    
+    // إذا كنت تحمل المحتوى بشكل ديناميكي
+    setTimeout(() => {
+      // كود تحميل المحتوى هنا...
+      loadArticle(this.dataset.article); // مثال لدالة تحميل المحتوى
+    }, 300); // تأخير بسيط لضمان الانتقال أولاً
+  });
+});
