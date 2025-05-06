@@ -1055,4 +1055,221 @@ blockquote footer {
   direction: ltr !important;
 }
 
+/* ///////////////////////////////////////////////////////////////////////////////////////////////// */
+/* تحديث توافق */
+/* جعل العناصر الأساسية متجاوبة */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 60px);
+}
 
+@media (min-width: 992px) {
+  .main-container {
+    flex-direction: row;
+  }
+}
+
+/* تعديلات السايدبار */
+.sidebar {
+  width: 100%;
+  order: 2;
+}
+
+@media (min-width: 992px) {
+  .sidebar {
+    width: 280px;
+    order: 1;
+    height: calc(100vh - 60px);
+    position: sticky;
+    top: 60px;
+  }
+}
+
+/* تعديلات المحتوى الرئيسي */
+.content {
+  width: 100%;
+  order: 1;
+  padding: 1rem;
+}
+
+@media (min-width: 992px) {
+  .content {
+    width: calc(100% - 280px);
+    order: 2;
+    padding: 2rem;
+  }
+}
+
+/* تحسينات للهيدر */
+.header {
+  padding: 0.5rem 1rem;
+}
+
+.logo {
+  font-size: 1.25rem;
+}
+
+/* تحسينات للجداول */
+.markdown-content table {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+/* تحسينات للأكواد */
+pre {
+  font-size: 0.85rem;
+}
+
+/* تحسينات للهواتف الصغيرة */
+@media (max-width: 576px) {
+  .content {
+    padding: 0.75rem;
+  }
+  
+  .markdown-content h1 {
+    font-size: 1.5rem;
+  }
+  
+  .markdown-content h2 {
+    font-size: 1.3rem;
+  }
+  
+  pre {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* /* جعل الأزرار متجاوبة */
+.btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 768px) {
+  .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* تحسينات لبطاقات المحتوى */
+.card {
+  margin: 0.5rem 0;
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .card {
+    margin: 1rem 0;
+    padding: 1.5rem;
+  }
+}
+
+/* 4. تحسينات للوضع المظلم والفاتح: */
+/* تحسين الانتقال بين الوضعين */
+body, .header, .sidebar, .card, details {
+  transition: all 0.3s ease;
+}
+
+/* تحسين رؤية العناصر في الوضع المظلم */
+body.dark-mode .markdown-content a {
+  color: var(--dart-blue-light);
+}
+
+body.light-mode .markdown-content a {
+  color: var(--dart-blue);
+}
+
+
+
+/* 5. تحسينات للخطوط: */
+/* تحسين حجم الخط حسب الشاشة */
+body {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+.markdown-content h1 {
+  font-size: 1.8rem;
+}
+
+.markdown-content h2 {
+  font-size: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .markdown-content h1 {
+    font-size: 2rem;
+  }
+  
+  .markdown-content h2 {
+    font-size: 1.7rem;
+  }
+}
+
+/* 6. تحسينات نهائية للشاشات الكبيرة: */
+@media (min-width: 1200px) {
+  .content {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .header-container, .main-container {
+    max-width: 1400px;
+  }
+}
+/* 7. تعديلات خاصة للجوال: */
+/* إخفاء السايدبار في الجوال وإظهار زر التبديل */
+.sidebar {
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  position: fixed;
+  top: 60px;
+  right: 0;
+  bottom: 0;
+  z-index: 90;
+}
+
+.sidebar.visible {
+  transform: translateX(0);
+}
+
+.sidebar-toggle {
+  display: block;
+}
+
+@media (min-width: 992px) {
+  .sidebar {
+    transform: translateX(0);
+    position: sticky;
+  }
+  
+  .sidebar-toggle {
+    display: none;
+  }
+}
+
+/* 8. تحسينات لأداء أفضل: */
+/* تحسين الأداء */
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
