@@ -482,3 +482,277 @@ details[open] > div {
 body.light-mode details[open] > div {
   color: var(--text-dark);
 }
+
+
+
+
+
+
+
+.header-container {
+  display: flex;
+  justify-content: center; /* تغيير من space-between إلى center */
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative; /* إضافة لتمكين وضعية الزر بشكل مطلق */
+}
+
+.theme-toggle {
+  position: absolute; /* وضع الزر في مكان مطلق */
+  left: 1rem; /* وضع الزر على اليسار */
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--text-light);
+}
+
+body.light-mode .theme-toggle {
+  color: var(--text-dark);
+}
+
+/* تنسيق عام للسايدبار */
+.sidebar {
+  width: 280px;
+  background-color: var(--darker-bg);
+  padding: 1rem;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+}
+
+body.light-mode .sidebar {
+  background-color: var(--lighter-bg);
+}
+
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* تنسيق مستويات الدورة */
+.course-level {
+  background-color: rgba(77, 168, 218, 0.05);
+  border-radius: 8px;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+body.light-mode .course-level {
+  background-color: rgba(1, 117, 194, 0.05);
+}
+
+.course-level:hover {
+  box-shadow: 0 2px 8px rgba(77, 168, 218, 0.1);
+}
+
+/* ترويسة المستوى */
+.level-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.level-number {
+  width: 28px;
+  height: 28px;
+  background-color: var(--dart-blue-light);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+body.light-mode .level-number {
+  background-color: var(--dart-blue);
+}
+
+.projects .level-number {
+  background-color: #6c5ce7;
+}
+
+.level-title {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--dart-blue-light);
+  font-weight: 700;
+}
+
+body.light-mode .level-title {
+  color: var(--dart-blue);
+}
+
+/* عناصر الدورة */
+.level-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.course-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin: 0.25rem 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-light);
+}
+
+body.light-mode .course-item {
+  color: var(--text-dark);
+}
+
+.course-item i {
+  width: 20px;
+  text-align: center;
+  color: var(--dart-blue-light);
+  font-size: 0.9rem;
+}
+
+body.light-mode .course-item i {
+  color: var(--dart-blue);
+}
+
+.course-item span {
+  flex: 1;
+  font-size: 0.95rem;
+}
+
+.course-item:hover {
+  background-color: rgba(77, 168, 218, 0.1);
+}
+
+.course-item.active {
+  background-color: var(--dart-blue-light);
+  color: white !important;
+}
+
+.course-item.active i {
+  color: white !important;
+}
+
+body.light-mode .course-item.active {
+  background-color: var(--dart-blue);
+}
+
+/* تأثيرات خاصة للمشاريع */
+.projects .course-item i {
+  color: #6c5ce7;
+}
+
+.projects .course-item:hover {
+  background-color: rgba(108, 92, 231, 0.1);
+}
+
+/* تصميم متجاوب */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 85%;
+    position: fixed;
+    top: 60px;
+    right: 0;
+    bottom: 0;
+    transform: translateX(100%);
+    z-index: 90;
+    padding-top: 1.5rem;
+  }
+  
+  .sidebar.visible {
+    transform: translateX(0);
+  }
+  
+  .level-header {
+    padding: 0.5rem;
+  }
+  
+  .course-item {
+    padding: 0.6rem 0.8rem;
+  }
+}.developer-accordion {
+  background: rgba(77, 168, 218, 0.05);
+  border-radius: 8px;
+  margin-top: auto;
+  overflow: hidden;
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem;
+  cursor: pointer;
+  gap: 0.8rem;
+}
+
+.accordion-header img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.accordion-header span {
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+.accordion-header i {
+  transition: transform 0.3s ease;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding: 0 1rem;
+}
+
+.developer-accordion.active .accordion-content {
+  max-height: 300px;
+  padding: 0 1rem 1rem;
+}
+
+.developer-accordion.active .accordion-header i {
+  transform: rotate(180deg);
+}
+
+.developer-bio {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.developer-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.stat-item {
+  background: rgba(77, 168, 218, 0.1);
+  border-radius: 6px;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.developer-social {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.social-icon {
+  color: var(--dart-blue-light);
+  font-size: 1.2rem;
+}

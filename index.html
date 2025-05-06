@@ -5,166 +5,181 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>درويش Dart</title>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
 
 <body class="dark-mode">
-  <header class="header">
-    <div class="header-container">
-      <h1 class="logo">Dart<span>درويش</span></h1>
-      <button class="theme-toggle" id="themeToggle">🌞</button>
-    </div>
-  </header>
+ <header class="header">
+  <div class="header-container">
+    <h1 class="logo">Dart<span>درويش</span></h1>
+    <button class="theme-toggle" id="themeToggle">
+      <i class="fa fa-sun-o" aria-hidden="true"></i>
+    </button>
+  </div>
+</header>
 
   <div class="main-container">
     <aside class="sidebar" id="sidebar">
-      <div class="sidebar-section active">
-        <h3 class="sidebar-title">مقدمة وأساسيات دارت</h3>
-        <ul class="sidebar-list">
-          <li class="sidebar-item active" data-article="intro">مقدمة</li>
-          <li class="sidebar-item" data-article="install">تثبيت</li>
-          <li class="sidebar-item" data-article="data-types">أنواع البيانات</li>
-          <li class="sidebar-item" data-article="comments">التعليقات</li>
-          <li class="sidebar-item" data-article="operators">المعاملات</li>
-          <li class="sidebar-item" data-article="input-user">إدخالات المستخدم</li>
-          <li class="sidebar-item" data-article="string">السلاسل النصية</li>
-          <li class="sidebar-item" data-article="assignment">نكليفات</li>
-        </ul>
-
-        <h3 class="sidebar-title">Dart Conditions and Loops</h3>
-        <ul class="sidebar-list">
-          <li class="sidebar-item active" data-article="intro">مقدمة</li>
-          <li class="sidebar-item" data-article="install">تثبيت</li>
-          <li class="sidebar-item" data-article="data-types">أنواع البيانات</li>
-          <li class="sidebar-item" data-article="comments">التعليقات</li>
-          <li class="sidebar-item" data-article="operators">المعاملات</li>
-          <li class="sidebar-item" data-article="input-user">إدخالات المستخدم</li>
-          <li class="sidebar-item" data-article="string">السلاسل النصية</li>
-          <li class="sidebar-item" data-article="assignment">نكليفات</li>
-        </ul>
-        <h3 class="sidebar-title">Dart Functions</h3>
-        <ul class="sidebar-list">
-          <li class="sidebar-item active" data-article="intro">مقدمة</li>
-          <li class="sidebar-item" data-article="install">تثبيت</li>
-          <li class="sidebar-item" data-article="data-types">أنواع البيانات</li>
-          <li class="sidebar-item" data-article="comments">التعليقات</li>
-          <li class="sidebar-item" data-article="operators">المعاملات</li>
-          <li class="sidebar-item" data-article="input-user">إدخالات المستخدم</li>
-          <li class="sidebar-item" data-article="string">السلاسل النصية</li>
-          <li class="sidebar-item" data-article="assignment">نكليفات</li>
-        </ul>
-        <h3 class="sidebar-title">Dart Collection</h3>
-        <ul class="sidebar-list">
-          <li class="sidebar-item active" data-article="intro">مقدمة</li>
-          <li class="sidebar-item" data-article="install">تثبيت</li>
-          <li class="sidebar-item" data-article="data-types">أنواع البيانات</li>
-          <li class="sidebar-item" data-article="comments">التعليقات</li>
-          <li class="sidebar-item" data-article="operators">المعاملات</li>
-          <li class="sidebar-item" data-article="input-user">إدخالات المستخدم</li>
-          <li class="sidebar-item" data-article="string">السلاسل النصية</li>
-          <li class="sidebar-item" data-article="assignment">نكليفات</li>
-        </ul>
-
-        <h3 class="sidebar-title">Dart File Handling</h3>
-        <ul class="sidebar-list">
-          <li class="sidebar-item active" data-article="intro">مقدمة</li>
-          <li class="sidebar-item" data-article="install">تثبيت</li>
-          <li class="sidebar-item" data-article="data-types">أنواع البيانات</li>
-          <li class="sidebar-item" data-article="comments">التعليقات</li>
-          <li class="sidebar-item" data-article="operators">المعاملات</li>
-          <li class="sidebar-item" data-article="input-user">إدخالات المستخدم</li>
-          <li class="sidebar-item" data-article="string">السلاسل النصية</li>
-          <li class="sidebar-item" data-article="assignment">نكليفات</li>
-        </ul>
-
-        <h3 class="sidebar-title">Dart Object Oriented Programming</h3>
-        <ul class="sidebar-list">
-          <li class="sidebar-item active" data-article="intro">مقدمة</li>
-          <li class="sidebar-item" data-article="install">تثبيت</li>
-          <li class="sidebar-item" data-article="data-types">أنواع البيانات</li>
-          <li class="sidebar-item" data-article="comments">التعليقات</li>
-          <li class="sidebar-item" data-article="operators">المعاملات</li>
-          <li class="sidebar-item" data-article="input-user">إدخالات المستخدم</li>
-          <li class="sidebar-item" data-article="string">السلاسل النصية</li>
-          <li class="sidebar-item" data-article="assignment">نكليفات</li>
-        </ul>
-
-        <h3 class="sidebar-title">Dart Null Safety</h3>
-        <ul class="sidebar-list">
-          <li class="sidebar-item active" data-article="intro">مقدمة</li>
-          <li class="sidebar-item" data-article="install">تثبيت</li>
-          <li class="sidebar-item" data-article="data-types">أنواع البيانات</li>
-          <li class="sidebar-item" data-article="comments">التعليقات</li>
-          <li class="sidebar-item" data-article="operators">المعاملات</li>
-          <li class="sidebar-item" data-article="input-user">إدخالات المستخدم</li>
-          <li class="sidebar-item" data-article="string">السلاسل النصية</li>
-          <li class="sidebar-item" data-article="assignment">نكليفات</li>
-        </ul>
-
-        <h3 class="sidebar-title">Dart Asynchronous Programming</h3>
-        <ul class="sidebar-list">
-          <li class="sidebar-item active" data-article="intro">مقدمة</li>
-          <li class="sidebar-item" data-article="install">تثبيت</li>
-          <li class="sidebar-item" data-article="data-types">أنواع البيانات</li>
-          <li class="sidebar-item" data-article="comments">التعليقات</li>
-          <li class="sidebar-item" data-article="operators">المعاملات</li>
-          <li class="sidebar-item" data-article="input-user">إدخالات المستخدم</li>
-          <li class="sidebar-item" data-article="string">السلاسل النصية</li>
-          <li class="sidebar-item" data-article="assignment">نكليفات</li>
-        </ul>
-        <h3 class="sidebar-title">Dart How To?</h3>
-        <ul class="sidebar-list">
-          <li class="sidebar-item active" data-article="intro">مقدمة</li>
-          <li class="sidebar-item" data-article="install">تثبيت</li>
-          <li class="sidebar-item" data-article="data-types">أنواع البيانات</li>
-          <li class="sidebar-item" data-article="comments">التعليقات</li>
-          <li class="sidebar-item" data-article="operators">المعاملات</li>
-          <li class="sidebar-item" data-article="input-user">إدخالات المستخدم</li>
-          <li class="sidebar-item" data-article="string">السلاسل النصية</li>
-          <li class="sidebar-item" data-article="assignment">نكليفات</li>
-        </ul>
-
-        <h3 class="sidebar-title">Quiz Game</h3>
-        <ul class="sidebar-list">
-          <li class="sidebar-item active" data-article="intro">مقدمة</li>
-          <li class="sidebar-item" data-article="install">تثبيت</li>
-          <li class="sidebar-item" data-article="data-types">أنواع البيانات</li>
-          <li class="sidebar-item" data-article="comments">التعليقات</li>
-          <li class="sidebar-item" data-article="operators">المعاملات</li>
-          <li class="sidebar-item" data-article="input-user">إدخالات المستخدم</li>
-          <li class="sidebar-item" data-article="string">السلاسل النصية</li>
-          <li class="sidebar-item" data-article="assignment">نكليفات</li>
-        </ul>
-
-        <h3 class="sidebar-title">Dart Conclusion</h3>
-        <ul class="sidebar-list">
-          <li class="sidebar-item active" data-article="intro">مقدمة</li>
-          <li class="sidebar-item" data-article="install">تثبيت</li>
-          <li class="sidebar-item" data-article="data-types">أنواع البيانات</li>
-          <li class="sidebar-item" data-article="comments">التعليقات</li>
-          <li class="sidebar-item" data-article="operators">المعاملات</li>
-          <li class="sidebar-item" data-article="input-user">إدخالات المستخدم</li>
-          <li class="sidebar-item" data-article="string">السلاسل النصية</li>
-          <li class="sidebar-item" data-article="assignment">نكليفات</li>
-        </ul>
-
-
-        <h3 class="sidebar-title">Get Certificate</h3>
-        <ul class="sidebar-list">
-          <li class="sidebar-item active" data-article="intro">مقدمة</li>
-          <li class="sidebar-item" data-article="install">تثبيت</li>
-          <li class="sidebar-item" data-article="data-types">أنواع البيانات</li>
-          <li class="sidebar-item" data-article="comments">التعليقات</li>
-          <li class="sidebar-item" data-article="operators">المعاملات</li>
-          <li class="sidebar-item" data-article="input-user">إدخالات المستخدم</li>
-          <li class="sidebar-item" data-article="string">السلاسل النصية</li>
-          <li class="sidebar-item" data-article="assignment">نكليفات</li>
-        </ul>
-
-
+      <div class="sidebar-container">
+        <!-- المستوى الأول: أساسيات دارت -->
+        <div class="course-level">
+          <div class="level-header">
+            <div class="level-number">1</div>
+            <h3 class="level-title">أساسيات دارت</h3>
+          </div>
+          <ul class="level-items">
+            <li class="course-item active" data-article="intro">
+              <i class="fa fa-play-circle"></i>
+              <span>مقدمة إلى دارت</span>
+            </li>
+            <li class="course-item" data-article="setup">
+              <i class="fa fa-cog"></i>
+              <span>إعداد البيئة</span>
+            </li>
+            <li class="course-item" data-article="syntax">
+              <i class="fa fa-code"></i>
+              <span>بناء الجملة</span>
+            </li>
+            <li class="course-item" data-article="variables">
+              <i class="fa fa-tag"></i>
+              <span>المتغيرات والثوابت</span>
+            </li>
+            <li class="course-item" data-article="data-types">
+              <i class="fa fa-list-alt"></i>
+              <span>أنواع البيانات</span>
+            </li>
+          </ul>
+        </div>
+    
+        <!-- المستوى الثاني: التحكم والتكرار -->
+        <div class="course-level">
+          <div class="level-header">
+            <div class="level-number">2</div>
+            <h3 class="level-title">التحكم والتكرار</h3>
+          </div>
+          <ul class="level-items">
+            <li class="course-item" data-article="conditions">
+              <i class="fa fa-random"></i>
+              <span>الجمل الشرطية</span>
+            </li>
+            <li class="course-item" data-article="loops">
+              <i class="fa fa-repeat"></i>
+              <span>الحلقات التكرارية</span>
+            </li>
+            <li class="course-item" data-article="functions">
+              <i class="fa fa-cubes"></i>
+              <span>الدوال</span>
+            </li>
+          </ul>
+        </div>
+    
+        <!-- المستوى الثالث: البرمجة الكائنية -->
+        <div class="course-level">
+          <div class="level-header">
+            <div class="level-number">3</div>
+            <h3 class="level-title">البرمجة الكائنية</h3>
+          </div>
+          <ul class="level-items">
+            <li class="course-item" data-article="classes">
+              <i class="fa fa-object-group"></i>
+              <span>الكلاسات والكائنات</span>
+            </li>
+            <li class="course-item" data-article="inheritance">
+              <i class="fa fa-sitemap"></i>
+              <span>التوريث</span>
+            </li>
+            <li class="course-item" data-article="polymorphism">
+              <i class="fa fa-exchange"></i>
+              <span>تعدد الأشكال</span>
+            </li>
+          </ul>
+        </div>
+    
+        <!-- المستوى الرابع: تطبيقات متقدمة -->
+        <div class="course-level">
+          <div class="level-header">
+            <div class="level-number">4</div>
+            <h3 class="level-title">تطبيقات متقدمة</h3>
+          </div>
+          <ul class="level-items">
+            <li class="course-item" data-article="async">
+              <i class="fa fa-bolt"></i>
+              <span>البرمجة غير المتزامنة</span>
+            </li>
+            <li class="course-item" data-article="collections">
+              <i class="fa fa-database"></i>
+              <span>المجموعات</span>
+            </li>
+            <li class="course-item" data-article="files">
+              <i class="fa fa-file-text"></i>
+              <span>معالجة الملفات</span>
+            </li>
+          </ul>
+        </div>
+    
+        <!-- قسم المشاريع -->
+        <div class="course-level projects">
+          <div class="level-header">
+            <div class="level-number"><i class="fa fa-flask"></i></div>
+            <h3 class="level-title">المشاريع العملية</h3>
+          </div>
+          <ul class="level-items">
+            <li class="course-item" data-article="project1">
+              <i class="fa fa-star"></i>
+              <span>حاسبة بسيطة</span>
+            </li>
+            <li class="course-item" data-article="project2">
+              <i class="fa fa-star"></i>
+              <span>مدير المهام</span>
+            </li>
+          </ul>
+        </div>
       </div>
+      
+
+      <div class="developer-accordion">
+        <div class="accordion-header">
+          <img src="images/my-avatar.png" alt="Developer">
+          <span>معلومات المطور</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        
+        <div class="accordion-content">
+          <div class="developer-bio">
+            <p>مطور واجهات مستخدم متخصص في Dart وFlutter</p>
+          </div>
+          
+          <div class="developer-stats">
+            <div class="stat-item">
+              <i class="fas fa-code"></i>
+              <span>2+ سنوات خبرة</span>
+            </div>
+            <div class="stat-item">
+              <i class="fas fa-project-diagram"></i>
+              <span>10+ مشروع</span>
+            </div>
+          </div>
+          
+          <div class="developer-social">
+            <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      
     </aside>
 
     <main class="content">

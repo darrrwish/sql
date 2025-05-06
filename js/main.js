@@ -122,3 +122,54 @@ document.querySelectorAll('.sidebar-title').forEach(title => {
   }
 });
 
+// تحميل المقالات
+function loadArticle(articleName) {
+  // ... الكود الحالي ...
+}
+
+// التحكم في السايدبار على الجوال
+function handleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const sidebarToggle = document.getElementById('sidebarToggle');
+  
+  if (window.innerWidth <= 768) {
+    sidebar.classList.remove('visible');
+    sidebarToggle.style.display = 'block';
+  } else {
+    sidebar.classList.add('visible');
+    sidebarToggle.style.display = 'none';
+  }
+}
+
+// أحداث النقر على عناصر الدورة
+document.querySelectorAll('.course-item').forEach(item => {
+  item.addEventListener('click', function() {
+    if (window.innerWidth <= 768) {
+      document.getElementById('sidebar').classList.remove('visible');
+    }
+    
+    document.querySelectorAll('.course-item').forEach(i => i.classList.remove('active'));
+    this.classList.add('active');
+    loadArticle(this.getAttribute('data-article'));
+  });
+});
+
+// تهيئة أولية
+document.addEventListener('DOMContentLoaded', function() {
+  handleSidebar();
+  window.addEventListener('resize', handleSidebar);
+  
+  // تحميل المقال الأول تلقائياً
+  const firstItem = document.querySelector('.course-item');
+  if (firstItem) {
+    firstItem.click();
+  }
+});
+
+// للخيار 2 (القابل للطي)
+const accordion = document.querySelector('.developer-accordion');
+if (accordion) {
+  accordion.addEventListener('click', function() {
+    this.classList.toggle('active');
+  });
+}
