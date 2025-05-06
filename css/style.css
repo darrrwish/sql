@@ -1273,3 +1273,45 @@ img, video, iframe {
 * {
   box-sizing: border-box;
 }
+
+/* ///////////////////////////////////////////////////// */
+/* البديل لوضعها في اليسار */
+.theme-toggle {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  /* باقي الخصائص تبقى كما هي */
+}
+
+.logo {
+  margin-left: 50px; /* تعويض المساحة */
+}
+
+@media (max-width: 768px) {
+  .theme-toggle {
+    left: 0.5rem;
+  }
+  
+  .logo {
+    margin-left: 40px;
+  }
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 60px; /* إضافة padding للتوزيع المتوازن */
+}
+
+.logo {
+  font-size: 1.5rem;
+  color: var(--dart-blue-light);
+  margin: 0 auto; /* توسيط اللوجو */
+}
+
+/* //////////////////////////////////////////////// */
