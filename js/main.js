@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  hljs.highlightAll(); // تفعيل تلوين الكود أول مرة
+  hljs.highlightAll();
 
   const body = document.body;
   const themeToggle = document.getElementById('themeToggle');
@@ -7,36 +7,33 @@ document.addEventListener('DOMContentLoaded', function () {
   const sidebarToggle = document.getElementById('sidebarToggle');
   const markdownContent = document.getElementById('markdown-content');
 
-// التحكم في السايدبار حسب حجم الشاشة
-function handleSidebarVisibility() {
-  if (window.innerWidth <= 768) {
-    sidebar.classList.remove('visible');
-    sidebarToggle.textContent = '☰';
-    sidebarToggle.style.display = 'block';
-  } else {
-    sidebar.classList.add('visible');
-    sidebarToggle.style.display = 'none';
+  // التحكم في السايدبار حسب حجم الشاشة
+  function handleSidebarVisibility() {
+    if (window.innerWidth <= 768) {
+      sidebar.classList.remove('visible');
+      sidebarToggle.textContent = '☰';
+      sidebarToggle.style.display = 'block';
+    } else {
+      sidebar.classList.add('visible');
+      sidebarToggle.style.display = 'none';
+    }
   }
-}
 
-// تنفيذ عند التحميل
-handleSidebarVisibility();
+  // تنفيذ عند التحميل
+  handleSidebarVisibility();
 
-// تنفيذ عند تغيير حجم النافذة
-window.addEventListener('resize', handleSidebarVisibility);
+  // تنفيذ عند تغيير حجم النافذة
+  window.addEventListener('resize', handleSidebarVisibility);
 
-// ضبط الوضع من localStorage
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-  body.classList.add(savedTheme);
-  themeToggle.textContent = savedTheme === 'dark-mode' ? '🌞' : '🌙';
-} else {
-  // إذا لم يكن هناك وضع محفوظ، افتراضيًا وضع ليلي
-  body.classList.add('dark-mode');
-  themeToggle.textContent = '🌞';
-}
-
-
+  // ضبط الوضع من localStorage
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    body.classList.add(savedTheme);
+    themeToggle.innerHTML = savedTheme === 'dark-mode' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+  } else {
+    body.classList.add('dark-mode');
+    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+  }
 
   // تحميل أول مقال تلقائيًا
   loadArticle('home');
@@ -46,7 +43,7 @@ if (savedTheme) {
     body.classList.toggle('light-mode');
     const currentTheme = body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
     localStorage.setItem('theme', currentTheme);
-    themeToggle.textContent = currentTheme === 'dark-mode' ? '🌞' : '🌙';
+    themeToggle.innerHTML = currentTheme === 'dark-mode' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
   });
 
   sidebarToggle.addEventListener('click', function () {
@@ -54,16 +51,23 @@ if (savedTheme) {
     sidebarToggle.textContent = sidebar.classList.contains('visible') ? '✕' : '☰';
   });
 
-  document.querySelectorAll('.sidebar-item').forEach(item => {
+  // إضافة مستمع الأحداث لعناصر الدورة التعليمية
+  document.querySelectorAll('.course-item').forEach(item => {
     item.addEventListener('click', function () {
       if (window.innerWidth <= 768) {
         sidebar.classList.remove('visible');
         sidebarToggle.textContent = '☰';
       }
 
-      document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+      // إزالة الفئة النشطة من جميع العناصر
+      document.querySelectorAll('.course-item').forEach(i => i.classList.remove('active'));
+      
+      // إضافة الفئة النشطة للعنصر المحدد
       this.classList.add('active');
-      loadArticle(this.getAttribute('data-article'));
+      
+      // تحميل المقال المطلوب
+      const articleName = this.getAttribute('data-article');
+      loadArticle(articleName);
     });
   });
 
@@ -97,118 +101,30 @@ if (savedTheme) {
     }
   }
 });
-window.addEventListener('resize', function() {
-  if (window.innerWidth <= 768) {
-    sidebar.classList.remove('visible');
-    sidebarToggle.textContent = '☰';
-  } else {
-    sidebar.classList.add('visible');
-    sidebarToggle.textContent = '✕';
-  }
-});
 
-// أضف هذا الكود بعد تحميل DOM
-document.querySelectorAll('.sidebar-title').forEach(title => {
-  title.addEventListener('click', function() {
-    this.classList.toggle('collapsed');
-    const list = this.nextElementSibling;
-    list.classList.toggle('expanded');
-  });
+// تغيير لون القلب عند النقر (نسخة معدلة)
+document.addEventListener('DOMContentLoaded', function() {
+  const heart = document.getElementById('heart');
   
-  // إغلاق القوائم افتراضيًا على الجوال
-  if (window.innerWidth <= 768) {
-    title.classList.add('collapsed');
-    title.nextElementSibling.classList.remove('expanded');
-  }
-});
+  if (heart) {
+    // دالة لتغيير اللون
+    const toggleHeartColor = () => {
+      heart.classList.toggle('purple');
+      localStorage.setItem('heartPurple', heart.classList.contains('purple'));
+    };
 
-// تحميل المقالات
-function loadArticle(articleName) {
-  // ... الكود الحالي ...
-}
-
-// التحكم في السايدبار على الجوال
-function handleSidebar() {
-  const sidebar = document.getElementById('sidebar');
-  const sidebarToggle = document.getElementById('sidebarToggle');
-  
-  if (window.innerWidth <= 768) {
-    sidebar.classList.remove('visible');
-    sidebarToggle.style.display = 'block';
-  } else {
-    sidebar.classList.add('visible');
-    sidebarToggle.style.display = 'none';
-  }
-}
-
-// أحداث النقر على عناصر الدورة
-document.querySelectorAll('.course-item').forEach(item => {
-  item.addEventListener('click', function() {
-    if (window.innerWidth <= 768) {
-      document.getElementById('sidebar').classList.remove('visible');
+    // حدث النقر
+    heart.addEventListener('click', toggleHeartColor);
+    
+    // استعادة الحالة عند التحميل
+    if (localStorage.getItem('heartPurple') === 'true') {
+      heart.classList.add('purple');
     }
     
-    document.querySelectorAll('.course-item').forEach(i => i.classList.remove('active'));
-    this.classList.add('active');
-    loadArticle(this.getAttribute('data-article'));
-  });
-});
-
-// تهيئة أولية
-document.addEventListener('DOMContentLoaded', function() {
-  handleSidebar();
-  window.addEventListener('resize', handleSidebar);
-  
-  // تحميل المقال الأول تلقائياً
-  const firstItem = document.querySelector('.course-item');
-  if (firstItem) {
-    firstItem.click();
-  }
-});
-
-// للخيار 2 (القابل للطي)
-const accordion = document.querySelector('.developer-accordion');
-if (accordion) {
-  accordion.addEventListener('click', function() {
-    this.classList.toggle('active');
-  });
-}
-document.addEventListener('DOMContentLoaded', function() {
-  // ... الكود الحالي ...
-  
-  // ضبط الوضع من localStorage
-  const savedTheme = localStorage.getItem('theme');
-  const themeToggle = document.getElementById('themeToggle');
-  
-  if (savedTheme) {
-    body.classList.add(savedTheme);
-    updateThemeIcon(savedTheme);
+    // إصلاح مشكلة عدم الاستجابة أحياناً
+    heart.style.pointerEvents = 'auto';
   } else {
-    // الوضع الافتراضي
-    body.classList.add('dark-mode');
-    updateThemeIcon('dark-mode');
+    console.error("Element with ID 'heart' not found!");
   }
-
-  themeToggle.addEventListener('click', function() {
-    body.classList.toggle('dark-mode');
-    body.classList.toggle('light-mode');
-    
-    const currentTheme = body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
-    localStorage.setItem('theme', currentTheme);
-    
-    updateThemeIcon(currentTheme);
-  });
-
-  function updateThemeIcon(theme) {
-    const icon = themeToggle.querySelector('i');
-    if (theme === 'dark-mode') {
-      icon.classList.remove('fa-sun');
-      icon.classList.add('fa-moon');
-    } else {
-      icon.classList.remove('fa-moon');
-      icon.classList.add('fa-sun');
-    }
-  }
-  
-  // ... بقية الكود ...
 });
+

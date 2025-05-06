@@ -31,8 +31,8 @@ bash
 export PATH=/opt/homebrew/bin:$PATH
 تثبيت دارت على لينكس
 لتركيب دارت على لينكس، افتح الطرفية والصق الأوامر التالية:
-
-bash
+```
+```bash
 sudo apt-get update
 sudo apt-get install apt-transport-https
 wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/dart.gpg
