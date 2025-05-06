@@ -101,30 +101,25 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 });
-
-// تغيير لون القلب عند النقر (نسخة معدلة)
-document.addEventListener('DOMContentLoaded', function() {
-  const heart = document.getElementById('heart');
+function toggleDeveloperAccordion() {
+  const accordion = document.querySelector('.developer-accordion');
+  accordion.classList.toggle('active');
   
-  if (heart) {
-    // دالة لتغيير اللون
-    const toggleHeartColor = () => {
-      heart.classList.toggle('purple');
-      localStorage.setItem('heartPurple', heart.classList.contains('purple'));
-    };
+  // إغلاق السايدبار على الجوال عند فتح قسم المطور
+  if (window.innerWidth <= 768) {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.remove('visible');
+    document.getElementById('sidebarToggle').textContent = '☰';
+  }
+}
 
-    // حدث النقر
-    heart.addEventListener('click', toggleHeartColor);
-    
-    // استعادة الحالة عند التحميل
-    if (localStorage.getItem('heartPurple') === 'true') {
-      heart.classList.add('purple');
-    }
-    
-    // إصلاح مشكلة عدم الاستجابة أحياناً
-    heart.style.pointerEvents = 'auto';
-  } else {
-    console.error("Element with ID 'heart' not found!");
+// أو يمكنك استخدام هذا الكود إذا كنت تفضل استخدام event listeners
+document.addEventListener('DOMContentLoaded', function() {
+  const developerAccordion = document.querySelector('.developer-accordion');
+  if (developerAccordion) {
+    developerAccordion.querySelector('.accordion-header').addEventListener('click', function() {
+      developerAccordion.classList.toggle('active');
+    });
   }
 });
 

@@ -225,7 +225,8 @@ body.light-mode pre {
   }
 }
 pre, pre code {
-  direction: ltr;
+  font-weight: bold !important;
+direction: ltr;
   text-align: left;
   font-family: 'Courier New', monospace;
   unicode-bidi: embed;
