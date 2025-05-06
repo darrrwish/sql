@@ -1317,3 +1317,84 @@ img, video, iframe {
 /* //////////////////////////////////////////////// */
 .header {
   padding:   1rem 0rem;}
+
+  :root {
+    /* إضافة متغيرات جديدة للأصفر */
+    --quote-bg-light: #FFF9C4;
+    --quote-border-light: #FFD600;
+    --quote-bg-dark: #333300;
+    --quote-border-dark: #FFEE58;
+  }
+
+  blockquote {
+    background-color: var(--dart-blue-light);
+    border-left: 4px solid var(--dart-blue);
+    margin: 0.5rem 0;
+    padding: 1rem 1.5rem;
+    font-family: 'Cairo', sans-serif;
+    line-height: 1.8;
+    text-align: right;
+    direction: rtl;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 0 8px 8px 0;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  body.dark-mode blockquote {
+    background-color: var(--quote-bg-dark);
+    border-left-color: var(--quote-border-dark);
+    color: #FFFFA0; /* لون نص أفتح في الوضع المظلم */
+  }
+  blockquote::before {
+    content: "\201D";
+    font-family: 'Cairo', sans-serif;
+    font-size: 3.5rem;
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    color: rgba(255, 214, 0, 0.3); /* شفافية أكثر للوضع الفاتح */
+    line-height: 1;
+  }
+  
+  body.dark-mode blockquote::before {
+    color: rgba(255, 238, 88, 0.3); /* تعديل اللون للوضع المظلم */
+  }
+  
+  blockquote footer {
+    display: block;
+    margin-top: 0.8rem;
+    font-size: 0.9em;
+    color: #795548;
+    font-weight: bold;
+  }
+  
+  body.dark-mode blockquote footer {
+    color: #D7CCC8; /* لون أفتح للوضع المظلم */
+  }
+
+  /* تحسين التباين للنص داخل الاقتباس */
+blockquote p {
+  color: inherit;
+  margin: 0;
+}
+
+body.light-mode blockquote p {
+  color: #333; /* لون نص داكن في الوضع الفاتح */
+}
+
+body.dark-mode blockquote p {
+  color: #FFFFC0; /* لون نص فاتح في الوضع المظلم */
+}
+
+@media (max-width: 768px) {
+  blockquote {
+    padding: 0.8rem 1rem;
+  }
+  
+  blockquote::before {
+    font-size: 2.5rem;
+    right: 0.5rem;
+  }
+}

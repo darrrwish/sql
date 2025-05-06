@@ -1,5 +1,8 @@
-# **Data Types**  | **Advanced Declarations**
 
+<div dir="ltr">
+
+## **Data Types**  | **Advanced Declarations**
+</div>
 
 ## 📌 أولًا: أنواع البيانات الأساسية (Built-in Data Types)
 
