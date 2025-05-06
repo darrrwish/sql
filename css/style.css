@@ -756,3 +756,33 @@ body.light-mode .course-item.active {
   color: var(--dart-blue-light);
   font-size: 1.2rem;
 }
+.developer-accordion {
+  margin: 1rem 0;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--text-light);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.light-mode .theme-toggle {
+  color: var(--text-dark);
+}
+
+body.light-mode .theme-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}

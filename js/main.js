@@ -173,3 +173,42 @@ if (accordion) {
     this.classList.toggle('active');
   });
 }
+document.addEventListener('DOMContentLoaded', function() {
+  // ... الكود الحالي ...
+  
+  // ضبط الوضع من localStorage
+  const savedTheme = localStorage.getItem('theme');
+  const themeToggle = document.getElementById('themeToggle');
+  
+  if (savedTheme) {
+    body.classList.add(savedTheme);
+    updateThemeIcon(savedTheme);
+  } else {
+    // الوضع الافتراضي
+    body.classList.add('dark-mode');
+    updateThemeIcon('dark-mode');
+  }
+
+  themeToggle.addEventListener('click', function() {
+    body.classList.toggle('dark-mode');
+    body.classList.toggle('light-mode');
+    
+    const currentTheme = body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
+    localStorage.setItem('theme', currentTheme);
+    
+    updateThemeIcon(currentTheme);
+  });
+
+  function updateThemeIcon(theme) {
+    const icon = themeToggle.querySelector('i');
+    if (theme === 'dark-mode') {
+      icon.classList.remove('fa-sun');
+      icon.classList.add('fa-moon');
+    } else {
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
+    }
+  }
+  
+  // ... بقية الكود ...
+});
