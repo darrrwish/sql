@@ -1,3 +1,24 @@
+
+<div class="markdown-card1">
+<div class="markdown-header1">
+<h1><!-- 🔤 العنوان -->Loops in Dart</h1>
+<p><!-- 🧾 الوصف -->الحلقات التكرارية</p>
+</div>
+
+<div class="markdown-content1">
+
+<!-- 👨‍💻 الكود -->
+```dart
+void main() {
+for (int i = 0; i < 5; i++) {
+print("Hello #$i");
+}
+```
+
+</div> </div> 
+
+
+
 # الحلقات التكرارية (Loops) في دارت  
 
 ## اللوبز دي إيه؟ 🤔

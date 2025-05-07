@@ -7,7 +7,8 @@
   --lighter-bg: #FFFFFF;
   --text-dark: #333333;
   --text-light: #F5F5F5;
-}
+  --hover-scrollbar: #025a9c;
+  ;}
 
 body {
   font-family: 'Tajawal', sans-serif;
@@ -243,7 +244,7 @@ code.hljs {
 }
 /* جعل خلفية صندوق الأكواد شفافة */
 pre {
-  background-color: transparent !important;
+  background-color: rgba(1, 117, 194, 0.05); /* بدلاً من transparent */
   border: 1px solid rgba(77, 168, 218, 0.3); /* إطار خفيف */
 }
 
@@ -1398,3 +1399,99 @@ body.dark-mode blockquote p {
     right: 0.5rem;
   }
 }
+
+/* //////////////////////////////////////////////////////////////// */
+/* تخصيص أشرطة التمرير لكل المحتوى */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* الخلفية العامة لشريط التمرير */
+::-webkit-scrollbar-track {
+  background: rgba(77, 168, 218, 0.1);
+  border-radius: 10px;
+}
+
+/* المقبض (الجزء المتحرك) */
+::-webkit-scrollbar-thumb {
+  background: var(--dart-blue-light);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+/* تأثير التحويم على المقبض */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--dart-blue);
+}
+
+/* تنسيقات خاصة للوضع الفاتح */
+body.light-mode ::-webkit-scrollbar-thumb {
+  background: var(--dart-blue);
+}
+
+body.light-mode ::-webkit-scrollbar-thumb:hover {
+  background:var(--hover-scrollbar);
+}
+
+
+/* ------------------------------------ */
+
+
+.markdown-card1 {
+  background-color: var(--card);
+  color: var(--text);
+  max-width: 800px;
+  margin: 20px auto;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  overflow: hidden;
+  font-family: "Roboto", sans-serif;
+}
+
+.markdown-header1 {
+  background: linear-gradient(135deg, var(--dart-blue), var(--dart-blue-light));
+  color: white;
+  padding: 20px;
+  text-align: center; /* ✅ تمركز المحتوى */
+
+}
+
+.markdown-header1 h1 {
+  color: white;
+  text-align: center; /* ✅ تمركز المحتوى */
+
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.markdown-header1 p {
+  margin-top: 8px;
+  font-weight: 300;
+  font-size: 16px;
+  opacity: 0.9;
+  font-family: "Tajawal", sans-serif;
+  text-align: center; /* ✅ تمركز المحتوى */
+
+}
+
+.markdown-content1 {
+  padding: 20px;
+}
+
+
+
+@media (max-width: 600px) {
+  .markdown-header1 h1 {
+    font-size: 20px;
+  }
+  .markdown-content1 {
+    padding: 16px;
+  }
+}
+
+
+/* ------------ */
