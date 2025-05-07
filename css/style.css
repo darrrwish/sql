@@ -1,15 +1,26 @@
 :root {
   --dart-blue: #0175C2;
   --dart-blue-light: #4DA8DA;
-  --dark-bg: #000000;
-  --darker-bg: #000000;
+  --dark-bg: #121212;
+  --darker-bg: #1A1A1A; /* لون الخلفية الداكن */
   --light-bg: #F5F7FA;
   --lighter-bg: #FFFFFF;
   --text-dark: #333333;
   --text-light: #F5F5F5;
   --hover-scrollbar: #025a9c;
-  ;}
+  --code-bg-dark: #1A1A1A; /* لون خلفية الأكواد في الوضع الداكن */
+  --code-bg-light: #ffffff; /* لون خلفية الأكواد في الوضع الفاتح */
+  
+ 
 
+  ;}
+  
+
+  
+  
+  
+  
+  
 body {
   font-family: 'Tajawal', sans-serif;
   background-color: var(--dark-bg);
@@ -967,7 +978,6 @@ textarea.form-control {
 
 .alert-info {
   background-color: rgba(77, 168, 218, 0.2);
-  border-left: 4px solid var(--dart-blue-light);
   color: var(--text-light);
 }
 
@@ -978,17 +988,14 @@ body.light-mode .alert-info {
 
 .alert-success {
   background-color: rgba(46, 204, 113, 0.2);
-  border-left: 4px solid #2ecc71;
 }
 
 .alert-warning {
-  background-color: rgba(241, 196, 15, 0.2);
-  border-left: 4px solid #f1c40f;
+  background-color: rgba(241 196, 15, 0.2);
 }
 
 .alert-danger {
   background-color: rgba(231, 76, 60, 0.2);
-  border-left: 4px solid #e74c3c;
 }
 
 .markdown-content table {
@@ -1017,7 +1024,7 @@ body.light-mode .markdown-content hr {
 
 blockquote {
   background-color: #FFF9C4; /* لون أصفر فاتح */
-  border-left: 4px solid #FFD600; /* لون أصفر داكن للحد */
+  /* border-left: 4px solid #FFD600; لون أصفر داكن للحد */
   margin: 0.5rem 0;
   padding: 1rem 1.5rem;
   font-family: 'Cairo', sans-serif;
@@ -1028,7 +1035,7 @@ blockquote {
   display: block; /* ليأخذ العرض الكامل */
   width: 100%; /* ليمتد حتى الحافة */
   box-sizing: border-box; /* لحساب الهوامش داخليًا */
-  border-radius: 0 8px 8px 0; /* زوايا مدورة فقط على اليمين */
+  border-radius: 10px; /* زوايا مدورة فقط على اليمين */
   position: relative;
 }
 
@@ -1039,7 +1046,7 @@ blockquote::before {
   position: absolute;
   top: 0.5rem;
   right: 1rem;
-  color: rgba(255, 214, 0, 0.2); /* لون شبه شفاف للأيقونة */
+  color: rgb(255 255 255 / 30%); /* لون شبه شفاف للأيقونة */
   line-height: 1;
 }
 
@@ -1329,7 +1336,7 @@ img, video, iframe {
 
   blockquote {
     background-color: var(--dart-blue-light);
-    border-left: 4px solid var(--dart-blue);
+    /* border-left: 4px solid var(--dart-blue); */
     margin: 0.5rem 0;
     padding: 1rem 1.5rem;
     font-family: 'Cairo', sans-serif;
@@ -1338,9 +1345,11 @@ img, video, iframe {
     direction: rtl;
     width: 100%;
     box-sizing: border-box;
-    border-radius: 0 8px 8px 0;
+    border-radius: 10px;
     position: relative;
     transition: all 0.3s ease;
+    text-align: center !important; /* محاذاة النص للمنتصف */
+
   }
   
   body.dark-mode blockquote {
@@ -1355,12 +1364,12 @@ img, video, iframe {
     position: absolute;
     top: 0.5rem;
     right: 1rem;
-    color: rgba(255, 214, 0, 0.3); /* شفافية أكثر للوضع الفاتح */
+    color: rgb(255 255 255 / 30%); /* شفافية أكثر للوضع الفاتح */
     line-height: 1;
   }
   
   body.dark-mode blockquote::before {
-    color: rgba(255, 238, 88, 0.3); /* تعديل اللون للوضع المظلم */
+    color: rgba(255, 88, 88, 0.3); /* تعديل اللون للوضع المظلم */
   }
   
   blockquote footer {
@@ -1382,7 +1391,7 @@ blockquote p {
 }
 
 body.light-mode blockquote p {
-  color: #333; /* لون نص داكن في الوضع الفاتح */
+  color: #eee; /* لون نص داكن في الوضع الفاتح */
 }
 
 body.dark-mode blockquote p {
@@ -1527,3 +1536,92 @@ body.light-mode ::-webkit-scrollbar-thumb:hover {
 
 
 /* ------------ */
+pre {
+  background-color: rgba(1, 117, 194, 0.05);
+  border: 1px solid var(--dart-blue-light); /* استخدام اللون الرئيسي بدلاً من اللون الثابت */
+  border-radius: 8px;
+  padding: 1rem;
+  overflow-x: auto;
+  margin-top: 1rem;
+  color: var(--text-light);
+}
+
+body.light-mode pre {
+  background-color: var(--lighter-bg);
+  border-color: var(--dart-blue); /* استخدام اللون الأزرق الداكن في الوضع الفاتح */
+  color: var(--text-dark);
+}
+
+pre {
+  background-color: var(--code-bg-dark); /* استخدام المتغير الجديد */
+  border: 1px solid var(--dart-blue-light);
+  border-radius: 8px;
+  padding: 1rem;
+  overflow-x: auto;
+  margin-top: 1rem;
+  color: var(--text-light);
+  transition: all 0.3s ease;
+}
+
+body.light-mode pre {
+  background-color: var(--code-bg-light); /* استخدام المتغير الجديد */
+  border-color: var(--dart-blue);
+  color: var(--text-dark);
+}
+
+/* ------------////////////////////////////////---------------- */
+/* تقليل المسافات لعنواين Markdown */
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+  margin-top: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+/* تقليل المسافات للفقرات */
+.markdown-content p {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* تقليل المسافات للقوائم */
+.markdown-content ul,
+.markdown-content ol {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+.markdown-content li {
+  margin-bottom: 0.3rem;
+}
+
+/* تقليل المسافات للجداول */
+.markdown-content table {
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
+}
+
+/* تقليل المسافات للأسطر الأفقية */
+.markdown-content hr {
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+/* تقليل المسافات لأكواد الكتل */
+.markdown-content pre {
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+/* تقليل المسافات للاقتباسات */
+.markdown-content blockquote {
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
+  padding: 0.8rem 1rem;
+}
+
+/* /////////////////////////////// */

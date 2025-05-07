@@ -19,18 +19,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // تنفيذ عند التحميل
   handleSidebarVisibility();
-
-  // تنفيذ عند تغيير حجم النافذة
   window.addEventListener('resize', handleSidebarVisibility);
 
   // ضبط الوضع من localStorage
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme) {
+    body.classList.remove('dark-mode', 'light-mode'); // 👈 أضف هذا
     body.classList.add(savedTheme);
     themeToggle.innerHTML = savedTheme === 'dark-mode' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
   } else {
+    body.classList.remove('dark-mode', 'light-mode'); // 👈 أضف هذا
     body.classList.add('dark-mode');
     themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
   }
@@ -51,7 +50,20 @@ document.addEventListener('DOMContentLoaded', function () {
     sidebarToggle.textContent = sidebar.classList.contains('visible') ? '✕' : '☰';
   });
 
-  // إضافة مستمع الأحداث لعناصر الدورة التعليمية
+  // أكورديون المطور
+  const developerAccordion = document.querySelector('.developer-accordion');
+  if (developerAccordion) {
+    developerAccordion.querySelector('.accordion-header').addEventListener('click', function () {
+      developerAccordion.classList.toggle('active');
+
+      if (window.innerWidth <= 768) {
+        sidebar.classList.remove('visible');
+        sidebarToggle.textContent = '☰';
+      }
+    });
+  }
+
+  // مستمعات عناصر الدورة
   document.querySelectorAll('.course-item').forEach(item => {
     item.addEventListener('click', function () {
       if (window.innerWidth <= 768) {
@@ -59,18 +71,17 @@ document.addEventListener('DOMContentLoaded', function () {
         sidebarToggle.textContent = '☰';
       }
 
-      // إزالة الفئة النشطة من جميع العناصر
       document.querySelectorAll('.course-item').forEach(i => i.classList.remove('active'));
-      
-      // إضافة الفئة النشطة للعنصر المحدد
       this.classList.add('active');
-      
-      // تحميل المقال المطلوب
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
       const articleName = this.getAttribute('data-article');
       loadArticle(articleName);
     });
   });
 
+  // تحميل المقالات
   async function loadArticle(articleName) {
     try {
       const response = await fetch(`articles/${articleName}.md`);
@@ -100,42 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
       `;
     }
   }
-});
-function toggleDeveloperAccordion() {
-  const accordion = document.querySelector('.developer-accordion');
-  accordion.classList.toggle('active');
+
   
-  // إغلاق السايدبار على الجوال عند فتح قسم المطور
-  if (window.innerWidth <= 768) {
-    const sidebar = document.getElementById('sidebar');
-    sidebar.classList.remove('visible');
-    document.getElementById('sidebarToggle').textContent = '☰';
-  }
-}
-
-// أو يمكنك استخدام هذا الكود إذا كنت تفضل استخدام event listeners
-document.addEventListener('DOMContentLoaded', function() {
-  const developerAccordion = document.querySelector('.developer-accordion');
-  if (developerAccordion) {
-    developerAccordion.querySelector('.accordion-header').addEventListener('click', function() {
-      developerAccordion.classList.toggle('active');
-    });
-  }
 });
 
-// في ملف main.js أو داخل وسم <script>
-document.querySelectorAll('.course-item').forEach(item => {
-  item.addEventListener('click', function(e) {
-    // الانتقال لأعلى الصفحة بسلاسة
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-    
-    // إذا كنت تحمل المحتوى بشكل ديناميكي
-    setTimeout(() => {
-      // كود تحميل المحتوى هنا...
-      loadArticle(this.dataset.article); // مثال لدالة تحميل المحتوى
-    }, 300); // تأخير بسيط لضمان الانتقال أولاً
-  });
-});
