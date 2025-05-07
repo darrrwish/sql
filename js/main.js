@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function handleSidebarVisibility() {
     if (window.innerWidth <= 768) {
       sidebar.classList.remove('visible');
-      sidebarToggle.textContent = '☰';
+      sidebarToggle.innerHTML = '<i class="fa-solid fa-list-ol"></i>';
       sidebarToggle.style.display = 'block';
     } else {
       sidebar.classList.add('visible');
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
     item.addEventListener('click', function () {
       if (window.innerWidth <= 768) {
         sidebar.classList.remove('visible');
-        sidebarToggle.textContent = '☰';
+        sidebarToggle.innerHTML = '<i class="fa-solid fa-list-ol"></i>';
       }
 
       document.querySelectorAll('.course-item').forEach(i => i.classList.remove('active'));
