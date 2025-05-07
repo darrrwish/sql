@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function handleSidebarVisibility() {
     if (window.innerWidth <= 768) {
       sidebar.classList.remove('visible');
-      sidebarToggle.innerHTML = '<i class="fa-solid fa-list-ol"></i>';
+      sidebarToggle.innerHTML = '<i class="fa-solid fa-database"></i>';
       sidebarToggle.style.display = 'block';
     } else {
       sidebar.classList.add('visible');
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   sidebarToggle.addEventListener('click', function () {
     sidebar.classList.toggle('visible');
-    sidebarToggle.innerHTML = sidebar.classList.contains('visible') ? '<i class="fa-solid fa-arrow-right"></i>' : '<i class="fa-solid fa-list-ol"></i>';
+    sidebarToggle.innerHTML = sidebar.classList.contains('visible') ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-database"></i>';
   });
 
   // أكورديون المطور
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (window.innerWidth <= 768) {
         sidebar.classList.remove('visible');
-        sidebarToggle.innerHTML = '<i class="fa-solid fa-list-ol"></i>';
+        sidebarToggle.innerHTML = '<i class="fa-solid fa-database"></i>';
       }
     });
   }
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
     item.addEventListener('click', function () {
       if (window.innerWidth <= 768) {
         sidebar.classList.remove('visible');
-        sidebarToggle.innerHTML = '<i class="fa-solid fa-list-ol"></i>';
+        sidebarToggle.innerHTML = '<i class="fa-solid fa-database"></i>';
       }
 
       document.querySelectorAll('.course-item').forEach(i => i.classList.remove('active'));

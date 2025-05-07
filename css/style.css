@@ -1,22 +1,18 @@
 :root {
-  --dart-blue: #0175C2;
-  --dart-blue-light: #4DA8DA;
-  --dark-bg: #121212;
-  --darker-bg: #1A1A1A; /* لون الخلفية الداكن */
+  --dart-blue: #2E7D32; /* تغيير إلى أخضر داكن */
+  --dart-blue-light: #4CAF50; /* تغيير إلى أخضر فاتح */
+  --dark-bg: #000000;
+  --darker-bg: #000000;
   --light-bg: #F5F7FA;
   --lighter-bg: #FFFFFF;
   --text-dark: #333333;
   --text-light: #F5F5F5;
-  --hover-scrollbar: #025a9c;
-  --code-bg-dark: #1A1A1A; /* لون خلفية الأكواد في الوضع الداكن */
-  --code-bg-light: #ffffff; /* لون خلفية الأكواد في الوضع الفاتح */
-  
- 
+  --hover-scrollbar: #1B5E20; /* تغيير إلى أخضر داكن */
+  --code-bg-dark: #1A1A1A;
+  --code-bg-light: #ffffff;
+}
 
-  ;}
-  
-
-  
+/* باقي الكود يبقى كما هو تماماً بدون أي تغييرات */
   
   
   
@@ -1640,3 +1636,28 @@ body.light-mode pre {
   outline: none;
 }
 /* //////////////////////////////////////////// */
+/* تغيير لون جداول ماركداون فقط */
+.markdown-content th {
+  background-color: #2E7D32; /* أخضر داكن */
+  color: white;
+}
+
+body.light-mode .markdown-content th {
+  background-color: #4CAF50; /* أخضر فاتح */
+}
+
+.markdown-content td {
+  border: 1px solid rgba(76, 175, 80, 0.3); /* أخضر بدرجة شفافية */
+}
+
+.markdown-content tr:nth-child(even) {
+  background-color: rgba(76, 175, 80, 0.05); /* أخضر فاتح شفاف */
+}
+
+body.light-mode .markdown-content tr:nth-child(even) {
+  background-color: rgba(46, 125, 50, 0.05); /* أخضر داكن شفاف */
+}
+
+.markdown-content tr:hover {
+  background-color: rgba(76, 175, 80, 0.1); /* أخضر فاتح شفاف */
+}
