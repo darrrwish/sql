@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   sidebarToggle.addEventListener('click', function () {
     sidebar.classList.toggle('visible');
-    sidebarToggle.textContent = sidebar.classList.contains('visible') ? '✕' : '☰';
+    sidebarToggle.innerHTML = sidebar.classList.contains('visible') ? '<i class="fa-solid fa-arrow-right"></i>' : '<i class="fa-solid fa-list-ol"></i>';
   });
 
   // أكورديون المطور
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (window.innerWidth <= 768) {
         sidebar.classList.remove('visible');
-        sidebarToggle.textContent = '☰';
+        sidebarToggle.innerHTML = '<i class="fa-solid fa-list-ol"></i>';
       }
     });
   }

@@ -1625,3 +1625,18 @@ body.light-mode pre {
 }
 
 /* /////////////////////////////// */
+
+/* إلغاء تأثير التاب highlight عند النقر على الموبايل */
+.sidebar-toggle:focus,
+.theme-toggle:focus {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* إلغاء أي تأثير عند الضغط */
+.sidebar-toggle,
+.theme-toggle {
+  -webkit-tap-highlight-color: transparent; /* لأجهزة Android و iOS */
+  outline: none;
+}
+/* //////////////////////////////////////////// */
