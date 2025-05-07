@@ -1,8 +1,8 @@
 :root {
   --dart-blue: #0175C2;
   --dart-blue-light: #4DA8DA;
-  --dark-bg: #121212;
-  --darker-bg: #1A1A1A;
+  --dark-bg: #000000;
+  --darker-bg: #000000;
   --light-bg: #F5F7FA;
   --lighter-bg: #FFFFFF;
   --text-dark: #333333;
@@ -1403,8 +1403,8 @@ body.dark-mode blockquote p {
 /* //////////////////////////////////////////////////////////////// */
 /* تخصيص أشرطة التمرير لكل المحتوى */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
 }
 
 /* الخلفية العامة لشريط التمرير */
@@ -1435,6 +1435,38 @@ body.light-mode ::-webkit-scrollbar-thumb:hover {
   background:var(--hover-scrollbar);
 }
 
+
+/* إخفاء شريط التمرير في الهواتف */
+@media (max-width: 768px) {
+  /* إخفاء شريط التمرير مع الحفاظ على إمكانية التمرير */
+  ::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+    background: transparent;
+  }
+  
+  /* التأكد من أن التمرير لا يزال يعمل */
+  html {
+    -ms-overflow-style: none;  /* IE و Edge */
+    scrollbar-width: none;  /* Firefox */
+    overflow: -moz-scrollbars-none; /* Firefox القديمة */
+  }
+  
+  html::-webkit-scrollbar {
+    display: none; /* Chrome و Safari و Opera */
+  }
+  
+  /* تحسين تجربة التمرير على الهواتف */
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* إصلاح مشاكل التمرير في بعض المتصفحات */
+  .content, .sidebar, .markdown-content {
+    -webkit-overflow-scrolling: touch;
+  }
+}
 
 /* ------------------------------------ */
 
