@@ -10,6 +10,12 @@
   --hover-scrollbar: #1B5E20; /* تغيير إلى أخضر داكن */
   --code-bg-dark: #4caf4f10;
   --code-bg-light: #ffffff;
+  --light-mode-course-level: rgba(76, 175, 80, 0.05); /* أخضر فاتح مع شفافية */
+  --dark-mode-course-level: rgba(46, 125, 50, 0.05); /* أخضر داكن مع شفافية */
+  --box-shadow-course-level: 0 2px 8px rgba(76, 175, 80, 0.1); /* ظل أخضر فاتح */
+
+  
+ 
 }
 
 /* باقي الكود يبقى كما هو تماماً بدون أي تغييرات */
@@ -542,19 +548,20 @@ body.light-mode .sidebar {
 
 /* تنسيق مستويات الدورة */
 .course-level {
-  background-color: rgba(77, 168, 218, 0.05);
+  background-color: var(--dark-mode-course-level);
   border-radius: 8px;
   padding: 0.5rem;
   transition: all 0.3s ease;
 }
 
 body.light-mode .course-level {
-  background-color: rgba(1, 117, 194, 0.05);
+  background-color: var(--light-mode-course-level);
 }
 
 .course-level:hover {
-  box-shadow: 0 2px 8px rgba(77, 168, 218, 0.1);
+  box-shadow: var(--box-shadow-course-level);
 }
+
 
 /* ترويسة المستوى */
 .level-header {
