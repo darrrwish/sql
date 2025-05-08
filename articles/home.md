@@ -27,16 +27,6 @@
 - مشاريع SQL واقعية
 
 ---
-
-## ابدأ الآن:
-
-- [مقدمة في SQL](./lessons/01-intro.md)
-- [20 استعلام SQL مهم لكل مبتدئ](./lessons/20-queries.md)
-- [مشاريع SQL واقعية](./projects/index.md)
-- [أسئلة شائعة](./faq.md)
-
----
-
 ## هل أنت جاهز لتصبح درويش SQL؟
 
 ابدأ رحلتك الآن، وابدأ بكتابة أول استعلام لك!
@@ -44,9 +34,3 @@
 > "SQL ليست لغة صعبة... فقط تحتاج لمن يرشدك إلى الطريق الصحيح."
 
 ---
-
-## تواصل معنا
-
-- [GitHub](https://github.com/SQLDarweesh)
-- [انستغرام](https://instagram.com/SQLDarweesh)
-- [راسلنا](mailto:support@sqldarweesh.com)
