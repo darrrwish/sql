@@ -28,7 +28,7 @@
 <body class="dark-mode">
  <header class="header">
   <div class="header-container">
-        <h1 class="logo">SQL<span>درويش</span></h1>
+    <h1 class="logo" id="homeLogo">SQL<span>درويش</span></h1>
     <button class="theme-toggle" id="themeToggle">
       <i class="fa fa-sun-o" aria-hidden="true"></i>
     </button>
@@ -38,6 +38,17 @@
   <div class="main-container">
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-container">
+
+        <div class="course-level">
+           
+          <ul class="level-items">
+            <li class="course-item active" data-article="home">
+              <i class="fa fa-home"></i>
+              <span>الصفحة الرئيسية</span>
+            </li>
+          
+        </div>
+
 <!-- المستوى الأول: مقدمة في SQL -->
 <div class="course-level">
   <div class="level-header">
@@ -209,6 +220,32 @@
 </div>
 
       
+        <!-- قسم المشاريع -->
+        <div class="course-level projects">
+          <div class="level-header projects">
+            <div class="level-number projects"><i class="fa fa-flask"></i></div>
+            <h3 class="level-title">المشاريع العملية</h3>
+          </div>
+          <ul class="level-items projects">
+            <li class="course-item" data-article="project1">
+              <i class="fa fa-star"></i>
+              <span>ربنا يسهل</span>
+            </li>
+            <li class="course-item projects" data-article="project2">
+              <i class="fa fa-star"></i>
+              <span>تساهيلك يارب </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
 <!-- 
       <div class="developer-accordion">
         <div class="accordion-header">
