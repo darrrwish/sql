@@ -1,14 +1,14 @@
 :root {
   --dart-blue: #2E7D32; /* تغيير إلى أخضر داكن */
   --dart-blue-light: #4CAF50; /* تغيير إلى أخضر فاتح */
-  --dark-bg: #000000;
-  --darker-bg: #000000;
+  --dark-bg: #0c0c0c;
+  --darker-bg: #0f0f0f;
   --light-bg: #F5F7FA;
   --lighter-bg: #FFFFFF;
   --text-dark: #333333;
   --text-light: #F5F5F5;
   --hover-scrollbar: #1B5E20; /* تغيير إلى أخضر داكن */
-  --code-bg-dark: #1A1A1A;
+  --code-bg-dark: #2e7d3228;
   --code-bg-light: #ffffff;
 }
 
@@ -1661,3 +1661,61 @@ body.light-mode .markdown-content tr:nth-child(even) {
 .markdown-content tr:hover {
   background-color: rgba(76, 175, 80, 0.1); /* أخضر فاتح شفاف */
 }
+
+/* //////////////////////////////////////////// */
+.code-controls {
+  position: absolute;
+  top: 8px;
+  right: 8px; /* ✅ كان left: 8px */
+  display: flex;
+  gap: 6px;
+  z-index: 5;
+}
+
+
+.sql-btn {
+  background-color: var(--dart-blue-light);
+  color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.sql-btn:hover {
+  background-color: var(--hover-scrollbar);
+}
+
+.sql-btn i {
+  pointer-events: none;
+}
+
+body.light-mode .sql-btn {
+  background-color: var(--dart-blue);
+}
+
+body.light-mode .sql-btn:hover {
+  background-color: var(--hover-scrollbar);
+}
+
+/* ✅ نتيجة التشغيل */
+.sql-result {
+  padding: 1rem;
+  margin-top: 0.5rem;
+  background-color: var(--code-bg-dark);
+  color: var(--text-light);
+  border-radius: 8px;
+  border: 1px solid var(--dart-blue-light);
+}
+
+body.light-mode .sql-result {
+  background-color: var(--code-bg-light);
+  color: var(--text-dark);
+  border-color: var(--dart-blue);
+}
+
