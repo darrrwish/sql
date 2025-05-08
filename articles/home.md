@@ -33,10 +33,10 @@ SELECT * FROM patients;
 - مشاريع SQL واقعية
 
 ---
-## هل أنت جاهز لتصبح درويش SQL؟
+## هل أنت جاهز لتصبح محترف SQL؟
 
 ابدأ رحلتك الآن، وابدأ بكتابة أول استعلام لك!
 
-> "SQL ليست لغة صعبة... فقط تحتاج لمن يرشدك إلى الطريق الصحيح."
+> "In a world full of data, SQL is the language that turns noise into knowledge."
 
 ---
