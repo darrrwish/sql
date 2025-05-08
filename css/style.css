@@ -1010,13 +1010,17 @@ body.light-mode .alert-info {
 }
 .markdown-content hr {
   border: none;
-  border-top: 1px solid rgba(77, 168, 218, 0.3); /* لون خفيف يتماشى مع الوضع الداكن */
+  border-top: 1px solid var(--dart-blue-light); /* ✅ أخضر فاتح */
   margin: 2rem 0;
+  opacity: 0.4;
+  transition: all 0.3s ease;
 }
 
 body.light-mode .markdown-content hr {
-  border-top: 1px solid rgba(1, 117, 194, 0.3); /* لون مناسب للوضع الفاتح */
+  border-top: 1px solid var(--dart-blue); /* ✅ أخضر داكن في الفاتح */
+  opacity: 0.5;
 }
+
 
 blockquote {
   background-color: #FFF9C4; /* لون أصفر فاتح */
@@ -1705,6 +1709,7 @@ body.light-mode .sql-btn:hover {
 
 /* ✅ نتيجة التشغيل */
 .sql-result {
+  display: none; /* ❌ مخفي افتراضيًا */
   padding: 1rem;
   margin-top: 0.5rem;
   background-color: var(--code-bg-dark);
@@ -1712,10 +1717,8 @@ body.light-mode .sql-btn:hover {
   border-radius: 8px;
   border: 1px solid var(--dart-blue-light);
 }
-
 body.light-mode .sql-result {
   background-color: var(--code-bg-light);
   color: var(--text-dark);
   border-color: var(--dart-blue);
 }
-

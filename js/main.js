@@ -142,7 +142,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const tableMatch = sql.match(/from\s+[`']?(\w+)[`']?/i);
         const tableName = tableMatch ? tableMatch[1] : '';
         const data = mockData[tableName] || [];
-        displayResults(data, resultDiv);
+        resultDiv.style.display = 'block'; // ✅ إظهار النتيجة
+displayResults(data, resultDiv);
       } catch (error) {
         resultDiv.innerHTML = `<div class="sql-error">❌ خطأ: ${error.message}</div>`;
       }

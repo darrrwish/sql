@@ -6,6 +6,7 @@
 SELECT * FROM users;
 ```
 
+
 ---
 
 ## لماذا SQLدرويش؟
