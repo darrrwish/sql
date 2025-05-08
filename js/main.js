@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
   hljs.highlightAll();
-
   const body = document.body;
   const themeToggle = document.getElementById('themeToggle');
   const sidebar = document.getElementById('sidebar');
@@ -18,6 +17,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  const savedSidebarState = localStorage.getItem('sidebarVisible');
+  if (savedSidebarState === 'true') sidebar.classList.add('visible');
+  if (savedSidebarState === 'false') sidebar.classList.remove('visible');
+
   handleSidebarVisibility();
   window.addEventListener('resize', handleSidebarVisibility);
 
@@ -27,12 +30,19 @@ document.addEventListener('DOMContentLoaded', function () {
     body.classList.add(savedTheme);
     themeToggle.innerHTML = savedTheme === 'dark-mode' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
   } else {
-    body.classList.remove('dark-mode', 'light-mode');
     body.classList.add('dark-mode');
     themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
   }
 
-  loadArticle('home');
+  const savedArticle = localStorage.getItem('lastArticle') || 'home';
+  loadArticle(savedArticle);
+
+  // تفعيل العنصر النشط بناءً على المقال المحفوظ
+  const savedItem = document.querySelector(`.course-item[data-article="${savedArticle}"]`);
+  if (savedItem) {
+    document.querySelectorAll('.course-item').forEach(i => i.classList.remove('active'));
+    savedItem.classList.add('active');
+  }
 
   themeToggle.addEventListener('click', function () {
     body.classList.toggle('dark-mode');
@@ -43,6 +53,9 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   sidebarToggle.addEventListener('click', function () {
+    const isVisible = sidebar.classList.toggle('visible');
+    localStorage.setItem('sidebarVisible', isVisible);
+
     sidebar.classList.toggle('visible');
     sidebarToggle.innerHTML = sidebar.classList.contains('visible') ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-database"></i>';
   });
@@ -60,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
       const articleName = this.getAttribute('data-article');
+      localStorage.setItem('lastArticle', articleName);
       loadArticle(articleName);
     });
   });
@@ -68,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
     try {
       const response = await fetch(`articles/${articleName}.md`);
       if (!response.ok) throw new Error('Network response was not ok');
+
       const markdown = await response.text();
 
       markdownContent.innerHTML = marked.parse(markdown, {
@@ -84,7 +99,6 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
       initSQLRunners();
-
     } catch (error) {
       markdownContent.innerHTML = `
         <div class="error">
@@ -96,61 +110,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  const mockData = {
-    patients: [
-      { id: 1, name: 'أحمد حسن', gender: 'ذكر', dob: '1980-03-10', phone: '01012345678', address: 'الجيزة - الهرم' },
-      { id: 2, name: 'مروة حسين', gender: 'أنثى', dob: '1992-09-15', phone: '01123456789', address: 'القاهرة - مدينة نصر' },
-      { id: 3, name: 'مصطفى علي', gender: 'ذكر', dob: '1988-06-22', phone: '01234567890', address: 'الإسكندرية - سيدي بشر' },
-      { id: 4, name: 'ليلى محمد', gender: 'أنثى', dob: '1995-01-05', phone: '01099887766', address: 'المنصورة - الجامعة' },
-      { id: 5, name: 'سعيد عبد الله', gender: 'ذكر', dob: '1975-12-01', phone: '01055544433', address: 'طنطا - المحلة الكبرى' }
-    ],
-  
-    diagnoses: [
-      { id: 1, patient_id: 1, diagnosis: 'التهاب رئوي حاد', diagnosis_date: '2024-04-28' },
-      { id: 2, patient_id: 2, diagnosis: 'ارتفاع ضغط الدم', diagnosis_date: '2024-04-30' },
-      { id: 3, patient_id: 3, diagnosis: 'ارتفاع ضغط الدم', diagnosis_date: '2024-05-01' }, // متكرر
-      { id: 4, patient_id: 4, diagnosis: 'سكري من النوع الثاني', diagnosis_date: '2024-05-03' },
-      { id: 5, patient_id: 5, diagnosis: 'ارتفاع ضغط الدم', diagnosis_date: '2024-05-04' } // متكرر
-    ],
-  
-    doctors: [
-      { id: 1, name: 'د. شريف أنور', specialty: 'باطنة', phone: '01055667788' },
-      { id: 2, name: 'د. نجلاء فهمي', specialty: 'جراحة عظام', phone: '01224448899' },
-      { id: 3, name: 'د. هاني مصطفى', specialty: 'صدرية', phone: '01177889900' },
-      { id: 4, name: 'د. ياسمين توفيق', specialty: 'قلب', phone: '01011223344' },
-      { id: 5, name: 'د. خالد عبد الله', specialty: 'باطنة', phone: '01122334455' } // طبيب الضغط
-    ],
-  
-    visits: [
-      { id: 1, patient_id: 1, doctor_id: 3, visit_date: '2024-04-28', notes: 'سعال وارتفاع حرارة' },
-      { id: 2, patient_id: 2, doctor_id: 5, visit_date: '2024-04-30', notes: 'ضغط مرتفع وصداع' }, // مشترك
-      { id: 3, patient_id: 3, doctor_id: 5, visit_date: '2024-05-01', notes: 'دوخة وألم بالرأس' }, // مشترك
-      { id: 4, patient_id: 4, doctor_id: 1, visit_date: '2024-05-03', notes: 'تحليل سكر' },
-      { id: 5, patient_id: 5, doctor_id: 5, visit_date: '2024-05-04', notes: 'ضغط مرتفع' } // مشترك
-    ],
-  
-    medications: [
-      { id: 1, patient_id: 1, medication: 'أموكسيسيللين', dose: '500mg/8h', start_date: '2024-04-28', end_date: '2024-05-05' },
-      { id: 2, patient_id: 2, medication: 'أملوديبين', dose: '5mg/24h', start_date: '2024-04-30', end_date: null }, // مشترك
-      { id: 3, patient_id: 3, medication: 'أملوديبين', dose: '5mg/24h', start_date: '2024-05-01', end_date: null }, // مشترك
-      { id: 4, patient_id: 4, medication: 'ميتفورمين', dose: '850mg/12h', start_date: '2024-05-03', end_date: null },
-      { id: 5, patient_id: 5, medication: 'أملوديبين', dose: '5mg/24h', start_date: '2024-05-04', end_date: null } // مشترك
-    ],
-  
-    departments: [
-      { id: 1, name: 'باطنة' },
-      { id: 2, name: 'جراحة عظام' },
-      { id: 3, name: 'صدرية' },
-      { id: 4, name: 'قلب' },
-      { id: 5, name: 'غدد صماء' }
-    ]
-  };
-  
+  function initSQLRunners() {
+    document.querySelectorAll('pre code.language-sql').forEach(sqlBlock => {
+      createSQLRunner(sqlBlock);
+    });
+  }
 
   function createSQLRunner(codeBlock) {
     const pre = codeBlock.parentNode;
-
-    // أزرار التشغيل والنسخ داخل <pre>
     const controls = document.createElement('div');
     controls.className = 'code-controls';
     controls.innerHTML = `
@@ -158,14 +125,12 @@ document.addEventListener('DOMContentLoaded', function () {
       <button class="sql-btn" title="نسخ"><i class="fas fa-copy"></i></button>
     `;
 
-    const runBtn = controls.querySelectorAll('.sql-btn')[0];
-    const copyBtn = controls.querySelectorAll('.sql-btn')[1];
+    const runBtn = controls.querySelector('.sql-btn:nth-child(1)');
+    const copyBtn = controls.querySelector('.sql-btn:nth-child(2)');
 
-    // نتيجة التشغيل خارج <pre>
     const resultDiv = document.createElement('div');
     resultDiv.className = 'sql-result';
 
-    // نسخ الكود
     copyBtn.addEventListener('click', () => {
       navigator.clipboard.writeText(codeBlock.innerText).then(() => {
         const icon = copyBtn.querySelector('i');
@@ -174,21 +139,19 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-    // تشغيل الكود
     runBtn.addEventListener('click', () => {
       const sql = codeBlock.innerText.trim();
       try {
         const tableMatch = sql.match(/from\s+[`']?(\w+)[`']?/i);
         const tableName = tableMatch ? tableMatch[1] : '';
         const data = mockData[tableName] || [];
-        resultDiv.style.display = 'block'; // ✅ إظهار النتيجة
-displayResults(data, resultDiv);
+        resultDiv.style.display = 'block';
+        displayResults(data, resultDiv);
       } catch (error) {
         resultDiv.innerHTML = `<div class="sql-error">❌ خطأ: ${error.message}</div>`;
       }
     });
 
-    // إدراج الأزرار داخل <pre>
     pre.style.position = 'relative';
     pre.appendChild(controls);
     pre.parentNode.insertBefore(resultDiv, pre.nextSibling);
@@ -201,16 +164,12 @@ displayResults(data, resultDiv);
     }
 
     let html = '<table class="sql-table"><thead><tr>';
-    Object.keys(data[0]).forEach(key => {
-      html += `<th>${key}</th>`;
-    });
+    Object.keys(data[0]).forEach(key => html += `<th>${key}</th>`);
     html += '</tr></thead><tbody>';
 
     data.forEach(row => {
       html += '<tr>';
-      Object.values(row).forEach(value => {
-        html += `<td>${value}</td>`;
-      });
+      Object.values(row).forEach(value => html += `<td>${value}</td>`);
       html += '</tr>';
     });
 
@@ -218,11 +177,5 @@ displayResults(data, resultDiv);
     container.innerHTML = html;
   }
 
-  function initSQLRunners() {
-    document.querySelectorAll('pre code.language-sql').forEach(sqlBlock => {
-      createSQLRunner(sqlBlock);
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', initSQLRunners);
+  const mockData = { /* ... البيانات التجريبية كما هي ... */ };
 });

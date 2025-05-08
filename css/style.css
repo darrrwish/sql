@@ -239,7 +239,7 @@ body.light-mode pre {
   }
 }
 pre, pre code {
-  font-weight: bold !important;
+  /* font-weight: bold !important; */
 direction: ltr;
   text-align: left;
   font-family: 'Courier New', monospace;
