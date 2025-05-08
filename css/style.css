@@ -1353,7 +1353,7 @@ img, video, iframe {
   }
   
   body.dark-mode blockquote {
-    background-color: var(--quote-bg-dark);
+    background-color: var(--dart-blue-light);
     border-left-color: var(--quote-border-dark);
     color: #FFFFA0; /* لون نص أفتح في الوضع المظلم */
   }
@@ -1369,7 +1369,7 @@ img, video, iframe {
   }
   
   body.dark-mode blockquote::before {
-    color: rgba(255, 88, 88, 0.3); /* تعديل اللون للوضع المظلم */
+    color: rgb(255 255 255 / 30%); /* تعديل اللون للوضع المظلم */
   }
   
   blockquote footer {
@@ -1395,7 +1395,7 @@ body.light-mode blockquote p {
 }
 
 body.dark-mode blockquote p {
-  color: #FFFFC0; /* لون نص فاتح في الوضع المظلم */
+  color: #eee; /* لون نص فاتح في الوضع المظلم */
 }
 
 @media (max-width: 768px) {
