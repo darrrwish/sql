@@ -20,8 +20,8 @@
 ```sql
 SELECT * FROM patients ;
 ```
-SELECT * :هاتلي 
-* : كل الأعمدة 
+SELECT :هاتلي 
+(*) : كل الأعمدة 
 FROM : من 
 patients : جدول اسمه patients  
 
