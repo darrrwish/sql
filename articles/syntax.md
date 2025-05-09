@@ -51,26 +51,20 @@ patients : جدول اسمه patients
 
 ## حاجات مهمة لازم تعرفها
 
-- الكلمات المفتاحية مش حساسة لحالة الحروف
-<div class="alert alert-success">
+- أوامر SQL مش حساسة لحالة الحروف
+<div class="alert alert-success" style="text-align: center;">
   <i class="fas fa-info-circle"></i>
   <div>SELECT = select = SeLeCt</div>
 </div>
 لكن الأفضل علشان تنظم شغلك وتخلي الكود سهل القراءة، إنك تكتب الكلمات المفتاحية بـ الحروف الكابيتال.
 - هل لازم أحط سيمي كولن (;) في آخر كل أمر؟
-<div class="alert alert-success">
+<div class="alert alert-success" style="text-align: center;">
   <i class="fas fa-info-circle"></i>
-  <div>SELECT * FROM patients ;</div>
-</div>
-<div class="alert alert-success">
-  <i class="fas fa-info-circle"></i>
-  <div>SELECT * FROM patients </div>
-</div>
-في بعض أنظمة قواعد البيانات، لازم تحط semicolon ; في آخر كل أمر SQL.
-الـ ; بتفصل بين الأوامر، وخصوصًا لو هتشغل أكتر من أمر في نفس الوقت.
+  <div>SELECT * FROM patients; vs SELECT * FROM patients</div>
+- في بعض أنظمة قواعد البيانات، لازم تحط semicolon ; في آخر كل أمر SQL.
+- الـ ; بتفصل بين الأوامر، وخصوصًا لو هتشغل أكتر من أمر في نفس الوقت.
 
-
-في الكورس ده، هنستخدم ; في نهاية كل أمر علشان نلتزم بالمعايير.
+### في الكورس ده، هنستخدم ; في نهاية كل أمر علشان نلتزم بالمعايير.
 
 
 ---
