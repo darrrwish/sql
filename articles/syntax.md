@@ -61,6 +61,7 @@ patients : جدول اسمه patients
 <div class="alert alert-success" style="text-align: center;">
   <i class="fas fa-info-circle"></i>
   <div>SELECT * FROM patients; vs SELECT * FROM patients</div>
+
 - في بعض أنظمة قواعد البيانات، لازم تحط semicolon ; في آخر كل أمر SQL.
 
 - الـ ; بتفصل بين الأوامر، وخصوصًا لو هتشغل أكتر من أمر في نفس الوقت.
