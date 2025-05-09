@@ -44,7 +44,7 @@ WHERE address LIKE '%القاهرة%';
 اللي رقم تليفونهم بيبدأ ب010 
 */
 SELECT * FROM patients
-WHERE phone LIKE /*'010%' ، */ '012%';
+WHERE phone LIKE /*'012%' ، */ '010%';
 ```
 
 
