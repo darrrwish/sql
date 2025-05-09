@@ -22,7 +22,7 @@ SELECT name, phone FROM patients;
 ```sql
 SELECT name, specialty FROM doctors;
 ```
-## <span lang="en">SELECT DISTRICT (*): </span>
+## <span lang="en">SELECT DISTINCT (*): </span>
 
 ### مثال 3: جلب كل البيانات من جدول المرضى
 ```sql
