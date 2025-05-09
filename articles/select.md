@@ -36,8 +36,31 @@ SELECT name, specialty FROM doctors;
 SELECT * FROM patients;
 ```
 ---
+## SELECT DISTINCT 
+أحيانًا العمود بيكون فيه بيانات مكررة، لكن إحنا مش عايزين التكرار، بنستخدم DISTINCT.
 
+### مثال 4 : لو عايزين نعرف الأمراض المختلفة اللي اتشخص بيها المرضى بدون تكرار:
 
+````sql
+SELECT DISTINCT diagnosis
+FROM diagnoses;
+```
+لاحظ إن "ارتفاع ضغط الدم" متكرر ٣ مرات في الجدول، لكن باستخدام DISTINCT ظهر مرة واحدة بس.
+
+لاحظ الجدول الأصلي : 
+````sql
+SELECT * diagnosis
+FROM diagnoses;
+```
+
+### كمان ممكن نعدّ القيم المختلفة:
+#### لو عايزين نعرف عدد الأمراض المختلفة:
+```sql
+SELECT COUNT(DISTINCT diagnosis)
+FROM diagnoses;
+```
+
+---
 ## نصائح مهمة
 - استخدم `*` فقط عندما تحتاج كل الأعمدة
 - حدد الأعمدة المطلوبة بدقة
