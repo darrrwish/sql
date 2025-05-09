@@ -54,38 +54,8 @@ SELECT * FROM patients;
 ظهرت لغة SQL لأول مرة في سبعينيات القرن الماضي على يد شركة IBM تحت اسم SEQUEL.
 وبمرور الوقت، أصبحت اللغة المعيارية المستخدمة عالميًا لإدارة قواعد البيانات.
 
-ما هي SQL؟
-
 SQL هي اختصار لـ Structured Query Language،
-وهي لغة تُستخدم لإدارة البيانات داخل قواعد البيانات، حيث يمكنك من خلالها:
-
-الاستعلام عن البيانات.
-
-تعديل البيانات الموجودة.
-
-إدخال بيانات جديدة.
-
-حذف البيانات غير المرغوب فيها.
-
-
-
----
-
-ما الأدوات واللغات التي تعمل مع SQL؟
-
-تُستخدم SQL جنبًا إلى جنب مع لغات وأدوات شائعة مثل:
-
-HTML, CSS, JavaScript
-
-Python, Java, PHP
-
-React, Node.js, Django
-
-Excel, Pandas, Git
-
-MongoDB, PostgreSQL, MySQL
-
-
+وهي لغة تُستخدم لإدارة البيانات داخل قواعد البيانات.
 
 ---
 
@@ -94,6 +64,6 @@ MongoDB, PostgreSQL, MySQL
 ابدأ رحلتك الآن، وتعلّم كيف تتحدث إلى قواعد البيانات.
 ---
 
-> "In a world full of data, SQL is the language that turns noise into knowledge."
+> "In a world full of data, SQL is the language that turns noise into knowledge"
 
 ---
