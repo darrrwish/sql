@@ -49,7 +49,7 @@ SELECT * FROM patients;
 
 ---
 
-لمحة تاريخية عن SQL
+## لمحة تاريخية عن SQL
 
 ظهرت لغة SQL لأول مرة في سبعينيات القرن الماضي على يد شركة IBM تحت اسم SEQUEL.
 وبمرور الوقت، أصبحت اللغة المعيارية المستخدمة عالميًا لإدارة قواعد البيانات.
@@ -59,9 +59,9 @@ SQL هي اختصار لـ Structured Query Language،
 
 ---
 
-هل أنت مستعد للبدء؟
-
+## هل أنت مستعد للبدء؟
 ابدأ رحلتك الآن، وتعلّم كيف تتحدث إلى قواعد البيانات.
+
 ---
 
 > "In a world full of data, SQL is the language that turns noise into knowledge"
