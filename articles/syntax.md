@@ -22,7 +22,7 @@ SELECT * FROM patients ;
 ```
 
 SELECT :هاتلي <br>
-* : كل الأعمدة <br>
+(*) : كل الأعمدة <br>
 FROM : من <br>
 patients : جدول اسمه patients <br>
 
