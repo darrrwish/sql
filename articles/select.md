@@ -50,7 +50,7 @@ FROM diagnoses;
 لاحظ إن "ارتفاع ضغط الدم" متكرر ٣ مرات في الجدول، لكن باستخدام DISTINCT ظهر مرة واحدة بس.
 
 لاحظ الجدول الأصلي : 
-````sql
+```sql
 SELECT * diagnosis
 FROM diagnoses;
 ```
