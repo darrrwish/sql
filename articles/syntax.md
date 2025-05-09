@@ -20,6 +20,7 @@
 ```sql
 SELECT * FROM patients ;
 ```
+
 SELECT :هاتلي 
 (*) : كل الأعمدة 
 FROM : من
