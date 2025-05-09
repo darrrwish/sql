@@ -20,9 +20,10 @@
 ```sql
 SELECT * FROM patients ;
 ```
-SELECT * : هاتلي كل الأعمدة
-
-FROM patients: من جدول اسمه patients 
+SELECT * :هاتلي  
+* : كل الأعمدة 
+FROM : من
+patients : جدول اسمه patients 
 
 
 
