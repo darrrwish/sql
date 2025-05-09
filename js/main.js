@@ -120,9 +120,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const mockData = {
     patients: [
       { id: 1, name: 'أحمد سامح', gender: 'ذكر', dob: '1980-03-10', phone: '01047510801', address: 'الجيزة - الهرم' },
-      { id: 2, name: 'مروة حسين', gender: 'أنثى', dob: '1992-09-15', phone: '01123456789', address: 'القاهرة - مدينة نصر' },
-      { id: 3, name: 'مصطفى علي', gender: 'ذكر', dob: '1988-06-22', phone: '01234567890', address: 'الإسكندرية - سيدي بشر' },
-      { id: 4, name: 'ليلى محمد', gender: 'أنثى', dob: '1995-01-05', phone: '01099887766', address: 'المنصورة - الجامعة' },
+      { id: 2, name: 'إيمان بتنجان', gender: 'أنثى', dob: '1992-09-15', phone: '01123456789', address: 'القاهرة - مدينة نصر' },
+      { id: 3, name: 'محمود فضل', gender: 'ذكر', dob: '1988-06-22', phone: '01256255072', address: 'الإسكندرية - سيدي بشر' },
+      { id: 4, name: 'ليلى بتشان', gender: 'أنثى', dob: '1995-01-05', phone: '01099887766', address: 'المنصورة - الجامعة' },
       { id: 5, name: 'محمود سامي', gender: 'ذكر', dob: '1975-12-01', phone: '01018351143', address: 'طنطا - المحلة الكبرى' }
     ],
     diagnoses: [
