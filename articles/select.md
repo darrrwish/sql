@@ -12,7 +12,8 @@ SELECT اسم_العمود2, اسم_العمود1 FROM اسم_الجدول;
 ```
 
 # أمثلة عملية :
-## SELECT 
+
+## SELECT : 
 
 ### مثال 1: جلب بيانات محددة من جدول المرضى
 ```sql
@@ -22,13 +23,14 @@ SELECT name, phone FROM patients;
 ```sql
 SELECT name, specialty FROM doctors;
 ```
-## SELECT DISTRICT (*) 
+
+## SELECT DISTRICT (*) :
 
 ### مثال 3: جلب كل البيانات من جدول المرضى
 ```sql
 SELECT * FROM patients;
 ```
-
+---
 
 ## نصائح مهمة
 - استخدم `*` فقط عندما تحتاج كل الأعمدة
