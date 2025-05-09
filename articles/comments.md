@@ -31,8 +31,7 @@ SELECT * FROM patients;
 الاستعلام ده بيعرض بيانات المرضى
 اللي ساكنين في القاهرة بس
 */
-SELECT * FROM patients
-WHERE address LIKE '%القاهرة%';
+SELECT * FROM patients WHERE address LIKE '%القاهرة%';
 ```
 
 
