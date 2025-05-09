@@ -45,7 +45,7 @@ WHERE address LIKE '%القاهرة%';
 اللي ساكنين في الجيزة بس
 */
 SELECT * FROM patients
-WHERE address LIKE /*'%الجيزة%' ، /*'%القاهرة%';
+WHERE address LIKE /*'%الجيزة%' ،/*'%القاهرة%';
 ```
 
 
