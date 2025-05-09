@@ -21,8 +21,11 @@
 SELECT * FROM patients ;
 ```
  SELECT :هاتلي 
+
  (*) : كل الأعمدة 
- FROM : من 
+
+ FROM : من  
+
  patients : جدول اسمه patients  
 
 
