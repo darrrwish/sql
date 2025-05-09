@@ -8,7 +8,7 @@
 
 ---
 
-1. كومنت سطر واحد (Single-line comment)
+### كومنت سطر واحد (Single-line comment)
 
 بنستخدم فيه -- (شرطة شرطة).
 
@@ -21,7 +21,7 @@ SELECT * FROM patients;
 
 ---
 
-2. كومنت متعدد الأسطر (Multi-line comment)
+### كومنت متعدد الأسطر (Multi-line comment)
 
 بنستخدم فيه /* */ لو عايز تكتب كذا سطر.
 
