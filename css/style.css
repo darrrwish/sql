@@ -1765,3 +1765,17 @@ body.light-mode .sql-result {
   text-decoration: none;
   color: inherit;
 }
+
+
+
+/* جعل عناوين Markdown الإنجليزية تتجه من اليسار لليمين */
+.markdown-content h1[lang="en"],
+.markdown-content h2[lang="en"],
+.markdown-content h3[lang="en"],
+.markdown-content h4[lang="en"],
+.markdown-content h5[lang="en"],
+.markdown-content h6[lang="en"] {
+  direction: ltr;
+  text-align: left;
+  unicode-bidi: plaintext;
+}
