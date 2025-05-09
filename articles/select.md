@@ -56,7 +56,7 @@ FROM diagnoses;
 ```
 
 ### كمان ممكن نعدّ القيم المختلفة:
-#### لو عايزين نعرف عدد الأمراض المختلفة:
+#### لو عايزين نعرف عدد الأمراض المختلفة بنستخدم دالة COUNT :
 ```sql
 SELECT COUNT(DISTINCT diagnosis)
 FROM diagnoses;
