@@ -185,17 +185,28 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     runBtn.addEventListener('click', () => {
-      const sql = codeBlock.innerText.trim();
-      try {
-        const tableMatch = sql.match(/from\s+[`']?(\w+)[`']?/i);
-        const tableName = tableMatch ? tableMatch[1] : '';
-        const data = mockData[tableName] || [];
-        resultDiv.style.display = 'block';
-        displayResults(data, resultDiv);
-      } catch (error) {
-        resultDiv.innerHTML = `<div class="sql-error">❌ خطأ: ${error.message}</div>`;
-      }
-    });
+  const sql = codeBlock.innerText.trim();
+  try {
+    alasql('DROP TABLE IF EXISTS patients');
+    alasql('DROP TABLE IF EXISTS doctors');
+    alasql('DROP TABLE IF EXISTS diagnoses');
+    alasql('DROP TABLE IF EXISTS visits');
+    alasql('DROP TABLE IF EXISTS medications');
+    alasql('DROP TABLE IF EXISTS departments');
+
+    // تحميل البيانات إلى alasql
+    for (let table in mockData) {
+      alasql(`CREATE TABLE ${table}`);
+      alasql.tables[table].data = mockData[table];
+    }
+
+    const results = alasql(sql);
+    resultDiv.style.display = 'block';
+    displayResults(results, resultDiv);
+  } catch (error) {
+    resultDiv.innerHTML = `<div class="sql-error">❌ خطأ: ${error.message}</div>`;
+  }
+});
 
     pre.style.position = 'relative';
     pre.appendChild(controls);
