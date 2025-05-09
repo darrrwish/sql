@@ -21,6 +21,7 @@
 SELECT * FROM patients ;
 ```
 SELECT * : معناها: هاتلي كل الأعمدة
+
 FROM patients: يعني من جدول اسمه patients 
 
 
