@@ -20,10 +20,10 @@
 ```sql
 SELECT * FROM patients ;
 ```
-SELECT :هاتلي 
-(*) : كل الأعمدة 
-FROM : من 
-patients : جدول اسمه patients  
+ SELECT :هاتلي 
+ (*) : كل الأعمدة 
+ FROM : من 
+ patients : جدول اسمه patients  
 
 
 
@@ -52,14 +52,14 @@ patients : جدول اسمه patients
 ## حاجات مهمة لازم تعرفها
 
 - أوامر SQL مش حساسة لحالة الحروف
-<div class="alert alert-success" style="text-align: center;">
+<div class="alert alert-success">
   <i class="fas fa-info-circle"></i>
   <div>SELECT = select = SeLeCt</div>
 </div>
 لكن الأفضل علشان تنظم شغلك وتخلي الكود سهل القراءة، إنك تكتب الكلمات المفتاحية بـ الحروف الكابيتال.
 
 - هل لازم أحط سيمي كولن (;) في آخر كل أمر؟
-<div class="alert alert-success" style="text-align: center;">
+<div class="alert alert-success">
   <i class="fas fa-info-circle"></i>
   <div>SELECT * FROM patients; vs SELECT * FROM patients</div>
 
