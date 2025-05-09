@@ -21,10 +21,10 @@
 SELECT * FROM patients ;
 ```
 
-SELECT :هاتلي 
-(*) : كل الأعمدة 
-FROM : من
-patients : جدول اسمه patients  
+SELECT :هاتلي <br>
+(*) : كل الأعمدة <br>
+FROM : من <br>
+patients : جدول اسمه patients <br>
 
 
 
@@ -62,10 +62,6 @@ patients : جدول اسمه patients
 لكن الأفضل علشان تنظم شغلك وتخلي الكود سهل القراءة، إنك تكتب الكلمات المفتاحية بـ الحروف الكابيتال.
 
 - هل لازم أحط سيمي كولن (;) في آخر كل أمر؟
-
-<div class="alert alert-success">
-  <i class="fas fa-info-circle"></i>
-  <div>SELECT * FROM patients; vs SELECT * FROM patients</div>
 
 في بعض أنظمة قواعد البيانات، لازم تحط semicolon ; في آخر كل أمر SQL.
 
