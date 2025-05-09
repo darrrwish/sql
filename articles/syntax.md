@@ -20,9 +20,9 @@
 ```sql
 SELECT * FROM patients ;
 ```
-SELECT * : معناها: هاتلي كل الأعمدة
+SELECT * : هاتلي كل الأعمدة
 
-FROM patients: يعني من جدول اسمه patients 
+FROM patients: من جدول اسمه patients 
 
 
 
