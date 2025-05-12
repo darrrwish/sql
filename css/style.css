@@ -1779,3 +1779,165 @@ body.light-mode .sql-result {
   text-align: left;
   unicode-bidi: plaintext;
 }
+
+
+.login-toggle {
+  position: absolute;
+  right: 1rem; /* وضع الزر على اليمين */
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--text-light);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.login-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.light-mode .login-toggle {
+  color: var(--text-dark);
+}
+
+body.light-mode .login-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* تعديل موقع زر theme-toggle ليكون على اليسار */
+.theme-toggle {
+  position: absolute;
+  left: 1rem; /* التأكد من أنه على اليسار */
+  right: auto;
+  /* باقي الخصائص كما هي */
+}
+
+/* تعديل الهامش للوغو ليتناسب مع وجود الزرين */
+.logo {
+  margin: 0 60px; /* هامش متساوٍ من الجانبين */
+}
+
+
+/* --------------- */
+
+/* نافذة منبثقة */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(3px);
+}
+
+.modal-content {
+  background-color: var(--lighter-bg);
+  color: var(--text-dark);
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  font-family: 'Tajawal', sans-serif;
+}
+
+body.dark-mode .modal-content {
+  background-color: var(--darker-bg);
+  color: var(--text-light);
+}
+
+/* زر الإغلاق */
+.modal .close {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1.5rem;
+  color: var(--dart-blue-light);
+  cursor: pointer;
+}
+
+body.light-mode .modal .close {
+  color: var(--dart-blue);
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  text-align: center;
+  color: var(--dart-blue-light);
+}
+
+body.light-mode .modal-content h2 {
+  color: var(--dart-blue);
+}
+
+/* تنسيق الحقول */
+.modal-content .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: bold;
+  color: var(--dart-blue-light);
+}
+
+body.light-mode .modal-content label {
+  color: var(--dart-blue);
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 6px;
+  border: 1px solid rgba(76, 175, 80, 0.4);
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+  transition: border-color 0.3s ease;
+}
+
+body.dark-mode .modal-content input {
+  background-color: var(--darker-bg);
+  color: var(--text-light);
+  border-color: rgba(76, 175, 80, 0.3);
+}
+
+.modal-content input:focus {
+  outline: none;
+  border-color: var(--dart-blue-light);
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+/* تنسيق أزرار */
+.modal-content .btn {
+  width: 100%;
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+
+.modal-content .btn + .btn {
+  margin-top: 0.5rem;
+}
+
+/* تنسيقات رسائل الخطأ */
+.alert-danger {
+  background-color: rgba(244, 67, 54, 0.15);
+  color: #c62828;
+  border: 1px solid rgba(244, 67, 54, 0.3);
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+}

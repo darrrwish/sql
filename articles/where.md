@@ -72,7 +72,7 @@ WHERE diagnosis_date BETWEEN '2024-05-01' AND '2024-05-31';
 أولاً نبحث عن ID الدكتور:
 ```sql
 SELECT id FROM doctors
-WHERE name = 'د. خالد عبد الله';
+WHERE name = 'شهاب عبد الله';
 ```
 
 ثم نستخدم النتيجة:

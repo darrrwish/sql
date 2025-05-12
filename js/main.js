@@ -7,28 +7,95 @@ document.addEventListener('DOMContentLoaded', function () {
   const sidebarToggle = document.getElementById('sidebarToggle');
   const markdownContent = document.getElementById('markdown-content');
 
-  // إضافة حدث على اسم الموقع لتحميل home.md
-  const siteName = document.getElementById('siteName'); // افترضنا أن العنصر الذي يحتوي على اسم الموقع هو #siteName
-  if (siteName) {
-    siteName.addEventListener('click', function (e) {
-      e.preventDefault(); // منع الإجراء الافتراضي (مثلاً الرابط)
-      loadArticle('home'); // تحميل المقال home.md
-    });
+  // ------------------------- [تسجيل الدخول / إنشاء حساب] -------------------------
+  const loginToggle = document.getElementById('loginToggle');
+  const loginModal = document.getElementById('loginModal');
+  const closeModal = document.getElementById('closeModal');
+  const loginForm = document.getElementById('loginForm');
+  const registerBtn = document.getElementById('registerBtn');
+  const backToLoginBtn = document.getElementById('backToLoginBtn');
+  const loginError = document.getElementById('loginError');
+
+  const registerModal = document.getElementById('registerModal');
+  const closeRegisterModal = document.getElementById('closeRegisterModal');
+  const registerForm = document.getElementById('registerForm');
+  const registerError = document.getElementById('registerError');
+
+  const USERS_KEY = "users";
+
+  function getUsers() {
+    return JSON.parse(localStorage.getItem(USERS_KEY)) || [];
   }
 
-  function handleSidebarVisibility() {
-    if (window.innerWidth <= 768) {
-      sidebar.classList.remove('visible');
-      sidebarToggle.innerHTML = '<i class="fa-solid fa-database"></i>';
-      sidebarToggle.style.display = 'block';
+  function saveUser(user) {
+    const users = getUsers();
+    users.push(user);
+    localStorage.setItem(USERS_KEY, JSON.stringify(users));
+  }
+
+  function userExists(email, username) {
+    return getUsers().some(u => u.email === email || u.username === username);
+  }
+
+  function validateUser(email, password) {
+    return getUsers().find(u => u.email === email && u.password === password);
+  }
+
+  loginToggle.addEventListener('click', () => {
+    loginModal.style.display = 'flex';
+  });
+
+  closeModal.addEventListener('click', () => {
+    loginModal.style.display = 'none';
+  });
+
+  closeRegisterModal.addEventListener('click', () => {
+    registerModal.style.display = 'none';
+  });
+
+  registerBtn.addEventListener('click', () => {
+    loginModal.style.display = 'none';
+    registerModal.style.display = 'flex';
+  });
+
+  backToLoginBtn.addEventListener('click', () => {
+    registerModal.style.display = 'none';
+    loginModal.style.display = 'flex';
+  });
+  
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value;
+    const user = validateUser(email, password);
+    if (user) {
+      localStorage.setItem('loggedInUser', JSON.stringify(user));
+      loginModal.style.display = 'none';
+      alert('✅ تم تسجيل الدخول بنجاح');
     } else {
-      sidebar.classList.add('visible');
-      sidebarToggle.style.display = 'none';
+      loginError.textContent = '❌ البريد أو كلمة المرور غير صحيحة';
+      loginError.style.display = 'block';
     }
-  }
+  });
 
-  handleSidebarVisibility();
-  window.addEventListener('resize', handleSidebarVisibility);
+  registerForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const username = document.getElementById('regUsername').value.trim();
+    const email = document.getElementById('regEmail').value.trim();
+    const password = document.getElementById('regPassword').value;
+
+    if (userExists(email, username)) {
+      registerError.textContent = '❌ البريد أو اسم المستخدم موجود مسبقًا';
+      registerError.style.display = 'block';
+      return;
+    }
+
+    saveUser({ username, email, password });
+    alert('✅ تم إنشاء الحساب بنجاح');
+    registerModal.style.display = 'none';
+    loginModal.style.display = 'flex';
+  });
+  // ---------------------------------------------------------------------------
 
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme) {
@@ -43,27 +110,20 @@ document.addEventListener('DOMContentLoaded', function () {
   const lastArticle = localStorage.getItem('activeArticle') || 'home';
   loadArticle(lastArticle);
 
-  // تحديد العنصر النشط في الشريط الجانبي حسب المقال المحمّل
   document.querySelectorAll('.course-item').forEach(item => {
     const articleName = item.getAttribute('data-article');
-
-    // إزالة الكل ثم تحديد العنصر النشط فقط
     if (articleName === lastArticle) {
       document.querySelectorAll('.course-item').forEach(i => i.classList.remove('active'));
       item.classList.add('active');
     }
-
     item.addEventListener('click', function () {
       if (window.innerWidth <= 768) {
         sidebar.classList.remove('visible');
         sidebarToggle.innerHTML = '<i class="fa-solid fa-database"></i>';
       }
-
       document.querySelectorAll('.course-item').forEach(i => i.classList.remove('active'));
       this.classList.add('active');
-
       window.scrollTo({ top: 0, behavior: 'smooth' });
-
       const articleName = this.getAttribute('data-article');
       loadArticle(articleName);
       localStorage.setItem('activeArticle', articleName);
@@ -89,9 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
     try {
       const response = await fetch(`articles/${articleName}.md`);
       if (!response.ok) throw new Error('Network response was not ok');
-
       const markdown = await response.text();
-
       markdownContent.innerHTML = marked.parse(markdown, {
         langPrefix: 'language-',
         highlight: function (code, lang) {
@@ -99,12 +157,10 @@ document.addEventListener('DOMContentLoaded', function () {
           return hljs.highlight(code, { language }).value;
         }
       });
-
       document.querySelectorAll('pre code').forEach(block => {
         block.setAttribute("dir", "ltr");
         hljs.highlightElement(block);
       });
-
       initSQLRunners();
     } catch (error) {
       markdownContent.innerHTML = `
@@ -116,6 +172,90 @@ document.addEventListener('DOMContentLoaded', function () {
       `;
     }
   }
+
+  function createSQLRunner(codeBlock) {
+    const pre = codeBlock.parentNode;
+    const controls = document.createElement('div');
+    controls.className = 'code-controls';
+    controls.innerHTML = `
+      <button class="sql-btn" title="تشغيل"><i class="fas fa-play"></i></button>
+      <button class="sql-btn" title="نسخ"><i class="fas fa-copy"></i></button>
+    `;
+    const runBtn = controls.querySelector('.sql-btn:nth-child(1)');
+    const copyBtn = controls.querySelector('.sql-btn:nth-child(2)');
+    const resultDiv = document.createElement('div');
+    resultDiv.className = 'sql-result';
+
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+        const icon = copyBtn.querySelector('i');
+        icon.classList.replace('fa-copy', 'fa-check');
+        setTimeout(() => icon.classList.replace('fa-check', 'fa-copy'), 1500);
+      });
+    });
+
+    runBtn.addEventListener('click', () => {
+      try {
+        alasql('DROP TABLE IF EXISTS patients');
+        alasql('DROP TABLE IF EXISTS doctors');
+        alasql('DROP TABLE IF EXISTS diagnoses');
+        alasql('DROP TABLE IF EXISTS visits');
+        alasql('DROP TABLE IF EXISTS medications');
+        alasql('DROP TABLE IF EXISTS departments');
+
+        for (let table in mockData) {
+          alasql(`CREATE TABLE ${table}`);
+          alasql.tables[table].data = mockData[table];
+        }
+
+        const results = alasql(codeBlock.innerText.trim());
+        resultDiv.style.display = 'block';
+        displayResults(results, resultDiv);
+      } catch (error) {
+        resultDiv.innerHTML = `<div class="sql-error">❌ خطأ: ${error.message}</div>`;
+      }
+    });
+
+    pre.style.position = 'relative';
+    pre.appendChild(controls);
+    pre.parentNode.insertBefore(resultDiv, pre.nextSibling);
+  }
+
+  function displayResults(data, container) {
+    if (!data.length) {
+      container.innerHTML = '<div class="sql-message">لا توجد نتائج</div>';
+      return;
+    }
+
+    let html = '<table class="sql-table"><thead><tr>';
+    Object.keys(data[0]).forEach(key => html += `<th>${key}</th>`);
+    html += '</tr></thead><tbody>';
+
+    data.forEach(row => {
+      html += '<tr>';
+      Object.values(row).forEach(value => html += `<td>${value}</td>`);
+      html += '</tr>';
+    });
+
+    html += '</tbody></table>';
+    container.innerHTML = html;
+  }
+
+  function initSQLRunners() {
+    document.querySelectorAll('pre code.language-sql').forEach(sqlBlock => {
+      createSQLRunner(sqlBlock);
+    });
+  }
+
+  handleSidebarVisibility();
+  window.addEventListener('resize', handleSidebarVisibility);
+
+  document.getElementById('homeLogo').addEventListener('click', function () {
+    loadArticle('home');
+    document.querySelectorAll('.course-item').forEach(item => item.classList.remove('active'));
+    document.querySelector('[data-article="home"]').classList.add('active');
+    window.scrollTo(0, 0);
+  });
 
   const mockData = {
     patients: [
