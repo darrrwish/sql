@@ -260,9 +260,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const mockData = {
     patients: [
       { id: 1, name: 'أحمد سامح', gender: 'ذكر', dob: '1980-03-10', phone: '01047510801', address: 'الجيزة - الهرم' },
-      { id: 2, name: 'إيمان بتنجان', gender: 'أنثى', dob: '1992-09-15', phone: '01123456789', address: 'القاهرة - مدينة نصر' },
+      { id: 2, name: 'مريم فايق', gender: 'أنثى', dob: '1992-09-15', phone: '01123456789', address: 'القاهرة - مدينة نصر' },
       { id: 3, name: 'محمود فضل', gender: 'ذكر', dob: '1988-06-22', phone: '01256255072', address: 'الإسكندرية - سيدي بشر' },
-      { id: 4, name: 'ليلى بتشان', gender: 'أنثى', dob: '1995-01-05', phone: '01099887766', address: 'المنصورة - الجامعة' },
+      { id: 4, name: 'ليلى هنادي', gender: 'أنثى', dob: '1995-01-05', phone: '01099887766', address: 'المنصورة - الجامعة' },
       { id: 5, name: 'محمود سامي', gender: 'ذكر', dob: '1975-12-01', phone: '01018351143', address: 'طنطا - المحلة الكبرى' }
     ],
     diagnoses: [
@@ -275,8 +275,8 @@ document.addEventListener('DOMContentLoaded', function () {
     doctors: [
       { id: 1, name: 'شريف أنور', specialty: 'باطنة', phone: '01055667788' },
       { id: 2, name: 'نجلاء فهمي', specialty: 'جراحة عظام', phone: '01224448899' },
-      { id: 3, name: 'هاني مصطفى', specialty: 'صدرية', phone: '01177889900' },
-      { id: 4, name: 'ياسمين توفيق', specialty: 'قلب', phone: '01011223344' },
+      { id: 3, name: 'هاني هادي', specialty: 'صدرية', phone: '01177889900' },
+      { id: 4, name: 'مينا فادي', specialty: 'قلب', phone: '01011223344' },
       { id: 5, name: 'شهاب عبد الله', specialty: 'باطنة', phone: '01122334455' }
     ],
     visits: [
