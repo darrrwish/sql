@@ -273,11 +273,11 @@ document.addEventListener('DOMContentLoaded', function () {
       { id: 5, patient_id: 5, diagnosis: 'ارتفاع ضغط الدم', diagnosis_date: '2024-05-04' }
     ],
     doctors: [
-      { id: 1, name: 'د. شريف أنور', specialty: 'باطنة', phone: '01055667788' },
-      { id: 2, name: 'د. نجلاء فهمي', specialty: 'جراحة عظام', phone: '01224448899' },
-      { id: 3, name: 'د. هاني مصطفى', specialty: 'صدرية', phone: '01177889900' },
-      { id: 4, name: 'د. ياسمين توفيق', specialty: 'قلب', phone: '01011223344' },
-      { id: 5, name: 'د. خالد عبد الله', specialty: 'باطنة', phone: '01122334455' }
+      { id: 1, name: 'شريف أنور', specialty: 'باطنة', phone: '01055667788' },
+      { id: 2, name: 'نجلاء فهمي', specialty: 'جراحة عظام', phone: '01224448899' },
+      { id: 3, name: 'هاني مصطفى', specialty: 'صدرية', phone: '01177889900' },
+      { id: 4, name: 'ياسمين توفيق', specialty: 'قلب', phone: '01011223344' },
+      { id: 5, name: 'شهاب عبد الله', specialty: 'باطنة', phone: '01122334455' }
     ],
     visits: [
       { id: 1, patient_id: 1, doctor_id: 3, visit_date: '2024-04-28', notes: 'سعال وارتفاع حرارة' },
