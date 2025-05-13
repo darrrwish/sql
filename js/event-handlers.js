@@ -1,4 +1,3 @@
-// event-handlers.js
 import { AuthService, AuthUI } from './auth.js';
 import { ArticleManager } from './article.js';
 import { SidebarManager } from './sidebar.js';
@@ -6,10 +5,10 @@ import { SidebarManager } from './sidebar.js';
 export const EventHandlers = {
   async handleLogin(e) {
     e.preventDefault();
-    const email = document.getElementById('loginEmail').value.trim();
+    const identifier = document.getElementById('loginEmail').value.trim();
     const password = document.getElementById('loginPassword').value;
     
-    const result = await AuthService.login(email, password);
+    const result = await AuthService.login(identifier, password);
     if (result.success) {
       AuthUI.loginModal.style.display = 'none';
       this.updateAuthUI();
@@ -25,6 +24,13 @@ export const EventHandlers = {
     const email = document.getElementById('regEmail').value.trim();
     const phone = document.getElementById('phone').value.trim();
     const password = document.getElementById('regPassword').value;
+    
+    // Validate password strength
+    if (password.length < 8) {
+      AuthUI.registerError.textContent = '❌ كلمة المرور يجب أن تكون 8 أحرف على الأقل';
+      AuthUI.registerError.style.display = 'block';
+      return;
+    }
     
     const result = await AuthService.register(username, email, phone, password);
     if (result.success) {

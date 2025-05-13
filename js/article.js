@@ -1,6 +1,19 @@
+import { AuthService } from './auth.js';
+
 export const ArticleManager = {
   load: async (articleName) => {
     try {
+      // Check authentication for non-home articles
+      if (articleName !== 'home' && !AuthService.isAuthenticated()) {
+        document.getElementById('markdown-content').innerHTML = `
+          <div class="alert alert-warning">
+            <h3>الرجاء تسجيل الدخول أولاً للاطلاع على المحتوى</h3>
+            <button class="btn btn-primary" onclick="document.getElementById('loginModal').style.display='flex'">تسجيل الدخول</button>
+          </div>
+        `;
+        return;
+      }
+
       const response = await fetch(`articles/${articleName}.md`);
       if (!response.ok) throw new Error('Network response was not ok');
       

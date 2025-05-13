@@ -2,12 +2,12 @@
 export const AuthService = {
   pb: new PocketBase('http://127.0.0.1:8090'),
   
-  async login(email, password) {
+  async login(identifier, password) {
     try {
-      const authData = await this.pb.collection('users').authWithPassword(email, password);
+      const authData = await this.pb.collection('users').authWithPassword(identifier, password);
       return { success: true, user: authData.record };
     } catch (error) {
-      return { success: false, message: 'البريد أو كلمة المرور غير صحيحة' };
+      return { success: false, message: 'البريد/اسم المستخدم أو كلمة المرور غير صحيحة' };
     }
   },
   

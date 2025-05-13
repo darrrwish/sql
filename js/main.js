@@ -1,4 +1,3 @@
-// main.js
 import { mockData } from './mock-data.js';
 import { AuthService, AuthUI } from './auth.js';
 import { ThemeManager } from './theme.js';
@@ -23,14 +22,13 @@ document.addEventListener('DOMContentLoaded', function () {
   ThemeManager.init();
   EventHandlers.updateAuthUI();
   
-  const lastArticle = localStorage.getItem('activeArticle') || 'home';
+  let lastArticle = localStorage.getItem('activeArticle') || 'home';
+  // Restrict non-home articles for unauthenticated users
   if (lastArticle !== 'home' && !AuthService.isAuthenticated()) {
-    ArticleManager.load('home');
-    ArticleManager.setActive('home');
-  } else {
-    ArticleManager.load(lastArticle);
-    ArticleManager.setActive(lastArticle);
+    lastArticle = 'home';
   }
+  ArticleManager.load(lastArticle);
+  ArticleManager.setActive(lastArticle);
   
   // إعداد مستمعي الأحداث
   AuthUI.loginToggle.addEventListener('click', () => {
@@ -79,4 +77,5 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   
   window.addEventListener('resize', SidebarManager.handleVisibility);
+  
 });
