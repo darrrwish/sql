@@ -1953,4 +1953,20 @@ body.light-mode .fa-user-check {
   color: var(--dart-blue);
 } */
 /* /------------------ */
+.modal-content {
+  background-color: var(--lighter-bg);
+  color: var(--text-dark);
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  font-family: 'Tajawal', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease; /* إضافة انتقال سلس */
+}
 
+body.dark-mode .modal-content {
+  background-color: var(--darker-bg);
+  color: var(--text-light);
+}
