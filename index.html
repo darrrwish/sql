@@ -2,329 +2,199 @@
 <html lang="ar" dir="rtl">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SQL Darwish</title>
-  <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+  <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
 
-  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-  
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark-reasonable.min.css"> -->
+  <!-- الخطوط -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
 
+  <!-- أيقونات -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css"> -->
+  <!-- Highlight.js -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css" />
 
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai-sublime.min.css"> -->
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai.min.css"> -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <!-- Firebase core SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
-
-
-
+  <!-- التنسيق العام -->
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body class="dark-mode">
+
+  <!-- الرأس -->
   <header class="header">
     <div class="header-container">
-      <!-- أيقونة الدارك مود على اليسار -->
       <button class="theme-toggle" id="themeToggle">
         <i class="fa fa-sun-o" aria-hidden="true"></i>
       </button>
-      
-      <!-- الشعار في المنتصف -->
       <h1 class="logo" id="homeLogo">SQL<span>درويش</span></h1>
-      
-      <!-- أيقونة تسجيل الدخول على اليمين -->
       <button id="loginToggle" class="login-toggle">
         <i class="fas fa-user"></i>
       </button>
-      
     </div>
   </header>
 
+  <!-- المحتوى الرئيسي -->
   <div class="main-container">
+
+    <!-- الشريط الجانبي -->
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-container">
 
+        <!-- الصفحة الرئيسية -->
         <div class="course-level">
-           
           <ul class="level-items">
             <li class="course-item active" data-article="home">
-              <i class="fa fa-home"></i>
-              <span>الصفحة الرئيسية</span>
+              <i class="fa fa-home"></i><span>الصفحة الرئيسية</span>
             </li>
-          
+          </ul>
         </div>
 
-<!-- المستوى الأول: مقدمة في SQL -->
-<div class="course-level">
-  <div class="level-header">
-    <div class="level-number">1</div>
-    <h3 class="level-title">مقدمة في SQL</h3>
-  </div>
-  <ul class="level-items">
-    <li class="course-item active" data-article="intro">
-      <i class="fa fa-database"></i>
-      <span>مقدمة</span>
-    </li>
-    <li class="course-item" data-article="syntax">
-      <i class="fa fa-code"></i>
-      <span>SQL Syntax – القواعد</span>
-    </li>
-    <li class="course-item" data-article="comments">
-      <i class="fa fa-comment-alt"></i>
-      <span>التعليقات</span>
-    </li>
-  </ul>
-</div>
+        <!-- المستويات التعليمية -->
+        <!-- المستوى الأول -->
+        <div class="course-level">
+          <div class="level-header">
+            <div class="level-number">1</div>
+            <h3 class="level-title">مقدمة في SQL</h3>
+          </div>
+          <ul class="level-items">
+            <li class="course-item active" data-article="intro"><i class="fa fa-database"></i><span>مقدمة</span></li>
+            <li class="course-item" data-article="syntax"><i class="fa fa-code"></i><span>SQL Syntax – القواعد</span></li>
+            <li class="course-item" data-article="comments"><i class="fa fa-comment-alt"></i><span>التعليقات</span></li>
+          </ul>
+        </div>
 
-<!-- المستوى الثاني: الاستعلامات -->
-<div class="course-level">
-  <div class="level-header">
-    <div class="level-number">2</div>
-    <h3 class="level-title">الاستعلام عن البيانات</h3>
-  </div>
-  <ul class="level-items">
-    <li class="course-item" data-article="select">
-      <i class="fa fa-search"></i>
-      <span>SELECT</span>
-    </li>
-    <li class="course-item" data-article="where">
-      <i class="fa fa-filter"></i>
-      <span>WHERE</span>
-    </li>
-    <li class="course-item" data-article="order-by">
-      <i class="fa fa-sort-amount-down"></i>
-      <span>ORDER BY</span>
-    </li>
-    <li class="course-item" data-article="like">
-      <i class="fa fa-percent"></i>
-      <span>LIKE & WILDCARDS</span>
-    </li>
-    <li class="course-item" data-article="aliases">
-      <i class="fa fa-tag"></i>
-      <span>ALIASES</span>
-    </li>
-  </ul>
-</div>
+        <!-- المستوى الثاني -->
+        <div class="course-level">
+          <div class="level-header">
+            <div class="level-number">2</div>
+            <h3 class="level-title">الاستعلام عن البيانات</h3>
+          </div>
+          <ul class="level-items">
+            <li class="course-item" data-article="select"><i class="fa fa-search"></i><span>SELECT</span></li>
+            <li class="course-item" data-article="where"><i class="fa fa-filter"></i><span>WHERE</span></li>
+            <li class="course-item" data-article="order-by"><i class="fa fa-sort-amount-down"></i><span>ORDER BY</span></li>
+            <li class="course-item" data-article="like"><i class="fa fa-percent"></i><span>LIKE & WILDCARDS</span></li>
+            <li class="course-item" data-article="aliases"><i class="fa fa-tag"></i><span>ALIASES</span></li>
+          </ul>
+        </div>
 
-<!-- المستوى الثالث: دوال التجميع -->
-<div class="course-level">
-  <div class="level-header">
-    <div class="level-number">3</div>
-    <h3 class="level-title">دوال التجميع والتحليل</h3>
-  </div>
-  <ul class="level-items">
-    <li class="course-item" data-article="count">
-      <i class="fa fa-hashtag"></i>
-      <span>COUNT / SUM / AVG</span>
-    </li>
-    <li class="course-item" data-article="group-by">
-      <i class="fa fa-layer-group"></i>
-      <span>GROUP BY & HAVING</span>
-    </li>
-    <li class="course-item" data-article="min-max">
-      <i class="fa fa-chart-bar"></i>
-      <span>MIN / MAX</span>
-    </li>
-  </ul>
-</div>
+        <!-- المستوى الثالث -->
+        <div class="course-level">
+          <div class="level-header">
+            <div class="level-number">3</div>
+            <h3 class="level-title">دوال التجميع والتحليل</h3>
+          </div>
+          <ul class="level-items">
+            <li class="course-item" data-article="count"><i class="fa fa-hashtag"></i><span>COUNT / SUM / AVG</span></li>
+            <li class="course-item" data-article="group-by"><i class="fa fa-layer-group"></i><span>GROUP BY & HAVING</span></li>
+            <li class="course-item" data-article="min-max"><i class="fa fa-chart-bar"></i><span>MIN / MAX</span></li>
+          </ul>
+        </div>
 
-<!-- المستوى الرابع: العلاقات بين الجداول -->
-<div class="course-level">
-  <div class="level-header">
-    <div class="level-number">4</div>
-    <h3 class="level-title">Joins والعلاقات بين الجداول</h3>
-  </div>
-  <ul class="level-items">
-    <li class="course-item" data-article="joins">
-      <i class="fa fa-link"></i>
-      <span>أنواع Joins</span>
-    </li>
-    <li class="course-item" data-article="union">
-      <i class="fa fa-object-group"></i>
-      <span>UNION</span>
-    </li>
-    <li class="course-item" data-article="self-join">
-      <i class="fa fa-user-friends"></i>
-      <span>Self Join</span>
-    </li>
-  </ul>
-</div>
+        <!-- المستوى الرابع -->
+        <div class="course-level">
+          <div class="level-header">
+            <div class="level-number">4</div>
+            <h3 class="level-title">Joins والعلاقات بين الجداول</h3>
+          </div>
+          <ul class="level-items">
+            <li class="course-item" data-article="joins"><i class="fa fa-link"></i><span>أنواع Joins</span></li>
+            <li class="course-item" data-article="union"><i class="fa fa-object-group"></i><span>UNION</span></li>
+            <li class="course-item" data-article="self-join"><i class="fa fa-user-friends"></i><span>Self Join</span></li>
+          </ul>
+        </div>
 
-<!-- المستوى الخامس: التعديل على البيانات -->
-<div class="course-level">
-  <div class="level-header">
-    <div class="level-number">5</div>
-    <h3 class="level-title">تعديل البيانات</h3>
-  </div>
-  <ul class="level-items">
-    <li class="course-item" data-article="insert">
-      <i class="fa fa-plus"></i>
-      <span>INSERT</span>
-    </li>
-    <li class="course-item" data-article="update">
-      <i class="fa fa-pen"></i>
-      <span>UPDATE</span>
-    </li>
-    <li class="course-item" data-article="delete">
-      <i class="fa fa-trash"></i>
-      <span>DELETE</span>
-    </li>
-  </ul>
-</div>
+        <!-- المستوى الخامس -->
+        <div class="course-level">
+          <div class="level-header">
+            <div class="level-number">5</div>
+            <h3 class="level-title">تعديل البيانات</h3>
+          </div>
+          <ul class="level-items">
+            <li class="course-item" data-article="insert"><i class="fa fa-plus"></i><span>INSERT</span></li>
+            <li class="course-item" data-article="update"><i class="fa fa-pen"></i><span>UPDATE</span></li>
+            <li class="course-item" data-article="delete"><i class="fa fa-trash"></i><span>DELETE</span></li>
+          </ul>
+        </div>
 
-<!-- المستوى السادس: قواعد البيانات والجداول -->
-<div class="course-level">
-  <div class="level-header">
-    <div class="level-number">6</div>
-    <h3 class="level-title">قواعد البيانات والجداول</h3>
-  </div>
-  <ul class="level-items">
-    <li class="course-item" data-article="create-db">
-      <i class="fa fa-folder-plus"></i>
-      <span>إنشاء قاعدة بيانات</span>
-    </li>
-    <li class="course-item" data-article="create-table">
-      <i class="fa fa-table"></i>
-      <span>إنشاء جدول</span>
-    </li>
-    <li class="course-item" data-article="alter-table">
-      <i class="fa fa-wrench"></i>
-      <span>تعديل الجدول</span>
-    </li>
-    <li class="course-item" data-article="drop-table">
-      <i class="fa fa-times"></i>
-      <span>حذف جدول</span>
-    </li>
-  </ul>
-</div>
+        <!-- المستوى السادس -->
+        <div class="course-level">
+          <div class="level-header">
+            <div class="level-number">6</div>
+            <h3 class="level-title">قواعد البيانات والجداول</h3>
+          </div>
+          <ul class="level-items">
+            <li class="course-item" data-article="create-db"><i class="fa fa-folder-plus"></i><span>إنشاء قاعدة بيانات</span></li>
+            <li class="course-item" data-article="create-table"><i class="fa fa-table"></i><span>إنشاء جدول</span></li>
+            <li class="course-item" data-article="alter-table"><i class="fa fa-wrench"></i><span>تعديل الجدول</span></li>
+            <li class="course-item" data-article="drop-table"><i class="fa fa-times"></i><span>حذف جدول</span></li>
+          </ul>
+        </div>
 
-<!-- المستوى السابع: الحماية ومواضيع متقدمة -->
-<div class="course-level">
-  <div class="level-header">
-    <div class="level-number">7</div>
-    <h3 class="level-title">متقدم وحماية</h3>
-  </div>
-  <ul class="level-items">
-    <li class="course-item" data-article="views">
-      <i class="fa fa-eye"></i>
-      <span>Views</span>
-    </li>
-    <li class="course-item" data-article="stored-procedures">
-      <i class="fa fa-cogs"></i>
-      <span>Stored Procedures</span>
-    </li>
-    <li class="course-item" data-article="injection">
-      <i class="fa fa-shield-alt"></i>
-      <span>SQL Injection</span>
-    </li>
-    <li class="course-item" data-article="hosting">
-      <i class="fa fa-cloud-upload-alt"></i>
-      <span>استضافة قواعد البيانات</span>
-    </li>
-  </ul>
-</div>
+        <!-- المستوى السابع -->
+        <div class="course-level">
+          <div class="level-header">
+            <div class="level-number">7</div>
+            <h3 class="level-title">متقدم وحماية</h3>
+          </div>
+          <ul class="level-items">
+            <li class="course-item" data-article="views"><i class="fa fa-eye"></i><span>Views</span></li>
+            <li class="course-item" data-article="stored-procedures"><i class="fa fa-cogs"></i><span>Stored Procedures</span></li>
+            <li class="course-item" data-article="injection"><i class="fa fa-shield-alt"></i><span>SQL Injection</span></li>
+            <li class="course-item" data-article="hosting"><i class="fa fa-cloud-upload-alt"></i><span>استضافة قواعد البيانات</span></li>
+          </ul>
+        </div>
 
-      
-        <!-- قسم المشاريع -->
+        <!-- المشاريع -->
         <div class="course-level projects">
           <div class="level-header projects">
             <div class="level-number projects"><i class="fa fa-flask"></i></div>
             <h3 class="level-title">المشاريع العملية</h3>
           </div>
           <ul class="level-items projects">
-            <li class="course-item" data-article="project1">
-              <i class="fa fa-star"></i>
-              <span>ربنا يسهل</span>
-            </li>
-            <li class="course-item projects" data-article="project2">
-              <i class="fa fa-star"></i>
-              <span>تساهيلك يارب </span>
-            </li>
+            <li class="course-item" data-article="project1"><i class="fa fa-star"></i><span>ربنا يسهل</span></li>
+            <li class="course-item" data-article="project2"><i class="fa fa-star"></i><span>تساهيلك يارب</span></li>
           </ul>
         </div>
+
       </div>
-
-
-
-
-
-
-
-
-<!-- 
-      <div class="developer-accordion">
-        <div class="accordion-header">
-          <img src="images\my-avatar.png" alt="Developer">
-          <span>معلومات المطور</span>
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        
-        <div class="accordion-content">
-          <div class="developer-bio">
-            <p>مطور واجهات مستخدم متخصص في Dart وFlutter</p>
-          </div>
-          
-          <div class="developer-stats">
-            <div class="stat-item">
-              <i class="fas fa-code"></i>
-              <span>2+ سنوات خبرة</span>
-            </div>
-            <div class="stat-item">
-              <i class="fas fa-project-diagram"></i>
-              <span>10+ مشروع</span>
-            </div>
-          </div>
-          
-          <div class="developer-social">
-            <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-          </div>
-        </div>
-      </div> -->
-
-
-
-
-
-      
     </aside>
 
+    <!-- المحتوى -->
     <main class="content">
-      <article class="markdown-content" id="markdown-content">
-        <!-- سيتم تحميل المحتوى هنا -->
-      </article>
+      <article class="markdown-content" id="markdown-content"></article>
     </main>
   </div>
 
+  <!-- زر إظهار / إخفاء القائمة الجانبية -->
+  <button class="sidebar-toggle" id="sidebarToggle"><i class="fa-solid fa-database"></i></button>
 
-
-  <button class="sidebar-toggle" id="sidebarToggle">✕</button>
-
+  <!-- مكتبات JS -->
+  <script src="https://unpkg.com/pocketbase/dist/pocketbase.umd.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/dart.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/alasql"></script>
-<!-- قبل main.js -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/main.js"></script>
+
+<script>
+  // جعل المكتبات متاحة globally
+  window.marked = marked;
+  window.hljs = hljs;
+  window.alasql = alasql;
+  
+  // تهيئة highlight.js
+  document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre code').forEach((block) => {
+      hljs.highlightElement(block);
+    });
+  });
+</script>
+<script type="module" src="js/main.js"></script>
 
 
-
-
-
-
+  <!-- الفوتر -->
   <footer>
     <p class="footer-text">
       Made with ❤️ by 
@@ -332,77 +202,72 @@
     </p>
   </footer>
 
-
-<!-- نافذة معلومات المستخدم -->
-<div id="userInfoModal" class="modal" style="display: none;">
-  <div class="modal-content">
-    <span id="closeUserModal" class="close">&times;</span>
-    <h2>معلومات المستخدم</h2>
-    <div class="user-info">
-      <p><strong>اسم المستخدم:</strong> <span id="infoUsername"></span></p>
-      <p><strong>البريد الإلكتروني:</strong> <span id="infoEmail"></span></p>
-      <p><strong>رقم الهاتف:</strong> <span id="infoPhone"></span></p>
+  <!-- النوافذ المنبثقة -->
+  <!-- معلومات المستخدم -->
+  <div id="userInfoModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span id="closeUserModal" class="close">&times;</span>
+      <h2>معلومات المستخدم</h2>
+      <div class="user-info">
+        <p><strong>اسم المستخدم:</strong> <span id="infoUsername"></span></p>
+        <p><strong>البريد الإلكتروني:</strong> <span id="infoEmail"></span></p>
+        <p><strong>رقم الهاتف:</strong> <span id="infoPhone"></span></p>
+      </div>
+      <button id="logoutBtnModal" class="btn btn-primary" style="width: 100%;">
+        <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
+      </button>
     </div>
-    <button id="logoutBtnModal" class="btn btn-primary" style="width: 100%;">
-      <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
-    </button>
   </div>
-</div>
 
-<!-- نافذة تسجيل الدخول -->
-<div id="loginModal" class="modal" style="display: none;">
-  <div class="modal-content">
-    <span id="closeModal" class="close">&times;</span>
-    <h2>تسجيل الدخول</h2>
-    <form id="loginForm">
-      <div id="loginError" class="alert alert-danger" style="display: none;"></div>
-      <div class="form-group">
-        <label for="email">البريد الإلكتروني</label>
-        <input type="email" id="email" required>
-      </div>
-      <div class="form-group">
-        <label for="username">اسم المستخدم</label>
-        <input type="text" id="username" required>
-      </div>
-      <div class="form-group">
-        <label for="phone">رقم الهاتف</label>
-        <input type="tel" id="phone">
-      </div>
-      <button type="submit" class="btn btn-primary">دخول</button>
-      <button type="button" class="btn btn-outline" id="registerBtn">إنشاء حساب جديد</button>
-      
-    </form>
+  <!-- نافذة تسجيل الدخول -->
+  <div id="loginModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+      <h2>تسجيل الدخول</h2>
+      <form id="loginForm">
+        <div id="loginError" class="alert alert-danger" style="display: none;"></div>
+        <div class="form-group">
+          <label for="loginEmail">البريد الإلكتروني أو اسم المستخدم</label>
+          <input type="text" id="loginEmail" required />
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">كلمة المرور</label>
+          <input type="password" id="loginPassword" required />
+        </div>
+        <button type="submit" class="btn btn-primary">دخول</button>
+        <button type="button" class="btn btn-outline" id="registerBtn">إنشاء حساب جديد</button>
+      </form>
+    </div>
   </div>
-</div>
 
-<!-- نافذة إنشاء حساب جديد -->
-<div id="registerModal" class="modal" style="display: none;">
-  <div class="modal-content">
-    <span id="closeRegisterModal" class="close">&times;</span>
-    <h2>تسجيل حساب جديد</h2>
-    <form id="registerForm">
-      <div id="registerError" class="alert alert-danger" style="display: none;"></div>
-      <div class="form-group">
-        <label for="regUsername">اسم المستخدم</label>
-        <input type="text" id="regUsername" required>
-      </div>
-      <div class="form-group">
-        <label for="regEmail">البريد الإلكتروني</label>
-        <input type="email" id="regEmail" required>
-      </div>
-      <div class="form-group">
-        <label for="regPassword">كلمة المرور</label>
-        <input type="password" id="regPassword" required>
-      </div>
-      <button type="submit" class="btn btn-primary">تسجيل الحساب</button>
-      <button type="button" class="btn btn-outline" id="backToLoginBtn">دخول</button>
-      
-
-    </form>
+  <!-- نافذة التسجيل -->
+  <div id="registerModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span id="closeRegisterModal" class="close">&times;</span>
+      <h2>تسجيل حساب جديد</h2>
+      <form id="registerForm">
+        <div id="registerError" class="alert alert-danger" style="display: none;"></div>
+        <div class="form-group">
+          <label for="regUsername">اسم المستخدم</label>
+          <input type="text" id="regUsername" required />
+        </div>
+        <div class="form-group">
+          <label for="regEmail">البريد الإلكتروني</label>
+          <input type="email" id="regEmail" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">رقم الهاتف</label>
+          <input type="tel" id="phone" pattern="[0-9]{11}" title="يجب أن يتكون رقم الهاتف من 11 رقمًا" required />
+        </div>
+        <div class="form-group">
+          <label for="regPassword">كلمة المرور</label>
+          <input type="password" id="regPassword" required />
+        </div>
+        <button type="submit" class="btn btn-primary">تسجيل الحساب</button>
+        <button type="button" class="btn btn-outline" id="backToLoginBtn">لديك حساب؟ سجل الدخول</button>
+      </form>
+    </div>
   </div>
-</div>
 
-  
 </body>
-
 </html>
