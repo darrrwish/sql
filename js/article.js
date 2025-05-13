@@ -3,15 +3,36 @@ import { AuthService } from './auth.js';
 export const ArticleManager = {
   load: async (articleName) => {
     try {
-      // Check authentication for non-home articles
-      if (articleName !== 'home' && !AuthService.isAuthenticated()) {
-        document.getElementById('markdown-content').innerHTML = `
-          <div class="alert alert-warning">
-            <h3>الرجاء تسجيل الدخول أولاً للاطلاع على المحتوى</h3>
-            <button class="btn btn-primary" onclick="document.getElementById('loginModal').style.display='flex'">تسجيل الدخول</button>
-          </div>
-        `;
-        return;
+      // Check authentication and verification for non-home articles
+      if (articleName !== 'home') {
+        if (!AuthService.isAuthenticated()) {
+          document.getElementById('markdown-content').innerHTML = `
+            <div class="auth-card">
+              <div class="auth-card-header">
+                <h3>تسجيل الدخول مطلوب</h3>
+              </div>
+              <div class="auth-card-content">
+                <p>الرجاء تسجيل الدخول للاطلاع على المحتوى.</p>
+                <button class="btn btn-primary" onclick="document.getElementById('loginModal').style.display='flex'">تسجيل الدخول</button>
+              </div>
+            </div>
+          `;
+          return;
+        }
+        if (!AuthService.isVerified()) {
+          document.getElementById('markdown-content').innerHTML = `
+            <div class="auth-card">
+              <div class="auth-card-header">
+                <h3>تفعيل الحساب مطلوب</h3>
+              </div>
+              <div class="auth-card-content">
+                <p>حسابك غير مفعل. تحقق من بريدك الإلكتروني لتفعيل الحساب.</p>
+                <button class="btn btn-primary" onclick="document.getElementById('loginModal').style.display='flex'">العودة إلى تسجيل الدخول</button>
+              </div>
+            </div>
+          `;
+          return;
+        }
       }
 
       const response = await fetch(`articles/${articleName}.md`);

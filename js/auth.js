@@ -1,10 +1,15 @@
-// auth.js
 export const AuthService = {
   pb: new PocketBase('http://127.0.0.1:8090'),
   
   async login(identifier, password) {
     try {
       const authData = await this.pb.collection('users').authWithPassword(identifier, password);
+      if (!authData.record.verified) {
+        return { 
+          success: false, 
+          message: 'الحساب غير مفعل. الرجاء التحقق من بريدك الإلكتروني لتفعيل الحساب.' 
+        };
+      }
       return { success: true, user: authData.record };
     } catch (error) {
       return { success: false, message: 'البريد/اسم المستخدم أو كلمة المرور غير صحيحة' };
@@ -22,11 +27,14 @@ export const AuthService = {
         emailVisibility: true
       };
       
-      // إنشاء الحساب ثم تسجيل الدخول تلقائيًا
+      // Create account and request verification
       await this.pb.collection('users').create(data);
-      const authData = await this.pb.collection('users').authWithPassword(email, password);
+      await this.pb.collection('users').requestVerification(email);
       
-      return { success: true, message: 'تم إنشاء الحساب بنجاح', user: authData.record };
+      return { 
+        success: true, 
+        message: 'تم إنشاء الحساب. تحقق من بريدك الإلكتروني لتفعيل الحساب.' 
+      };
     } catch (error) {
       return { success: false, message: error.message };
     }
@@ -42,6 +50,11 @@ export const AuthService = {
   
   getCurrentUser() {
     return this.pb.authStore.model;
+  },
+  
+  isVerified() {
+    const user = this.getCurrentUser();
+    return user ? user.verified : false;
   }
 };
 

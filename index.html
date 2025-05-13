@@ -204,18 +204,15 @@
 
   <!-- النوافذ المنبثقة -->
   <!-- معلومات المستخدم -->
-  <div id="userInfoModal" class="modal" style="display: none;">
+  <div class="modal" id="userInfoModal">
     <div class="modal-content">
-      <span id="closeUserModal" class="close">&times;</span>
+      <span class="close" id="closeUserModal">×</span>
       <h2>معلومات المستخدم</h2>
-      <div class="user-info">
-        <p><strong>اسم المستخدم:</strong> <span id="infoUsername"></span></p>
-        <p><strong>البريد الإلكتروني:</strong> <span id="infoEmail"></span></p>
-        <p><strong>رقم الهاتف:</strong> <span id="infoPhone"></span></p>
-      </div>
-      <button id="logoutBtnModal" class="btn btn-primary" style="width: 100%;">
-        <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
-      </button>
+      <div id="infoVerificationStatus" class="alert"></div>
+      <p><strong>اسم المستخدم:</strong> <span id="infoUsername"></span></p>
+      <p><strong>البريد الإلكتروني:</strong> <span id="infoEmail"></span></p>
+      <p><strong>رقم الهاتف:</strong> <span id="infoPhone"></span></p>
+      <button class="btn btn-primary" id="logoutBtnModal">تسجيل الخروج</button>
     </div>
   </div>
 

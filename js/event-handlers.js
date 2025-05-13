@@ -12,6 +12,7 @@ export const EventHandlers = {
     if (result.success) {
       AuthUI.loginModal.style.display = 'none';
       this.updateAuthUI();
+      ArticleManager.load('home'); // Reload home page after login
     } else {
       AuthUI.loginError.textContent = `❌ ${result.message}`;
       AuthUI.loginError.style.display = 'block';
@@ -25,7 +26,6 @@ export const EventHandlers = {
     const phone = document.getElementById('phone').value.trim();
     const password = document.getElementById('regPassword').value;
     
-    // Validate password strength
     if (password.length < 8) {
       AuthUI.registerError.textContent = '❌ كلمة المرور يجب أن تكون 8 أحرف على الأقل';
       AuthUI.registerError.style.display = 'block';
@@ -35,8 +35,8 @@ export const EventHandlers = {
     const result = await AuthService.register(username, email, phone, password);
     if (result.success) {
       AuthUI.registerModal.style.display = 'none';
-      this.updateAuthUI();
-      alert('✅ تم إنشاء الحساب بنجاح');
+      alert('✅ ' + result.message);
+      AuthUI.loginModal.style.display = 'flex'; // Show login modal after registration
     } else {
       AuthUI.registerError.textContent = `❌ ${result.message}`;
       AuthUI.registerError.style.display = 'block';
@@ -79,6 +79,11 @@ export const EventHandlers = {
     document.getElementById('infoUsername').textContent = user.username;
     document.getElementById('infoEmail').textContent = user.email;
     document.getElementById('infoPhone').textContent = user.phone;
+    const verificationStatus = document.getElementById('infoVerificationStatus');
+    verificationStatus.textContent = user.verified 
+      ? '✅ الحساب مفعل' 
+      : '⚠️ الحساب غير مفعل. تحقق من بريدك الإلكتروني لتفعيله.';
+    verificationStatus.className = user.verified ? 'alert alert-success' : 'alert alert-warning';
     document.getElementById('userInfoModal').style.display = 'flex';
   },
   
@@ -86,6 +91,6 @@ export const EventHandlers = {
     AuthService.logout();
     document.getElementById('userInfoModal').style.display = 'none';
     this.updateAuthUI();
-    location.reload(); // إعادة تحميل الصفحة
+    location.reload();
   }
 };
