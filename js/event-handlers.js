@@ -3,7 +3,7 @@ import { ArticleManager } from './article.js';
 import { SidebarManager } from './sidebar.js';
 
 export const EventHandlers = {
-  isSubmitting: false, // متغير لمنع الطلبات المتكررة
+  isSubmitting: false,
 
   handleLogin: async function(e) {
     e.preventDefault();
@@ -60,7 +60,7 @@ export const EventHandlers = {
     const result = await AuthService.register(username, email, phone, password);
     if (result.success) {
       AuthUI.registerModal.style.display = 'none';
-      alert(`<i class="fas fa-check-circle"></i> ${result.message}`); // أيقونة نجاح للـ alert
+      alert(`<i class="fas fa-check-circle"></i> ${result.message}`);
       AuthUI.loginModal.style.display = 'flex';
     } else {
       AuthUI.registerError.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${result.message}`;
@@ -127,13 +127,13 @@ export const EventHandlers = {
       return;
     }
     
-    infoUsername.textContent = user.username;
+    infoUsername.textContent = user.user_metadata?.username || 'غير محدد';
     infoEmail.textContent = user.email;
-    infoPhone.textContent = user.phone;
-    verificationStatus.innerHTML = user.verified 
+    infoPhone.textContent = user.user_metadata?.phone || 'غير محدد';
+    verificationStatus.innerHTML = user.email_confirmed_at 
       ? '<i class="fas fa-check-circle"></i> الحساب مفعل' 
       : '<i class="fas fa-exclamation-circle"></i> الحساب غير مفعل. تحقق من بريدك الإلكتروني لتفعيله.';
-    verificationStatus.className = user.verified ? 'alert alert-success' : 'alert alert-warning';
+    verificationStatus.className = user.email_confirmed_at ? 'alert alert-success' : 'alert alert-warning';
     userInfoModal.style.display = 'flex';
   },
   
