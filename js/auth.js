@@ -5,7 +5,7 @@ const errorTranslations = {
 };
 
 export const AuthService = {
-  pb: new PocketBase('http://127.0.0.1:8090'),
+  pb: new PocketBase('https://sql-darwish.pockethost.io'),
   
   async login(identifier, password) {
     try {
