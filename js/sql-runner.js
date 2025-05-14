@@ -1,4 +1,3 @@
-// sql-runner.js
 import { mockData } from './mock-data.js';
 
 export const SQLRunner = {
@@ -7,7 +6,6 @@ export const SQLRunner = {
       SQLRunner.create(sqlBlock);
     });
     
-    // إعادة تهيئة عند تغيير المحتوى
     const observer = new MutationObserver(() => {
       document.querySelectorAll('pre code.language-sql').forEach(sqlBlock => {
         if (!sqlBlock.parentNode.querySelector('.code-controls')) {
@@ -25,7 +23,6 @@ export const SQLRunner = {
   create: (codeBlock) => {
     const pre = codeBlock.parentNode;
     
-    // تجنب إنشاء عناصر تحكم مكررة
     if (pre.querySelector('.code-controls')) return;
     
     const controls = document.createElement('div');
@@ -58,7 +55,6 @@ export const SQLRunner = {
   
   runCode: (codeBlock, resultDiv) => {
     try {
-      // مسح الجداول القديمة أولاً
       alasql('DROP TABLE IF EXISTS patients');
       alasql('DROP TABLE IF EXISTS diagnoses');
       alasql('DROP TABLE IF EXISTS doctors');
@@ -66,7 +62,6 @@ export const SQLRunner = {
       alasql('DROP TABLE IF EXISTS medications');
       alasql('DROP TABLE IF EXISTS departments');
       
-      // إنشاء الجداول وإدراج البيانات
       alasql('CREATE TABLE patients');
       alasql.tables.patients.data = mockData.patients;
       
@@ -85,12 +80,11 @@ export const SQLRunner = {
       alasql('CREATE TABLE departments');
       alasql.tables.departments.data = mockData.departments;
       
-      // تنفيذ الاستعلام
       const results = alasql(codeBlock.innerText.trim());
       resultDiv.style.display = 'block';
       SQLRunner.displayResults(results, resultDiv);
     } catch (error) {
-      resultDiv.innerHTML = `<div class="sql-error">❌ خطأ: ${error.message}</div>`;
+      resultDiv.innerHTML = `<div class="sql-error"><i class="fas fa-exclamation-circle"></i> خطأ في استعلام SQL، تحقق من الصياغة</div>`;
       resultDiv.style.display = 'block';
     }
   },
@@ -101,13 +95,11 @@ export const SQLRunner = {
       return;
     }
     
-    // إذا كانت النتيجة رقم (مثل COUNT)
     if (typeof data === 'number') {
       container.innerHTML = `<div class="sql-result-value">النتيجة: ${data}</div>`;
       return;
     }
     
-    // إذا كانت النتيجة مصفوفة
     let html = '<table class="sql-table"><thead><tr>';
     Object.keys(data[0]).forEach(key => html += `<th>${key}</th>`);
     html += '</tr></thead><tbody>';

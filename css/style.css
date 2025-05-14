@@ -2081,3 +2081,25 @@ body.dark-mode .modal-content {
 }
 
 /* Rest of the existing styles remain unchanged */
+/* Verification status icons */
+.alert i.fas {
+  margin-left: 0.5rem; /* مسافة بين الأيقونة والنص */
+  font-size: 1.1rem; /* حجم الأيقونة */
+  vertical-align: middle; /* محاذاة الأيقونة مع النص */
+}
+
+.alert-success i.fa-check-circle {
+  color: var(--dart-blue-light); /* أخضر فاتح للحساب المفعل */
+}
+
+body.light-mode .alert-success i.fa-check-circle {
+  color: var(--dart-blue); /* أخضر داكن في الوضع الفاتح */
+}
+
+.alert-warning i.fa-exclamation-circle {
+  color: #f1c40f; /* برتقالي للحساب الغير مفعل */
+}
+
+body.light-mode .alert-warning i.fa-exclamation-circle {
+  color: #e67e22; /* برتقالي داكن شوية في الوضع الفاتح */
+}

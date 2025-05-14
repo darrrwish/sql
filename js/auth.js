@@ -1,3 +1,9 @@
+const errorTranslations = {
+  'already exists': 'مستخدم من قبل',
+  'is already taken': 'محجوز مسبقًا',
+  'value must be unique': 'يجب أن يكون فريدًا'
+};
+
 export const AuthService = {
   pb: new PocketBase('http://127.0.0.1:8090'),
   
@@ -27,7 +33,6 @@ export const AuthService = {
         emailVisibility: true
       };
       
-      // Create account and request verification
       await this.pb.collection('users').create(data);
       await this.pb.collection('users').requestVerification(email);
       
@@ -36,7 +41,27 @@ export const AuthService = {
         message: 'تم إنشاء الحساب. تحقق من بريدك الإلكتروني لتفعيل الحساب.' 
       };
     } catch (error) {
-      return { success: false, message: error.message };
+      console.log('Error details:', error);
+      if (error.status === 400) {
+        let errorMessage = 'حدث خطأ في التحقق';
+        const normalizeMessage = (msg) => msg.toLowerCase().trim(); // تنظيف الرسالة
+        if (error.data?.data?.email?.message) {
+          const normalizedEmailMessage = normalizeMessage(error.data.data.email.message);
+          errorMessage = `البريد الإلكتروني ${errorTranslations[normalizedEmailMessage] || error.data.data.email.message}`;
+        }
+        if (error.data?.data?.username?.message) {
+          const normalizedUsernameMessage = normalizeMessage(error.data.data.username.message);
+          errorMessage = `اسم المستخدم ${errorTranslations[normalizedUsernameMessage] || error.data.data.username.message}`;
+        }
+        return { success: false, message: errorMessage };
+      }
+      if (error.status === 429) {
+        return { success: false, message: 'الكثير من الطلبات. حاول مرة أخرى لاحقًا.' };
+      }
+      return { 
+        success: false, 
+        message: 'حدث خطأ أثناء التسجيل. حاول مرة أخرى.' 
+      };
     }
   },
   
