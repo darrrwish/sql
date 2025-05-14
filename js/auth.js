@@ -1,63 +1,86 @@
-const { createClient } = window.supabase || require('@supabase/supabase-js');
-
-const supabase = createClient('https://piptxohsbpmballudycw.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBpcHR4b2hzYnBtYmFsbHVkeWN3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDcwMTQwMDMsImV4cCI6MjA2MjU5MDAwM30.r2ytfs-4jhy3AWOA8NkmDc-DUdDhtETFCUkQJrEJTUQ');
+const errorTranslations = {
+  'already exists': 'مستخدم من قبل',
+  'is already taken': 'محجوز مسبقًا',
+  'value must be unique': 'يجب أن يكون فريدًا'
+};
 
 export const AuthService = {
-  async login(emailOrUsername, password) {
+  pb: new PocketBase('http://127.0.0.1:8090'),
+  
+  async login(identifier, password) {
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: emailOrUsername.includes('@') ? emailOrUsername : null,
-        username: emailOrUsername.includes('@') ? null : emailOrUsername,
-        password: password,
-      });
-      if (error) throw error;
-      return { success: true, user: data.user };
+      const authData = await this.pb.collection('users').authWithPassword(identifier, password);
+      if (!authData.record.verified) {
+        return { 
+          success: false, 
+          message: 'الحساب غير مفعل. الرجاء التحقق من بريدك الإلكتروني لتفعيل الحساب.' 
+        };
+      }
+      return { success: true, user: authData.record };
     } catch (error) {
       return { success: false, message: 'البريد/اسم المستخدم أو كلمة المرور غير صحيحة' };
     }
   },
-
+  
   async register(username, email, phone, password) {
     try {
-      const { data, error } = await supabase.auth.signUp({
-        email: email,
-        password: password,
-        options: {
-          data: { username: username, phone: phone },
-        },
-      });
-      if (error) throw error;
+      const data = {
+        username,
+        email,
+        phone,
+        password,
+        passwordConfirm: password,
+        emailVisibility: true
+      };
+      
+      await this.pb.collection('users').create(data);
+      await this.pb.collection('users').requestVerification(email);
+      
       return { 
         success: true, 
         message: 'تم إنشاء الحساب. تحقق من بريدك الإلكتروني لتفعيل الحساب.' 
       };
     } catch (error) {
-      let errorMessage = 'حدث خطأ أثناء التسجيل. حاول مرة أخرى.';
-      if (error.message.includes('already registered')) {
-        errorMessage = 'البريد الإلكتروني مسجل مسبقًا.';
-      } else if (error.message.includes('invalid')) {
-        errorMessage = 'بيانات غير صحيحة.';
+      console.log('Error details:', error);
+      if (error.status === 400) {
+        let errorMessage = 'حدث خطأ في التحقق';
+        const normalizeMessage = (msg) => msg.toLowerCase().trim(); // تنظيف الرسالة
+        if (error.data?.data?.email?.message) {
+          const normalizedEmailMessage = normalizeMessage(error.data.data.email.message);
+          errorMessage = `البريد الإلكتروني ${errorTranslations[normalizedEmailMessage] || error.data.data.email.message}`;
+        }
+        if (error.data?.data?.username?.message) {
+          const normalizedUsernameMessage = normalizeMessage(error.data.data.username.message);
+          errorMessage = `اسم المستخدم ${errorTranslations[normalizedUsernameMessage] || error.data.data.username.message}`;
+        }
+        return { success: false, message: errorMessage };
       }
-      return { success: false, message: errorMessage };
+      if (error.status === 429) {
+        return { success: false, message: 'الكثير من الطلبات. حاول مرة أخرى لاحقًا.' };
+      }
+      return { 
+        success: false, 
+        message: 'حدث خطأ أثناء التسجيل. حاول مرة أخرى.' 
+      };
     }
   },
-
+  
   logout() {
-    supabase.auth.signOut();
+    this.pb.authStore.clear();
   },
-
+  
   isAuthenticated() {
-    return !!supabase.auth.getUser();
+    return this.pb.authStore.isValid;
   },
-
+  
   getCurrentUser() {
-    return supabase.auth.getUser().data?.user || null;
+    return this.pb.authStore.model;
   },
-
+  
   isVerified() {
     const user = this.getCurrentUser();
-    return user ? user.email_confirmed_at !== null : false;
-  },
+    return user ? user.verified : false;
+  }
 };
 
 export const AuthUI = {
