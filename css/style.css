@@ -20,18 +20,9 @@
   --projects-course-item-hover :  rgba(89, 46, 125, 0.08);
   --btn-hover-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
   --btn-hover : #4caf4fb7;
-
-  
-
-  
- 
 }
 
 /* باقي الكود يبقى كما هو تماماً بدون أي تغييرات */
-  
-  
-  
-  
 body {
   font-family: 'Tajawal', sans-serif;
   background-color: var(--dark-bg);
@@ -75,6 +66,8 @@ body.light-mode .header {
 .logo {
   font-size: 1.5rem; /* تصغير حجم الخط */
   color: var(--dart-blue-light);
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .logo span {
@@ -91,6 +84,8 @@ body.light-mode .logo span {
   font-size: 1.2rem; /* تصغير حجم الأيقونة */
   cursor: pointer;
   color: var(--text-light);
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body.light-mode .theme-toggle {
@@ -124,22 +119,21 @@ body.light-mode .sidebar {
   margin-bottom: 1.5rem;
 }
 
-
 .sidebar-title {
   text-align: center; /* محاذاة النص للمنتصف */
-
   color: var(--dart-blue-light);
   cursor: pointer;
   padding: 0.5rem 0;
   margin-top: 0.25rem;
   margin-bottom: 0.25rem; /* ← تقليل المسافة تحت العنوان */
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .sidebar-list {
   list-style: none;
   padding: 0;
   margin-top: 0;
-
 }
 
 .sidebar-item {
@@ -147,8 +141,9 @@ body.light-mode .sidebar {
   margin: 0.25rem 0; 
   cursor: pointer;
   border-radius: 4px;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
-
 
 .sidebar-item:hover {
   background-color: var(--sidebar-item-hover);
@@ -186,8 +181,6 @@ pre {
   color: var(--text-light);
 }
 
-
-
 body.light-mode pre {
   background-color: var(--lighter-bg);
   color: var(--text-dark);
@@ -207,6 +200,8 @@ body.light-mode pre {
   cursor: pointer;
   z-index: 90;
   display: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .error {
@@ -223,6 +218,8 @@ body.light-mode pre {
   border-radius: 4px;
   cursor: pointer;
   margin-top: 1rem;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 @media (max-width: 768px) {
@@ -248,8 +245,7 @@ body.light-mode pre {
   }
 }
 pre, pre code {
-  /* font-weight: bold !important; */
-direction: ltr;
+  direction: ltr;
   text-align: left;
   font-family: 'Courier New', monospace;
   unicode-bidi: embed;
@@ -313,8 +309,6 @@ body.light-mode pre code {
   }
 }
 
-
-
 /* تصغير عرض السايدبار */
 .sidebar {
   width: 250px; /* كان 300px */
@@ -332,6 +326,8 @@ body.light-mode pre code {
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .sidebar-title::after {
@@ -421,8 +417,22 @@ body.light-mode .sidebar-item.active {
   background-color: rgba(77, 168, 218, 0.1);
 }
 
+/* Sidebar navigation for Home and Roadmap */
+.home-roadmap-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
 
+.home-roadmap-container .sidebar-item {
+  flex: 1;
+  text-align: center;
+}
 
+.home-roadmap-container .sidebar-item.no-count {
+  pointer-events: none;
+  opacity: 0.7;
+}
 
 .footer-text {
   text-align: center;
@@ -431,16 +441,15 @@ body.light-mode .sidebar-item.active {
   color: var(--text-light);
   margin: 0;
   padding: 1px;
-
 }
-
 
 .plain-link {
-  color: var(  --dart-blue-light);
+  color: var(--dart-blue-light);
   font-weight: bold;
   text-decoration: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
-
 
 body.dark-mode .footer-text {
   background-color: var(--darker-bg);
@@ -451,11 +460,6 @@ body.light-mode .footer-text {
   background-color: var(--lighter-bg);
   color: var(--text-dark);
 }
-
-
-
-
-
 
 /* Accordion container */
 details {
@@ -486,6 +490,8 @@ summary {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body.light-mode summary {
@@ -507,12 +513,6 @@ body.light-mode details[open] > div {
   color: var(--text-dark);
 }
 
-
-
-
-
-
-
 .header-container {
   display: flex;
   justify-content: center; /* تغيير من space-between إلى center */
@@ -530,6 +530,8 @@ body.light-mode details[open] > div {
   font-size: 1.2rem;
   cursor: pointer;
   color: var(--text-light);
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body.light-mode .theme-toggle {
@@ -574,7 +576,6 @@ body.light-mode .course-level {
   box-shadow: var(--box-shadow-course-level);
 }
 
-
 /* ترويسة المستوى */
 .level-header {
   display: flex;
@@ -606,8 +607,6 @@ body.light-mode .level-number {
 }
 .projects .level-title {
   color: var(--projects-course-item-i);
-
-
 }
 
 .projects .course-item.active {
@@ -615,11 +614,9 @@ body.light-mode .level-number {
   color: white !important;
 }
 
-
 .projects .course-level:hover {
   box-shadow: var(--projects-course-item-i);
 }
-
 
 .level-title {
   margin: 0;
@@ -651,6 +648,8 @@ body.light-mode .level-title {
   cursor: pointer;
   transition: all 0.2s ease;
   color: var(--text-light);
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body.light-mode .course-item {
@@ -692,7 +691,7 @@ body.light-mode .course-item.active {
 
 /* تأثيرات خاصة للمشاريع */
 .projects .course-item i {
-  color:var(--projects-course-item-i);
+  color: var(--projects-course-item-i);
 }
 
 .projects .course-item:hover {
@@ -723,7 +722,8 @@ body.light-mode .course-item.active {
   .course-item {
     padding: 0.6rem 0.8rem;
   }
-}.developer-accordion {
+}
+.developer-accordion {
   background: rgba(77, 168, 218, 0.05);
   border-radius: 8px;
   margin-top: auto;
@@ -736,6 +736,8 @@ body.light-mode .course-item.active {
   padding: 0.8rem;
   cursor: pointer;
   gap: 0.8rem;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .accordion-header img {
@@ -871,8 +873,6 @@ body.light-mode .markdown-content tr:nth-child(even) {
   background-color: rgba(77, 168, 218, 0.1);
 }
 
-
-
 /* البطاقات والصناديق */
 .card {
   background-color: var(--darker-bg);
@@ -906,7 +906,6 @@ body.light-mode .card-title {
   color: var(--dart-blue);
 }
 
-
 /* الأزرار */
 .btn {
   display: inline-block;
@@ -918,6 +917,8 @@ body.light-mode .card-title {
   transition: all 0.3s ease;
   border: none;
   font-family: 'Tajawal', sans-serif;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .btn-primary {
@@ -928,7 +929,6 @@ body.light-mode .card-title {
 body.light-mode .btn-primary {
   background-color: var(--dart-blue);
 }
-
 
 .btn-primary:hover {
   background-color: var(--btn-hover);
@@ -982,6 +982,8 @@ body.light-mode .form-label {
   color: var(--text-light);
   font-family: 'Tajawal', sans-serif;
   transition: all 0.3s ease;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body.light-mode .form-control {
@@ -1002,12 +1004,13 @@ textarea.form-control {
 
 /* التنبيهات والرسائل */
 .alert {
-  padding: 1rem;
-  border-radius: 6px;
-  margin: 1rem 0;
+  padding: 0.75rem; /* Reduced padding for smaller size */
+  border-radius: 4px;
+  margin: 0.75rem 0;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
+  font-size: 0.9rem; /* Smaller font size */
 }
 
 .alert-info {
@@ -1022,14 +1025,17 @@ body.light-mode .alert-info {
 
 .alert-success {
   background-color: rgba(46, 204, 113, 0.2);
+  color: #2ecc71;
 }
 
 .alert-warning {
-  background-color: rgba(241 196, 15, 0.2);
+  background-color: rgba(241, 196, 15, 0.2);
+  color: #f1c40f;
 }
 
 .alert-danger {
-  background-color: rgba(231, 76, 60, 0.2);
+  background-color: rgba(244, 67, 54, 0.15);
+  color: #c62828;
 }
 
 .markdown-content table {
@@ -1058,7 +1064,6 @@ body.light-mode .markdown-content hr {
   border-top: 1px solid var(--dart-blue); /* ✅ أخضر داكن في الفاتح */
   opacity: 0.5;
 }
-
 
 blockquote {
   background-color: #FFF9C4; /* لون أصفر فاتح */
@@ -1188,7 +1193,7 @@ pre {
   }
 }
 
-/* /* جعل الأزرار متجاوبة */
+/* جعل الأزرار متجاوبة */
 .btn {
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
@@ -1228,8 +1233,6 @@ body.dark-mode .markdown-content a {
 body.light-mode .markdown-content a {
   color: var(--dart-blue);
 }
-
-
 
 /* 5. تحسينات للخطوط: */
 /* تحسين حجم الخط حسب الشاشة */
@@ -1365,67 +1368,67 @@ img, video, iframe {
 
 /* //////////////////////////////////////////////// */
 .header {
-  padding:   1rem 0rem;}
+  padding: 1rem 0rem;
+}
 
-  :root {
-    /* إضافة متغيرات جديدة للأصفر */
-    --quote-bg-light: #FFF9C4;
-    --quote-border-light: #FFD600;
-    --quote-bg-dark: #333300;
-    --quote-border-dark: #FFEE58;
-  }
+:root {
+  /* إضافة متغيرات جديدة للأصفر */
+  --quote-bg-light: #FFF9C4;
+  --quote-border-light: #FFD600;
+  --quote-bg-dark: #333300;
+  --quote-border-dark: #FFEE58;
+}
 
-  blockquote {
-    background-color: var(--dart-blue-light);
-    /* border-left: 4px solid var(--dart-blue); */
-    margin: 0.5rem 0;
-    padding: 1rem 1.5rem;
-    font-family: 'Cairo', sans-serif;
-    line-height: 1.8;
-    text-align: right;
-    direction: rtl;
-    width: 100%;
-    box-sizing: border-box;
-    border-radius: 10px;
-    position: relative;
-    transition: all 0.3s ease;
-    text-align: center !important; /* محاذاة النص للمنتصف */
+blockquote {
+  background-color: var(--dart-blue-light);
+  /* border-left: 4px solid var(--dart-blue); */
+  margin: 0.5rem 0;
+  padding: 1rem 1.5rem;
+  font-family: 'Cairo', sans-serif;
+  line-height: 1.8;
+  text-align: right;
+  direction: rtl;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 10px;
+  position: relative;
+  transition: all 0.3s ease;
+  text-align: center !important; /* محاذاة النص للمنتصف */
+}
 
-  }
-  
-  body.dark-mode blockquote {
-    background-color: var(--dart-blue-light);
-    border-left-color: var(--quote-border-dark);
-    color: #FFFFA0; /* لون نص أفتح في الوضع المظلم */
-  }
-  blockquote::before {
-    content: "\201D";
-    font-family: 'Cairo', sans-serif;
-    font-size: 3.5rem;
-    position: absolute;
-    top: 0.5rem;
-    right: 1rem;
-    color: rgb(255 255 255 / 30%); /* شفافية أكثر للوضع الفاتح */
-    line-height: 1;
-  }
-  
-  body.dark-mode blockquote::before {
-    color: rgb(255 255 255 / 30%); /* تعديل اللون للوضع المظلم */
-  }
-  
-  blockquote footer {
-    display: block;
-    margin-top: 0.8rem;
-    font-size: 0.9em;
-    color: #795548;
-    font-weight: bold;
-  }
-  
-  body.dark-mode blockquote footer {
-    color: #D7CCC8; /* لون أفتح للوضع المظلم */
-  }
+body.dark-mode blockquote {
+  background-color: var(--dart-blue-light);
+  border-left-color: var(--quote-border-dark);
+  color: #FFFFA0; /* لون نص أفتح في الوضع المظلم */
+}
+blockquote::before {
+  content: "\201D";
+  font-family: 'Cairo', sans-serif;
+  font-size: 3.5rem;
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  color: rgb(255 255 255 / 30%); /* شفافية أكثر للوضع الفاتح */
+  line-height: 1;
+}
 
-  /* تحسين التباين للنص داخل الاقتباس */
+body.dark-mode blockquote::before {
+  color: rgb(255 255 255 / 30%); /* تعديل اللون للوضع المظلم */
+}
+
+blockquote footer {
+  display: block;
+  margin-top: 0.8rem;
+  font-size: 0.9em;
+  color: #795548;
+  font-weight: bold;
+}
+
+body.dark-mode blockquote footer {
+  color: #D7CCC8; /* لون أفتح للوضع المظلم */
+}
+
+/* تحسين التباين للنص داخل الاقتباس */
 blockquote p {
   color: inherit;
   margin: 0;
@@ -1482,9 +1485,8 @@ body.light-mode ::-webkit-scrollbar-thumb {
 }
 
 body.light-mode ::-webkit-scrollbar-thumb:hover {
-  background:var(--hover-scrollbar);
+  background: var(--hover-scrollbar);
 }
-
 
 /* إخفاء شريط التمرير في الهواتف */
 @media (max-width: 768px) {
@@ -1520,14 +1522,12 @@ body.light-mode ::-webkit-scrollbar-thumb:hover {
 
 /* ------------------------------------ */
 
-
 .markdown-card1 {
   background-color: var(--card);
   color: var(--text);
   max-width: 800px;
   margin: 20px auto;
-    border: 1px solid var(--dart-blue-light);
-
+  border: 1px solid var(--dart-blue-light);
   border-radius: 10px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
   overflow: hidden;
@@ -1539,13 +1539,11 @@ body.light-mode ::-webkit-scrollbar-thumb:hover {
   color: white;
   padding: 20px;
   text-align: center; /* ✅ تمركز المحتوى */
-
 }
 
 .markdown-header1 h1 {
   color: white;
   text-align: center; /* ✅ تمركز المحتوى */
-
   margin: 0;
   font-size: 24px;
   font-weight: 500;
@@ -1558,14 +1556,11 @@ body.light-mode ::-webkit-scrollbar-thumb:hover {
   opacity: 0.9;
   font-family: "Tajawal", sans-serif;
   text-align: center; /* ✅ تمركز المحتوى */
-
 }
 
 .markdown-content1 {
   padding: 20px;
 }
-
-
 
 @media (max-width: 600px) {
   .markdown-header1 h1 {
@@ -1575,7 +1570,6 @@ body.light-mode ::-webkit-scrollbar-thumb:hover {
     padding: 16px;
   }
 }
-
 
 /* ------------ */
 pre {
@@ -1718,7 +1712,6 @@ body.light-mode .markdown-content tr:nth-child(even) {
   z-index: 5;
 }
 
-
 .sql-btn {
   background-color: var(--dart-blue-light);
   color: white;
@@ -1731,6 +1724,8 @@ body.light-mode .markdown-content tr:nth-child(even) {
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s ease;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .sql-btn:hover {
@@ -1768,9 +1763,9 @@ body.light-mode .sql-result {
 .logo a {
   text-decoration: none;
   color: inherit;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
-
-
 
 /* جعل عناوين Markdown الإنجليزية تتجه من اليسار لليمين */
 .markdown-content h1[lang="en"],
@@ -1783,7 +1778,6 @@ body.light-mode .sql-result {
   text-align: left;
   unicode-bidi: plaintext;
 }
-
 
 .login-toggle {
   position: absolute;
@@ -1803,6 +1797,8 @@ body.light-mode .sql-result {
   border-radius: 50%;
   transition: all 0.3s ease;
   z-index: 10;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .login-toggle:hover {
@@ -1830,7 +1826,6 @@ body.light-mode .login-toggle:hover {
   margin: 0 60px; /* هامش متساوٍ من الجانبين */
 }
 
-
 /* --------------- */
 
 /* نافذة منبثقة */
@@ -1855,6 +1850,8 @@ body.light-mode .login-toggle:hover {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   position: relative;
   font-family: 'Tajawal', sans-serif;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body.dark-mode .modal-content {
@@ -1870,6 +1867,8 @@ body.dark-mode .modal-content {
   font-size: 1.5rem;
   color: var(--dart-blue-light);
   cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body.light-mode .modal .close {
@@ -1910,6 +1909,8 @@ body.light-mode .modal-content label {
   background-color: var(--light-bg);
   color: var(--text-dark);
   transition: border-color 0.3s ease;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body.dark-mode .modal-content input {
@@ -1946,7 +1947,6 @@ body.dark-mode .modal-content input {
   font-size: 0.9rem;
 }
 
-
 /* /------------------ */
 
 /* تنسيقات إضافية لواجهة المستخدم */
@@ -1976,17 +1976,16 @@ body.dark-mode .modal-content {
 }
 /* ???????????????????????? */
 
-
 /* Auth Card for Login/Verification Prompt */
 .auth-card {
   background-color: var(--darker-bg);
   border-radius: 12px;
-  padding: 2rem;
-  margin: 2rem auto;
-  max-width: 600px;
+  padding: 1.5rem; /* Reduced padding */
+  margin: 1rem auto;
+  max-width: 500px; /* Reduced max-width */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   text-align: center;
-  border: 4px solid var(--dart-blue-light);
+  border: 3px solid var(--dart-blue-light);
   transition: all 0.3s ease;
 }
 
@@ -1997,13 +1996,13 @@ body.light-mode .auth-card {
 }
 
 .auth-card-header {
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem; /* Reduced margin */
 }
 
 .auth-card-header h3 {
   color: var(--dart-blue-light);
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.3rem; /* Reduced font size */
 }
 
 body.light-mode .auth-card-header h3 {
@@ -2012,8 +2011,8 @@ body.light-mode .auth-card-header h3 {
 
 .auth-card-content p {
   color: var(--text-light);
-  margin-bottom: 1.5rem;
-  font-size: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem; /* Reduced font size */
 }
 
 body.light-mode .auth-card-content p {
@@ -2021,8 +2020,8 @@ body.light-mode .auth-card-content p {
 }
 
 .auth-card-content .btn {
-  padding: 0.75rem 2rem;
-  font-size: 1rem;
+  padding: 0.6rem 1.5rem; /* Reduced padding */
+  font-size: 0.95rem; /* Reduced font size */
 }
 
 /* Existing styles (kept unchanged, only relevant sections shown) */
@@ -2171,6 +2170,8 @@ body.light-mode .info-value {
     margin: 1rem auto;
     display: block;
     transition: transform 0.2s ease, opacity 0.2s ease;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .complete-lesson-btn:hover:not(:disabled) {

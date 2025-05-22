@@ -207,9 +207,10 @@ export const EventHandlers = {
       const courseLevels = document.querySelectorAll('.course-level');
       courseLevels.forEach(level => {
         const levelItems = level.querySelectorAll('.course-item');
-        const completedItems = Array.from(levelItems).filter(item =>
-          progressData.completedArticles.includes(item.getAttribute('data-article'))
-        );
+        const completedItems = Array.from(levelItems).filter(item => {
+          const article = item.getAttribute('data-article');
+          return progressData.completedArticles.includes(article) && article !== 'home' && article !== 'roadmap';
+        });
         const progressPercent = (completedItems.length / levelItems.length) * 100;
         console.log(`Level progress for ${level.querySelector('.level-title')?.textContent || 'Unknown Level'}: ${progressPercent}%`);
         const progressBar = level.querySelector('.progress');
