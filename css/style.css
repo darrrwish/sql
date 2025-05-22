@@ -876,11 +876,11 @@ body.light-mode .markdown-content tr:nth-child(even) {
 /* البطاقات والصناديق */
 .card {
   background-color: var(--darker-bg);
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 1.5rem;
   margin: 1rem 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border-left: 4px solid var(--dart-blue-light);
+  border: 3px solid var(--dart-blue-light);
   transition: all 0.3s ease;
 }
 
@@ -1526,7 +1526,8 @@ body.light-mode ::-webkit-scrollbar-thumb:hover {
   color: var(--text);
   max-width: 800px;
   margin: 20px auto;
-  border: 1px solid var(--border);
+    border: 1px solid var(--dart-blue-light);
+
   border-radius: 10px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
   overflow: hidden;
