@@ -53,112 +53,150 @@
         </div>
 
         <!-- المستويات التعليمية -->
-        <!-- المستوى الأول -->
-        <div class="course-level">
-          <div class="level-header">
-            <div class="level-number">1</div>
-            <h3 class="level-title">مقدمة في SQL</h3>
-          </div>
-          <ul class="level-items">
-            <li class="course-item active" data-article="intro"><i class="fa fa-database"></i><span>مقدمة</span></li>
-            <li class="course-item" data-article="syntax"><i class="fa fa-code"></i><span>SQL Syntax – القواعد</span></li>
-            <li class="course-item" data-article="comments"><i class="fa fa-comment-alt"></i><span>التعليقات</span></li>
-          </ul>
-        </div>
+  <!-- المستوى الأول: الأساسيات والمقدمة -->
+<div class="course-level">
+  <div class="level-header">
+    <div class="level-number">1</div>
+    <h3 class="level-title">أساسيات SQL</h3>
+  </div>
+  <ul class="level-items">
+    <li class="course-item active" data-article="intro"><i class="fa fa-database"></i><span>مقدمة في SQL</span></li>
+    <li class="course-item" data-article="syntax"><i class="fa fa-code"></i><span>قواعد SQL Syntax</span></li>
+    <li class="course-item" data-article="comments"><i class="fa fa-comment-alt"></i><span>التعليقات</span></li>
+    <li class="course-item" data-article="datatypes"><i class="fa fa-list-ol"></i><span>أنواع البيانات</span></li>
+    <li class="course-item" data-article="operators"><i class="fa fa-plus-circle"></i><span>العوامل Operators</span></li>
+  </ul>
+</div>
 
-        <!-- المستوى الثاني -->
-        <div class="course-level">
-          <div class="level-header">
-            <div class="level-number">2</div>
-            <h3 class="level-title">الاستعلام عن البيانات</h3>
-          </div>
-          <ul class="level-items">
-            <li class="course-item" data-article="select"><i class="fa fa-search"></i><span>SELECT</span></li>
-            <li class="course-item" data-article="where"><i class="fa fa-filter"></i><span>WHERE</span></li>
-            <li class="course-item" data-article="order-by"><i class="fa fa-sort-amount-down"></i><span>ORDER BY</span></li>
-            <li class="course-item" data-article="like"><i class="fa fa-percent"></i><span>LIKE & WILDCARDS</span></li>
-            <li class="course-item" data-article="aliases"><i class="fa fa-tag"></i><span>ALIASES</span></li>
-          </ul>
-        </div>
+<!-- المستوى الثاني: استعلام البيانات -->
+<div class="course-level">
+  <div class="level-header">
+    <div class="level-number">2</div>
+    <h3 class="level-title">استعلام البيانات</h3>
+  </div>
+  <ul class="level-items">
+    <li class="course-item" data-article="select"><i class="fa fa-search"></i><span>SELECT</span></li>
+    <li class="course-item" data-article="select-distinct"><i class="fa fa-filter"></i><span>SELECT DISTINCT</span></li>
+    <li class="course-item" data-article="where"><i class="fa fa-filter"></i><span>WHERE</span></li>
+    <li class="course-item" data-article="order-by"><i class="fa fa-sort-amount-down"></i><span>ORDER BY</span></li>
+    <li class="course-item" data-article="and-or-not"><i class="fa fa-code-branch"></i><span>AND, OR, NOT</span></li>
+    <li class="course-item" data-article="like"><i class="fa fa-percent"></i><span>LIKE & Wildcards</span></li>
+    <li class="course-item" data-article="in-between"><i class="fa fa-braille"></i><span>IN, BETWEEN</span></li>
+    <li class="course-item" data-article="aliases"><i class="fa fa-tag"></i><span>Aliases</span></li>
+  </ul>
+</div>
 
-        <!-- المستوى الثالث -->
-        <div class="course-level">
-          <div class="level-header">
-            <div class="level-number">3</div>
-            <h3 class="level-title">دوال التجميع والتحليل</h3>
-          </div>
-          <ul class="level-items">
-            <li class="course-item" data-article="count"><i class="fa fa-hashtag"></i><span>COUNT / SUM / AVG</span></li>
-            <li class="course-item" data-article="group-by"><i class="fa fa-layer-group"></i><span>GROUP BY & HAVING</span></li>
-            <li class="course-item" data-article="min-max"><i class="fa fa-chart-bar"></i><span>MIN / MAX</span></li>
-          </ul>
-        </div>
+<!-- المستوى الثالث: دوال التجميع -->
+<div class="course-level">
+  <div class="level-header">
+    <div class="level-number">3</div>
+    <h3 class="level-title">دوال التجميع</h3>
+  </div>
+  <ul class="level-items">
+    <li class="course-item" data-article="aggregate"><i class="fa fa-calculator"></i><span>دوال التجميع</span></li>
+    <li class="course-item" data-article="count"><i class="fa fa-hashtag"></i><span>COUNT, SUM, AVG</span></li>
+    <li class="course-item" data-article="min-max"><i class="fa fa-chart-bar"></i><span>MIN, MAX</span></li>
+    <li class="course-item" data-article="group-by"><i class="fa fa-layer-group"></i><span>GROUP BY</span></li>
+    <li class="course-item" data-article="having"><i class="fa fa-filter"></i><span>HAVING</span></li>
+  </ul>
+</div>
 
-        <!-- المستوى الرابع -->
-        <div class="course-level">
-          <div class="level-header">
-            <div class="level-number">4</div>
-            <h3 class="level-title">Joins والعلاقات بين الجداول</h3>
-          </div>
-          <ul class="level-items">
-            <li class="course-item" data-article="joins"><i class="fa fa-link"></i><span>أنواع Joins</span></li>
-            <li class="course-item" data-article="union"><i class="fa fa-object-group"></i><span>UNION</span></li>
-            <li class="course-item" data-article="self-join"><i class="fa fa-user-friends"></i><span>Self Join</span></li>
-          </ul>
-        </div>
+<!-- المستوى الرابع: الجداول والعلاقات -->
+<div class="course-level">
+  <div class="level-header">
+    <div class="level-number">4</div>
+    <h3 class="level-title">الجداول والعلاقات</h3>
+  </div>
+  <ul class="level-items">
+    <li class="course-item" data-article="joins"><i class="fa fa-link"></i><span>أنواع Joins</span></li>
+    <li class="course-item" data-article="inner-join"><i class="fa fa-arrows-alt-h"></i><span>INNER JOIN</span></li>
+    <li class="course-item" data-article="left-join"><i class="fa fa-arrow-left"></i><span>LEFT JOIN</span></li>
+    <li class="course-item" data-article="right-join"><i class="fa fa-arrow-right"></i><span>RIGHT JOIN</span></li>
+    <li class="course-item" data-article="full-join"><i class="fa fa-arrows-alt"></i><span>FULL JOIN</span></li>
+    <li class="course-item" data-article="self-join"><i class="fa fa-user-friends"></i><span>SELF JOIN</span></li>
+    <li class="course-item" data-article="union"><i class="fa fa-object-group"></i><span>UNION</span></li>
+  </ul>
+</div>
 
-        <!-- المستوى الخامس -->
-        <div class="course-level">
-          <div class="level-header">
-            <div class="level-number">5</div>
-            <h3 class="level-title">تعديل البيانات</h3>
-          </div>
-          <ul class="level-items">
-            <li class="course-item" data-article="insert"><i class="fa fa-plus"></i><span>INSERT</span></li>
-            <li class="course-item" data-article="update"><i class="fa fa-pen"></i><span>UPDATE</span></li>
-            <li class="course-item" data-article="delete"><i class="fa fa-trash"></i><span>DELETE</span></li>
-          </ul>
-        </div>
+<!-- المستوى الخامس: تعديل البيانات -->
+<div class="course-level">
+  <div class="level-header">
+    <div class="level-number">5</div>
+    <h3 class="level-title">تعديل البيانات</h3>
+  </div>
+  <ul class="level-items">
+    <li class="course-item" data-article="insert"><i class="fa fa-plus"></i><span>INSERT INTO</span></li>
+    <li class="course-item" data-article="update"><i class="fa fa-pen"></i><span>UPDATE</span></li>
+    <li class="course-item" data-article="delete"><i class="fa fa-trash"></i><span>DELETE</span></li>
+    <li class="course-item" data-article="truncate"><i class="fa fa-cut"></i><span>TRUNCATE</span></li>
+    <li class="course-item" data-article="null-values"><i class="fa fa-question-circle"></i><span>NULL Values</span></li>
+  </ul>
+</div>
 
-        <!-- المستوى السادس -->
-        <div class="course-level">
-          <div class="level-header">
-            <div class="level-number">6</div>
-            <h3 class="level-title">قواعد البيانات والجداول</h3>
-          </div>
-          <ul class="level-items">
-            <li class="course-item" data-article="create-db"><i class="fa fa-folder-plus"></i><span>إنشاء قاعدة بيانات</span></li>
-            <li class="course-item" data-article="create-table"><i class="fa fa-table"></i><span>إنشاء جدول</span></li>
-            <li class="course-item" data-article="alter-table"><i class="fa fa-wrench"></i><span>تعديل الجدول</span></li>
-            <li class="course-item" data-article="drop-table"><i class="fa fa-times"></i><span>حذف جدول</span></li>
-          </ul>
-        </div>
+<!-- المستوى السادس: إدارة قواعد البيانات -->
+<div class="course-level">
+  <div class="level-header">
+    <div class="level-number">6</div>
+    <h3 class="level-title">إدارة قواعد البيانات</h3>
+  </div>
+  <ul class="level-items">
+    <li class="course-item" data-article="create-db"><i class="fa fa-folder-plus"></i><span>إنشاء قاعدة بيانات</span></li>
+    <li class="course-item" data-article="drop-db"><i class="fa fa-folder-minus"></i><span>حذف قاعدة بيانات</span></li>
+    <li class="course-item" data-article="backup-db"><i class="fa fa-save"></i><span>نسخ احتياطي</span></li>
+    <li class="course-item" data-article="create-table"><i class="fa fa-table"></i><span>إنشاء جدول</span></li>
+    <li class="course-item" data-article="alter-table"><i class="fa fa-wrench"></i><span>تعديل جدول</span></li>
+    <li class="course-item" data-article="drop-table"><i class="fa fa-times"></i><span>حذف جدول</span></li>
+    <li class="course-item" data-article="constraints"><i class="fa fa-lock"></i><span>القيود Constraints</span></li>
+  </ul>
+</div>
 
-        <!-- المستوى السابع -->
-        <div class="course-level">
-          <div class="level-header">
-            <div class="level-number">7</div>
-            <h3 class="level-title">متقدم وحماية</h3>
-          </div>
-          <ul class="level-items">
-            <li class="course-item" data-article="views"><i class="fa fa-eye"></i><span>Views</span></li>
-            <li class="course-item" data-article="stored-procedures"><i class="fa fa-cogs"></i><span>Stored Procedures</span></li>
-            <li class="course-item" data-article="injection"><i class="fa fa-shield-alt"></i><span>SQL Injection</span></li>
-            <li class="course-item" data-article="hosting"><i class="fa fa-cloud-upload-alt"></i><span>استضافة قواعد البيانات</span></li>
-          </ul>
-        </div>
+<!-- المستوى السابع: مواضيع متقدمة -->
+<div class="course-level">
+  <div class="level-header">
+    <div class="level-number">7</div>
+    <h3 class="level-title">مواضيع متقدمة</h3>
+  </div>
+  <ul class="level-items">
+    <li class="course-item" data-article="views"><i class="fa fa-eye"></i><span>Views</span></li>
+    <li class="course-item" data-article="stored-procedures"><i class="fa fa-cogs"></i><span>Stored Procedures</span></li>
+    <li class="course-item" data-article="case"><i class="fa fa-random"></i><span>CASE</span></li>
+    <li class="course-item" data-article="null-functions"><i class="fa fa-question"></i><span>NULL Functions</span></li>
+    <li class="course-item" data-article="dates"><i class="fa fa-calendar-alt"></i><span>التواريخ والوقت</span></li>
+    <li class="course-item" data-article="injection"><i class="fa fa-shield-alt"></i><span>SQL Injection</span></li>
+    <li class="course-item" data-article="hosting"><i class="fa fa-cloud-upload-alt"></i><span>استضافة قواعد البيانات</span></li>
+    <li class="course-item" data-article="transactions"><i class="fa fa-exchange-alt"></i><span>المعاملات Transactions</span></li>
+    <li class="course-item" data-article="indexes"><i class="fa fa-tachometer-alt"></i><span>الفهارس Indexes</span></li>
+    <li class="course-item" data-article="optimization"><i class="fa fa-tachometer-alt"></i><span>تحسين الأداء</span></li>
+  </ul>
+</div>
 
-        <!-- المشاريع -->
-        <div class="course-level projects">
-          <div class="level-header projects">
-            <div class="level-number projects"><i class="fa fa-flask"></i></div>
-            <h3 class="level-title">المشاريع العملية</h3>
-          </div>
-          <ul class="level-items projects">
-            <li class="course-item" data-article="project1"><i class="fa fa-star"></i><span>ربنا يسهل</span></li>
-            <li class="course-item" data-article="project2"><i class="fa fa-star"></i><span>تساهيلك يارب</span></li>
-          </ul>
-        </div>
+<!-- المستوى الثامن: المراجع والأمثلة -->
+<div class="course-level">
+  <div class="level-header">
+    <div class="level-number">8</div>
+    <h3 class="level-title">المراجع والأمثلة</h3>
+  </div>
+  <ul class="level-items">
+    <li class="course-item" data-article="keywords"><i class="fa fa-key"></i><span>الكلمات المفتاحية</span></li>
+    <li class="course-item" data-article="functions"><i class="fa fa-function"></i><span>الدوال Functions</span></li>
+    <li class="course-item" data-article="examples"><i class="fa fa-code"></i><span>أمثلة عملية</span></li>
+    <li class="course-item" data-article="exercises"><i class="fa fa-dumbbell"></i><span>تمارين</span></li>
+    <li class="course-item" data-article="quiz"><i class="fa fa-question-circle"></i><span>اختبارات</span></li>
+  </ul>
+</div>
+
+<!-- المشاريع العملية -->
+<div class="course-level projects">
+  <div class="level-header projects">
+    <div class="level-number projects"><i class="fa fa-flask"></i></div>
+    <h3 class="level-title">المشاريع العملية</h3>
+  </div>
+  <ul class="level-items projects">
+    <li class="course-item" data-article="project1"><i class="fa fa-star"></i><span>مشروع قاعدة بيانات بسيطة</span></li>
+    <li class="course-item" data-article="project2"><i class="fa fa-star"></i><span>نظام إدارة المحتوى</span></li>
+    <li class="course-item" data-article="project3"><i class="fa fa-star"></i><span>نظام حجز تذاكر</span></li>
+  </ul>
+</div>
 
       </div>
     </aside>
