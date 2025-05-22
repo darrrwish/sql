@@ -63,11 +63,21 @@
 
 
 
+
+
+        
+
+
 <div class="course-level">
   <div class="level-header">
     <div class="level-number"><i class="fa-solid fa-puzzle-piece"></i></div>
     <h3 class="level-title">مفاهيم أساسية</h3>
   </div>
+
+<div class="progress-bar">
+        <div class="progress" style="width: 0%;"></div>
+      </div>
+
   <ul class="level-items">
     <li class="course-item active" data-article="intro"><i class="fa fa-database"></i><span>مفاهيم قواعد البيانات العلائقية</span></li>
     <li class="course-item" data-article="syntax"><i class="fa fa-code"></i><span>الفرق بين SQL و NoSQL</span></li>
@@ -86,6 +96,11 @@
     <div class="level-number">1</div>
     <h3 class="level-title">أساسيات SQL</h3>
   </div>
+
+<div class="progress-bar">
+        <div class="progress" style="width: 0%;"></div>
+      </div>
+
   <ul class="level-items">
     <li class="course-item active" data-article="intro"><i class="fa fa-database"></i><span>مقدمة في SQL</span></li>
     <li class="course-item" data-article="syntax"><i class="fa fa-code"></i><span>قواعد SQL Syntax</span></li>
@@ -101,6 +116,11 @@
     <div class="level-number">2</div>
     <h3 class="level-title">استعلام البيانات</h3>
   </div>
+<div class="progress-bar">
+        <div class="progress" style="width: 0%;"></div>
+      </div>
+
+
   <ul class="level-items">
     <li class="course-item" data-article="select"><i class="fa fa-search"></i><span>SELECT</span></li>
     <li class="course-item" data-article="select-distinct"><i class="fa fa-filter"></i><span>SELECT DISTINCT</span></li>
@@ -119,6 +139,11 @@
     <div class="level-number">3</div>
     <h3 class="level-title">دوال التجميع</h3>
   </div>
+
+  <div class="progress-bar">
+        <div class="progress" style="width: 0%;"></div>
+      </div>
+
   <ul class="level-items">
     <li class="course-item" data-article="aggregate"><i class="fa fa-calculator"></i><span>دوال التجميع</span></li>
     <li class="course-item" data-article="count"><i class="fa fa-hashtag"></i><span>COUNT, SUM, AVG</span></li>
@@ -134,6 +159,10 @@
     <div class="level-number">4</div>
     <h3 class="level-title">الجداول والعلاقات</h3>
   </div>
+  <div class="progress-bar">
+        <div class="progress" style="width: 0%;"></div>
+      </div>
+
   <ul class="level-items">
     <li class="course-item" data-article="joins"><i class="fa fa-link"></i><span>أنواع Joins</span></li>
     <li class="course-item" data-article="inner-join"><i class="fa fa-arrows-alt-h"></i><span>INNER JOIN</span></li>
@@ -151,6 +180,10 @@
     <div class="level-number">5</div>
     <h3 class="level-title">تعديل البيانات</h3>
   </div>
+  <div class="progress-bar">
+        <div class="progress" style="width: 0%;"></div>
+      </div>
+
   <ul class="level-items">
     <li class="course-item" data-article="insert"><i class="fa fa-plus"></i><span>INSERT INTO</span></li>
     <li class="course-item" data-article="update"><i class="fa fa-pen"></i><span>UPDATE</span></li>
@@ -166,6 +199,10 @@
     <div class="level-number">6</div>
     <h3 class="level-title">إدارة قواعد البيانات</h3>
   </div>
+  <div class="progress-bar">
+        <div class="progress" style="width: 0%;"></div>
+      </div>
+
   <ul class="level-items">
     <li class="course-item" data-article="create-db"><i class="fa fa-folder-plus"></i><span>إنشاء قاعدة بيانات</span></li>
     <li class="course-item" data-article="drop-db"><i class="fa fa-folder-minus"></i><span>حذف قاعدة بيانات</span></li>
@@ -183,6 +220,10 @@
     <div class="level-number">7</div>
     <h3 class="level-title">مواضيع متقدمة</h3>
   </div>
+  <div class="progress-bar">
+        <div class="progress" style="width: 0%;"></div>
+      </div>
+
   <ul class="level-items">
     <li class="course-item" data-article="views"><i class="fa fa-eye"></i><span>Views</span></li>
     <li class="course-item" data-article="stored-procedures"><i class="fa fa-cogs"></i><span>Stored Procedures</span></li>
@@ -203,6 +244,10 @@
     <div class="level-number">8</div>
     <h3 class="level-title">المراجع والأمثلة</h3>
   </div>
+  <div class="progress-bar">
+        <div class="progress" style="width: 0%;"></div>
+      </div>
+
   <ul class="level-items">
     <li class="course-item" data-article="keywords"><i class="fa fa-key"></i><span>الكلمات المفتاحية</span></li>
     <li class="course-item" data-article="functions"><i class="fa fa-function"></i><span>الدوال Functions</span></li>
@@ -218,10 +263,15 @@
     <div class="level-number projects"><i class="fa fa-flask"></i></div>
     <h3 class="level-title">المشاريع العملية</h3>
   </div>
+  <div class="progress-bar">
+        <div class="progress" style="width: 0%;"></div>
+      </div>
+
   <ul class="level-items projects">
     <li class="course-item" data-article="project1"><i class="fa fa-star"></i><span>مشروع قاعدة بيانات بسيطة</span></li>
     <li class="course-item" data-article="project2"><i class="fa fa-star"></i><span>نظام إدارة المحتوى</span></li>
     <li class="course-item" data-article="project3"><i class="fa fa-star"></i><span>نظام حجز تذاكر</span></li>
+
   </ul>
 </div>
 
@@ -269,17 +319,40 @@
 
   <!-- النوافذ المنبثقة -->
   <!-- معلومات المستخدم -->
-  <div class="modal" id="userInfoModal">
-    <div class="modal-content">
-      <span class="close" id="closeUserModal">×</span>
-      <h2>معلومات المستخدم</h2>
-      <div id="infoVerificationStatus" class="alert"></div>
-      <p><strong>اسم المستخدم:</strong> <span id="infoUsername"></span></p>
-      <p><strong>البريد الإلكتروني:</strong> <span id="infoEmail"></span></p>
-      <p><strong>رقم الهاتف:</strong> <span id="infoPhone"></span></p>
-      <button class="btn btn-primary" id="logoutBtnModal">تسجيل الخروج</button>
+<div class="modal" id="userInfoModal">
+  <div class="modal-content">
+    <span class="close" id="closeUserModal">×</span>
+    <h2>معلومات المستخدم</h2>
+    <div class="user-info">
+      <div class="info-row">
+        <span class="info-label">اسم المستخدم:</span>
+        <span id="infoUsername" class="info-value"></span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">الاسم:</span>
+        <span id="infoName" class="info-value"></span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">البريد الإلكتروني:</span>
+        <span id="infoEmail" class="info-value"></span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">رقم الهاتف:</span>
+        <span id="infoPhone" class="info-value"></span>
+      </div>
+     
+      <div class="info-row">
+        <span class="info-label">التقدم:</span>
+        <span id="infoProgress" class="info-value"></span>
+      </div>
     </div>
+     <div class="info-row">
+        <span class="info-label">حالة التفعيل:</span>
+        <span id="infoVerificationStatus" class="alert"></span>
+      </div>
+    <button class="btn btn-primary" id="logoutBtnModal">تسجيل الخروج</button>
   </div>
+</div>
 
   <!-- نافذة تسجيل الدخول -->
   <div id="loginModal" class="modal" style="display: none;">
@@ -303,33 +376,37 @@
   </div>
 
   <!-- نافذة التسجيل -->
-  <div id="registerModal" class="modal" style="display: none;">
-    <div class="modal-content">
-      <span id="closeRegisterModal" class="close">&times;</span>
-      <h2>تسجيل حساب جديد</h2>
-      <form id="registerForm">
-        <div id="registerError" class="alert alert-danger" style="display: none;"></div>
-        <div class="form-group">
-          <label for="regUsername">اسم المستخدم</label>
-          <input type="text" id="regUsername" required />
-        </div>
-        <div class="form-group">
-          <label for="regEmail">البريد الإلكتروني</label>
-          <input type="email" id="regEmail" required />
-        </div>
-       <div class="form-group">
-  <label for="phone">رقم الهاتف</label>
-  <input type="tel" id="phone" pattern="[0-9]{11}" title="يجب أن يتكون رقم الهاتف من 11 رقمًا" required />
-</div>
-        <div class="form-group">
-          <label for="regPassword">كلمة المرور</label>
-          <input type="password" id="regPassword" required />
-        </div>
-        <button type="submit" class="btn btn-primary">تسجيل الحساب</button>
-        <button type="button" class="btn btn-outline" id="backToLoginBtn">لديك حساب؟ سجل الدخول</button>
-      </form>
-    </div>
+ <div class="modal" id="registerModal">
+  <div class="modal-content">
+    <span class="close" id="closeRegisterModal">×</span>
+    <h2>تسجيل حساب جديد</h2>
+    <form id="registerForm">
+      <div class="form-group">
+        <label for="regUsername">اسم المستخدم</label>
+        <input type="text" id="regUsername" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="regName">الاسم</label>
+        <input type="text" id="regName" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="regEmail">البريد الإلكتروني</label>
+        <input type="email" id="regEmail" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">رقم الهاتف</label>
+        <input type="tel" id="phone" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="regPassword">كلمة المرور</label>
+        <input type="password" id="regPassword" class="form-control" required>
+      </div>
+      <div id="registerError" class="alert alert-danger" style="display: none;"></div>
+      <button type="submit" class="btn btn-primary">تسجيل الحساب</button>
+      <button type="button" class="btn btn-outline" id="backToLoginBtn">لديك حساب؟ سجل الدخول</button>
+    </form>
   </div>
+</div>
 
 </body>
 </html>

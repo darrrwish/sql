@@ -2104,3 +2104,89 @@ body.light-mode .alert-success i.fa-check-circle {
 body.light-mode .alert-warning i.fa-exclamation-circle {
   color: #e67e22; /* برتقالي داكن شوية في الوضع الفاتح */
 }
+
+/* Add to style.css */
+
+/* Progress Bar */
+.progress-bar {
+  background-color: rgba(76, 175, 80, 0.1); /* Light green background */
+  border-radius: 4px;
+  height: 8px;
+  margin: 0.5rem 0;
+  overflow: hidden;
+}
+
+.progress {
+  background-color: var(--dart-blue-light); /* Green fill */
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+body.light-mode .progress {
+  background-color: var(--dart-blue); /* Darker green in light mode */
+}
+
+/* User Info Modal */
+.user-info {
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.info-label {
+  font-weight: bold;
+  color: var(--dart-blue-light);
+  text-align: right;
+}
+
+body.light-mode .info-label {
+  color: var(--dart-blue);
+}
+
+.info-value {
+  color: var(--text-light);
+  text-align: left;
+}
+
+body.light-mode .info-value {
+  color: var(--text-dark);
+}
+
+/* تنسيق زر إكمال الدرس */
+.complete-lesson-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    color: var(--dart-blue-light);
+    margin: 1rem auto;
+    display: block;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.complete-lesson-btn:hover:not(:disabled) {
+    transform: scale(1.1);
+    color: var(--dart-blue);
+}
+
+.complete-lesson-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+body.light-mode .complete-lesson-btn {
+    color: var(--dart-blue);
+}
+
+body.light-mode .complete-lesson-btn:hover:not(:disabled) {
+    color: var(--dart-blue-light);
+}
