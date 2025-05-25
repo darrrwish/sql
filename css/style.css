@@ -2191,3 +2191,5 @@ body.light-mode .complete-lesson-btn {
 body.light-mode .complete-lesson-btn:hover:not(:disabled) {
     color: var(--dart-blue-light);
 }
+
+
