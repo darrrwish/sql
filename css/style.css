@@ -2193,3 +2193,28 @@ body.light-mode .complete-lesson-btn:hover:not(:disabled) {
 }
 
 
+.lesson-checkbox {
+  display: none; /* إخفاء الـ Checkbox الأصلي لأننا نعتمد على الأيقونة */
+}
+.lesson-checkbox + i.far.fa-square,
+.lesson-checkbox + i.fas.fa-check-square {
+  margin-right: 5px;
+  vertical-align: middle;
+}
+.lesson-checkbox:checked + i.far.fa-square {
+  display: none;
+}
+.lesson-checkbox:checked + i.fas.fa-check-square {
+  display: inline;
+}
+.fas.fa-check-square {
+  color: var(--dart-blue-light); /* لون الخانة المفعلة */
+}
+
+label {
+  margin: 5px 0;
+  display: block;
+}
+.lesson-checkbox + i.far.fa-square {
+  margin-right: 5px;
+}

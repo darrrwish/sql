@@ -128,13 +128,11 @@ export const EventHandlers = {
     const infoProgress = document.getElementById('infoProgress');
     const userInfoModal = document.getElementById('userInfoModal');
     
-    // تحقق من وجود العناصر قبل المتابعة
     if (!userInfoModal) {
       console.error('User info modal not found');
       return;
     }
 
-    // تحقق من كل عنصر على حدة
     if (infoUsername) infoUsername.textContent = user?.username || 'غير محدد';
     if (infoName) infoName.textContent = user?.name || 'غير محدد';
     if (infoEmail) infoEmail.textContent = user?.email || 'غير محدد';
@@ -204,20 +202,116 @@ export const EventHandlers = {
     const progressData = await AuthService.getProgress(user.id);
     
     if (progressData.success) {
+      const completedArticles = progressData.completedArticles;
+
+      // تحديث حالة الـ Checkbox في road-map.md
+      const allLessons = document.querySelectorAll('.lesson-checkbox');
+      allLessons.forEach(checkbox => {
+        const lessonArticle = checkbox.getAttribute('data-article');
+        const lessonLabel = checkbox.parentElement;
+        const squareIcon = lessonLabel.querySelector('i.far.fa-square, i.fas.fa-check-square');
+
+        if (completedArticles.includes(lessonArticle)) {
+          checkbox.checked = true;
+          if (squareIcon) {
+            squareIcon.classList.remove('far', 'fa-square');
+            squareIcon.classList.add('fas', 'fa-check-square');
+          }
+        } else {
+          checkbox.checked = false;
+          if (squareIcon) {
+            squareIcon.classList.remove('fas', 'fa-check-square');
+            squareIcon.classList.add('far', 'fa-square');
+          }
+        }
+      });
+
+      // تحديث الشريط الجانبي
       const courseLevels = document.querySelectorAll('.course-level');
       courseLevels.forEach(level => {
         const levelItems = level.querySelectorAll('.course-item');
         const completedItems = Array.from(levelItems).filter(item => {
           const article = item.getAttribute('data-article');
-          return progressData.completedArticles.includes(article) && article !== 'home' && article !== 'roadmap';
+          return completedArticles.includes(article) && article !== 'home' && article !== 'roadmap';
         });
         const progressPercent = (completedItems.length / levelItems.length) * 100;
         console.log(`Level progress for ${level.querySelector('.level-title')?.textContent || 'Unknown Level'}: ${progressPercent}%`);
         const progressBar = level.querySelector('.progress');
         if (progressBar) {
           progressBar.style.width = `${progressPercent}%`;
+          progressBar.style.transition = 'width 0.5s ease-in-out';
+          progressBar.style.opacity = '1';
         }
       });
+
+      // تحديث جدول الإحصائيات في road-map.md
+      const sections = [
+        { name: 'مفاهيم أساسية', prefix: 'concepts', total: 4, completedId: 'stats-basics-completed', percentId: 'stats-basics-percent' },
+        { name: 'أساسيات SQL', prefix: 'basics', total: 5, completedId: 'stats-sql-basics-completed', percentId: 'stats-sql-basics-percent' },
+        { name: 'استعلام البيانات', prefix: 'queries', total: 8, completedId: 'stats-queries-completed', percentId: 'stats-queries-percent' },
+        { name: 'دوال التجميع', prefix: 'aggregation', total: 5, completedId: 'stats-aggregation-completed', percentId: 'stats-aggregation-percent' },
+        { name: 'الجداول والعلاقات', prefix: 'joins', total: 7, completedId: 'stats-joins-completed', percentId: 'stats-joins-percent' },
+        { name: 'تعديل البيانات', prefix: 'crud', total: 5, completedId: 'stats-crud-completed', percentId: 'stats-crud-percent' },
+        { name: 'إدارة قواعد البيانات', prefix: 'database-management', total: 7, completedId: 'stats-db-management-completed', percentId: 'stats-db-management-percent' },
+        { name: 'مواضيع متقدمة', prefix: 'advanced', total: 10, completedId: 'stats-advanced-completed', percentId: 'stats-advanced-percent' },
+        { name: 'المراجع والأمثلة', prefix: 'references', total: 5, completedId: 'stats-references-completed', percentId: 'stats-references-percent' },
+        { name: 'المشاريع العملية', prefix: 'projects', total: 4, completedId: 'stats-projects-completed', percentId: 'stats-projects-percent' },
+      ];
+
+      let totalCompleted = 0;
+      sections.forEach(section => {
+        const sectionCompleted = completedArticles.filter(article => article.startsWith(section.prefix)).length;
+        const sectionPercent = Math.round((sectionCompleted / section.total) * 100);
+        totalCompleted += sectionCompleted;
+
+        const completedElement = document.getElementById(section.completedId);
+        const percentElement = document.getElementById(section.percentId);
+
+        if (completedElement) completedElement.textContent = sectionCompleted;
+        if (percentElement) percentElement.textContent = `${sectionPercent}%`;
+
+        // تحديث شريط التقدم لكل مستوى في road-map.md
+        const levelSection = Array.from(document.querySelectorAll('h2')).find(h2 => h2.textContent.includes(section.name));
+        if (levelSection) {
+          const levelProgress = levelSection.nextElementSibling.querySelector('.progress');
+          if (levelProgress) {
+            levelProgress.style.width = `${sectionPercent}%`;
+            levelProgress.style.transition = 'width 0.5s ease-in-out';
+          }
+        }
+      });
+
+      // تحديث المجموع الكلي في جدول الإحصائيات
+      const totalPercent = Math.round((totalCompleted / 60) * 100);
+      const totalCompletedElement = document.getElementById('stats-total-completed');
+      const totalPercentElement = document.getElementById('stats-total-percent');
+      if (totalCompletedElement) totalCompletedElement.textContent = totalCompleted;
+      if (totalPercentElement) totalPercentElement.textContent = `${totalPercent}%`;
+
+      // تحديث شريط التقدم العام في road-map.md
+      const overallProgress = document.getElementById('progress');
+      const progressText = document.getElementById('progress-text');
+      if (overallProgress) {
+        overallProgress.style.width = `${totalPercent}%`;
+        overallProgress.style.transition = 'width 0.5s ease-in-out';
+      }
+      if (progressText) {
+        progressText.textContent = `${totalPercent}% مكتمل`;
+      }
+
+      // تحديث شريط التقدم في معلومات المستخدم إذا كان مفتوحًا
+      const infoProgress = document.getElementById('infoProgress');
+      if (infoProgress && document.getElementById('userInfoModal')?.style.display === 'flex') {
+        const totalArticles = document.querySelectorAll('.course-item').length - 2;
+        const completedArticles = progressData.completedArticles.length;
+        const progressPercent = Math.round((completedArticles / totalArticles) * 100);
+        infoProgress.innerHTML = `
+          <div class="progress-bar">
+            <div class="progress" style="width: ${progressPercent}%"></div>
+          </div>
+          <span>${completedArticles} من ${totalArticles} درسًا مكتملًا (${progressPercent}%)</span>
+        `;
+      }
     } else {
       console.error('Failed to update progress:', progressData.message);
     }
