@@ -350,33 +350,34 @@
     <h2>معلومات المستخدم</h2>
 
       <div class="info-row">
-        <span class="info-label">الاسم:</span>
+        <span class="info-label">الاسم :</span>
         <span id="infoName" class="info-value"></span>
       </div>
     <div class="user-info">
       <div class="info-row">
-        <span class="info-label">اسم المستخدم:</span>
+        <span class="info-label">اسم المستخدم :</span>
         <span id="infoUsername" class="info-value"></span>
       </div>
     
       <div class="info-row">
-        <span class="info-label">البريد الإلكتروني:</span>
+        <span class="info-label">البريد الإلكتروني :</span>
         <span id="infoEmail" class="info-value"></span>
       </div>
       <div class="info-row">
-        <span class="info-label">رقم الهاتف:</span>
+        <span class="info-label">رقم الهاتف :</span>
         <span id="infoPhone" class="info-value"></span>
       </div>
      
       <div class="info-row">
-        <span class="info-label">التقدم:</span>
+        <span class="info-label">التقدم :</span>
         <span id="infoProgress" class="info-value"></span>
       </div>
     </div>
      <div class="info-row">
-        <span class="info-label">حالة الحساب:</span>
-        <span id="infoVerificationStatus" class="alert"></span>
+        <span class="info-label">حالة الحساب :</span>
       </div>
+              <span id="infoVerificationStatus" class="alert"></span>
+
     <button class="btn btn-primary" id="logoutBtnModal">تسجيل الخروج</button>
   </div>
 </div>
@@ -385,9 +386,9 @@
 <!-- نافذة إحصائيات التقدم -->
 <div id="statsModal" class="modal">
   <div class="modal-content">
-    <span class="close-button" onclick="document.getElementById('statsModal').style.display='none'">×</span>
+    <span class="close" onclick="document.getElementById('statsModal').style.display='none'">×</span>
     <h2><i class="fas fa-chart-line"></i> إحصائيات التقدم</h2>
-    <table class="stats-table">
+    <table class="markdown-content table">
       <thead>
         <tr>
           <th>المستوى</th>
@@ -468,8 +469,34 @@
   </div>
 </div>
 
-
-
+<!-- نافذة نصائح للتعلم الفعال -->
+<div id="tipsModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('tipsModal').style.display='none'">×</span>
+    <h2><i class="fas fa-lightbulb"></i> نصائح للتعلم الفعال</h2>
+    <h3><i class="fas fa-bullseye"></i> استراتيجية التعلم</h3>
+    <ul>
+      <li>ابدأ بالأساسيات: لا تتخطى المفاهيم الأولى</li>
+      <li>التطبيق العملي: مارس كل مفهوم بأمثلة حقيقية</li>
+      <li>التدرج المنطقي: اتبع الترتيب المقترح في المسار</li>
+    </ul>
+    <h3><i class="fas fa-tools"></i> أدوات التعلم المطلوبة</h3>
+    <ul>
+      <li>محرر SQL (MySQL Workbench, pgAdmin, أو SQLite)</li>
+      <li>قاعدة بيانات للتجريب</li>
+      <li>مجموعة بيانات للتطبيق العملي</li>
+    </ul>
+  
+    <h3><i class="fas fa-medal"></i> معايير الإنجاز</h3>
+    <ul>
+      <li>فهم المفهوم نظرياً</li>
+      <li>تطبيق عملي ناجح</li>
+      <li>حل التمارين المطلوبة</li>
+      <li>اجتياز الاختبار القصير</li>
+    </ul>
+    <p><i class="fas fa-running"></i> رحلة الألف ميل تبدأ بخطوة واحدة - ابدأ الآن!</p>
+  </div>
+</div>
 
 
 
