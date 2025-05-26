@@ -219,7 +219,7 @@
 
 ---
 
-## <i class="fas fa-chart-line"></i> إحصائيات التقدم
+<!-- ## <i class="fas fa-chart-line"></i> إحصائيات التقدم
 
 | المستوى | العناصر | المكتمل | النسبة |
 |---------|---------|----------|--------|
@@ -233,10 +233,10 @@
 | مواضيع متقدمة | 10 | <span id="stats-advanced-completed">0</span> | <span id="stats-advanced-percent">0%</span> |
 | المراجع والأمثلة | 5 | <span id="stats-references-completed">0</span> | <span id="stats-references-percent">0%</span> |
 | المشاريع العملية | 4 | <span id="stats-projects-completed">0</span> | <span id="stats-projects-percent">0%</span> |
-| **المجموع** | **60** | <span id="stats-total-completed">0</span> | <span id="stats-total-percent">0%</span> |
+| **المجموع** | **60** | <span id="stats-total-completed">0</span> | <span id="stats-total-percent">0%</span> | -->
 
 ---
-
+<!-- 
 ## <i class="fas fa-lightbulb"></i> نصائح للتعلم الفعال
 
 ### <i class="fas fa-bullseye"></i> استراتيجية التعلم
@@ -262,4 +262,4 @@
 
 ---
 
-*<i class="fas fa-running"></i> رحلة الألف ميل تبدأ بخطوة واحدة - ابدأ الآن!*
+*<i class="fas fa-running"></i> رحلة الألف ميل تبدأ بخطوة واحدة - ابدأ الآن!* -->
