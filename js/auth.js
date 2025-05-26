@@ -107,7 +107,9 @@ export const AuthService = {
       return { success: true };
     } catch (error) {
       console.error('Error saving progress:', error, error.data);
-      return { success: false, message: `فشل في حفظ التقدم: ${error.message}` };
+      return { success: false, message: `الضغط السريع : عند الضغط بسرعة، يتم إرسال عدة طلبات متتالية دون أن ينتظر الكود اكتمال الطلب الأول. هذا يؤدي إلى تداخل الطلبات، وبالتالي يقوم SQLdarwish بإلغاء الطلبات السابقة.` };
+            // return { success: false, message: `فشل في حفظ التقدم...: ${error.message}` };
+
     }
   },
 
