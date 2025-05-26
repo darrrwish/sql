@@ -175,7 +175,7 @@ body.light-mode .sidebar-item.active {
 pre {
   background-color: var(--darker-bg);
   border-radius: 8px;
-  padding: 1rem;
+  padding: 0rem;
   overflow-x: auto;
   margin-top: 1rem;
   color: var(--text-light);
@@ -1576,7 +1576,7 @@ pre {
   background-color: rgba(1, 117, 194, 0.05);
   border: 1px solid var(--dart-blue-light); /* استخدام اللون الرئيسي بدلاً من اللون الثابت */
   border-radius: 8px;
-  padding: 1rem;
+  padding: 0rem;
   overflow-x: auto;
   margin-top: 1rem;
   color: var(--text-light);
