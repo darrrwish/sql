@@ -6,7 +6,7 @@ import { ArticleManager } from './article.js';
 import { SQLRunner } from './sql-runner.js';
 import { EventHandlers } from './event-handlers.js';
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
   hljs.highlightAll();
   SQLRunner.init();
 
@@ -26,12 +26,32 @@ document.addEventListener('DOMContentLoaded', function () {
   if (lastArticle !== 'home' && !AuthService.isAuthenticated()) {
     lastArticle = 'home';
   }
-  ArticleManager.load(lastArticle);
+  await ArticleManager.load(lastArticle);
   ArticleManager.setActive(lastArticle);
 
-  // Initialize progress for authenticated users
+  // تحديث التقدم فور تحميل الصفحة مع التأكد من وجود العناصر
   if (AuthService.isAuthenticated()) {
-    EventHandlers.updateProgress(lastArticle);
+    try {
+      // إضافة تأخير بسيط لضمان تحميل DOM بالكامل
+      setTimeout(async () => {
+        await EventHandlers.updateProgress(lastArticle);
+        // التأكد من أن الشريط مرئي
+        const courseLevels = document.querySelectorAll('.course-level');
+        if (courseLevels.length === 0) {
+          console.error('Course levels not found in DOM');
+          return;
+        }
+        courseLevels.forEach(level => {
+          const progressBar = level.querySelector('.progress');
+          if (progressBar) {
+            progressBar.style.opacity = '1';
+            progressBar.style.transition = 'opacity 0.3s ease-in, width 0.5s ease-in-out';
+          }
+        });
+      }, 500); // تأخير 500 مللي ثانية لضمان تحميل DOM
+    } catch (error) {
+      console.error('Error updating progress on page load:', error);
+    }
   }
 
   AuthUI.loginToggle.addEventListener('click', () => {
