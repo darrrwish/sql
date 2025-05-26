@@ -381,6 +381,98 @@
   </div>
 </div>
 
+
+<!-- نافذة إحصائيات التقدم -->
+<div id="statsModal" class="modal">
+  <div class="modal-content">
+    <span class="close-button" onclick="document.getElementById('statsModal').style.display='none'">×</span>
+    <h2><i class="fas fa-chart-line"></i> إحصائيات التقدم</h2>
+    <table class="stats-table">
+      <thead>
+        <tr>
+          <th>المستوى</th>
+          <th>العناصر</th>
+          <th>المكتمل</th>
+          <th>النسبة</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>مفاهيم أساسية</td>
+          <td>4</td>
+          <td><span id="modal-stats-basics-completed">0</span></td>
+          <td><span id="modal-stats-basics-percent">0%</span></td>
+        </tr>
+        <tr>
+          <td>أساسيات SQL</td>
+          <td>5</td>
+          <td><span id="modal-stats-sql-basics-completed">0</span></td>
+          <td><span id="modal-stats-sql-basics-percent">0%</span></td>
+        </tr>
+        <tr>
+          <td>استعلام البيانات</td>
+          <td>8</td>
+          <td><span id="modal-stats-queries-completed">0</span></td>
+          <td><span id="modal-stats-queries-percent">0%</span></td>
+        </tr>
+        <tr>
+          <td>دوال التجميع</td>
+          <td>5</td>
+          <td><span id="modal-stats-aggregation-completed">0</span></td>
+          <td><span id="modal-stats-aggregation-percent">0%</span></td>
+        </tr>
+        <tr>
+          <td>الجداول والعلاقات</td>
+          <td>7</td>
+          <td><span id="modal-stats-joins-completed">0</span></td>
+          <td><span id="modal-stats-joins-percent">0%</span></td>
+        </tr>
+        <tr>
+          <td>تعديل البيانات</td>
+          <td>5</td>
+          <td><span id="modal-stats-crud-completed">0</span></td>
+          <td><span id="modal-stats-crud-percent">0%</span></td>
+        </tr>
+        <tr>
+          <td>إدارة قواعد البيانات</td>
+          <td>7</td>
+          <td><span id="modal-stats-db-management-completed">0</span></td>
+          <td><span id="modal-stats-db-management-percent">0%</span></td>
+        </tr>
+        <tr>
+          <td>مواضيع متقدمة</td>
+          <td>10</td>
+          <td><span id="modal-stats-advanced-completed">0</span></td>
+          <td><span id="modal-stats-advanced-percent">0%</span></td>
+        </tr>
+        <tr>
+          <td>المراجع والأمثلة</td>
+          <td>5</td>
+          <td><span id="modal-stats-references-completed">0</span></td>
+          <td><span id="modal-stats-references-percent">0%</span></td>
+        </tr>
+        <tr>
+          <td>المشاريع العملية</td>
+          <td>4</td>
+          <td><span id="modal-stats-projects-completed">0</span></td>
+          <td><span id="modal-stats-projects-percent">0%</span></td>
+        </tr>
+        <tr>
+          <td><strong>المجموع</strong></td>
+          <td><strong>60</strong></td>
+          <td><strong><span id="modal-stats-total-completed">0</span></strong></td>
+          <td><strong><span id="modal-stats-total-percent">0%</span></strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
   <!-- نافذة تسجيل الدخول -->
   <div id="loginModal" class="modal" style="display: none;">
     <div class="modal-content">

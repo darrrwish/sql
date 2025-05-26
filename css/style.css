@@ -2212,9 +2212,36 @@ body.light-mode .complete-lesson-btn:hover:not(:disabled) {
 }
 
 label {
-  margin: 5px 0;
+  margin: 3px 0;
   display: block;
 }
 .lesson-checkbox + i.far.fa-square {
   margin-right: 5px;
 }
+
+
+
+
+
+
+
+/* تنسيق الأزرار في نافذة معلومات المستخدم */
+.user-info-buttons {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.user-info-buttons button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--dart-blue);
+  transition: color 0.3s;
+}
+
+.user-info-buttons button:hover {
+  color: var(--dart-blue-light);
+}
+

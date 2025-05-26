@@ -155,10 +155,129 @@ export const EventHandlers = {
           <div class="progress" style="width: ${progressPercent}%"></div>
         </div>
         <span>${completedArticles} من ${totalArticles} درسًا مكتملًا (${progressPercent}%)</span>
+        <div class="user-info-buttons">
+          <button id="showStatsBtn" title="إحصائيات التقدم"><i class="fas fa-chart-line"></i></button>
+          <button id="showTipsBtn" title="نصائح للتعلم الفعال"><i class="fas fa-lightbulb"></i></button>
+          <button id="resetProgressBtn" title="حذف التقدم"><i class="fas fa-trash-alt"></i></button>
+        </div>
       `;
     }
 
+    // إضافة مستمعات الأحداث للأزرار
+    const showStatsBtn = document.getElementById('showStatsBtn');
+    const showTipsBtn = document.getElementById('showTipsBtn');
+    const resetProgressBtn = document.getElementById('resetProgressBtn');
+    
+    if (showStatsBtn) {
+      showStatsBtn.onclick = this.showStatsModal.bind(this);
+    }
+    if (showTipsBtn) {
+      showTipsBtn.onclick = this.showTipsModal.bind(this);
+    }
+    if (resetProgressBtn) {
+      resetProgressBtn.onclick = this.resetProgress.bind(this);
+    }
+
     userInfoModal.style.display = 'flex';
+  },
+
+  showStatsModal: async function() {
+    const statsModal = document.getElementById('statsModal');
+    if (statsModal) {
+      // تحديث بيانات الإحصائيات في النافذة المنبثقة بناءً على البيانات الحالية
+      const user = AuthService.getCurrentUser();
+      if (user) {
+        const progressData = await this.getProgress(user.id);
+        if (progressData.success) {
+          const completedArticles = progressData.completedArticles;
+
+          const sections = [
+            { name: 'مفاهيم أساسية', prefix: 'concepts', total: 4, completedId: 'modal-stats-basics-completed', percentId: 'modal-stats-basics-percent' },
+            { name: 'أساسيات SQL', prefix: 'basics', total: 5, completedId: 'modal-stats-sql-basics-completed', percentId: 'modal-stats-sql-basics-percent' },
+            { name: 'استعلام البيانات', prefix: 'queries', total: 8, completedId: 'modal-stats-queries-completed', percentId: 'modal-stats-queries-percent' },
+            { name: 'دوال التجميع', prefix: 'aggregation', total: 5, completedId: 'modal-stats-aggregation-completed', percentId: 'modal-stats-aggregation-percent' },
+            { name: 'الجداول والعلاقات', prefix: 'joins', total: 7, completedId: 'modal-stats-joins-completed', percentId: 'modal-stats-joins-percent' },
+            { name: 'تعديل البيانات', prefix: 'crud', total: 5, completedId: 'modal-stats-crud-completed', percentId: 'modal-stats-crud-percent' },
+            { name: 'إدارة قواعد البيانات', prefix: 'database-management', total: 7, completedId: 'modal-stats-db-management-completed', percentId: 'modal-stats-db-management-percent' },
+            { name: 'مواضيع متقدمة', prefix: 'advanced', total: 10, completedId: 'modal-stats-advanced-completed', percentId: 'modal-stats-advanced-percent' },
+            { name: 'المراجع والأمثلة', prefix: 'references', total: 5, completedId: 'modal-stats-references-completed', percentId: 'modal-stats-references-percent' },
+            { name: 'المشاريع العملية', prefix: 'projects', total: 4, completedId: 'modal-stats-projects-completed', percentId: 'modal-stats-projects-percent' },
+          ];
+
+          let totalCompleted = 0;
+          sections.forEach(section => {
+            const sectionCompleted = completedArticles.filter(article => article.startsWith(section.prefix)).length;
+            const sectionPercent = Math.round((sectionCompleted / section.total) * 100);
+            totalCompleted += sectionCompleted;
+
+            const completedElement = document.getElementById(section.completedId);
+            const percentElement = document.getElementById(section.percentId);
+
+            if (completedElement) completedElement.textContent = sectionCompleted;
+            if (percentElement) percentElement.textContent = `${sectionPercent}%`;
+          });
+
+          const totalPercent = Math.round((totalCompleted / 60) * 100);
+          const totalCompletedElement = document.getElementById('modal-stats-total-completed');
+          const totalPercentElement = document.getElementById('modal-stats-total-percent');
+          if (totalCompletedElement) totalCompletedElement.textContent = totalCompleted;
+          if (totalPercentElement) totalPercentElement.textContent = `${totalPercent}%`;
+        }
+      }
+      statsModal.style.display = 'flex';
+    }
+  },
+
+  showTipsModal: function() {
+    const tipsModal = document.getElementById('tipsModal');
+    if (tipsModal) {
+      tipsModal.style.display = 'flex';
+    }
+  },
+
+  resetProgress: async function() {
+    if (!confirm('هل أنت متأكد أنك تريد حذف تقدمك؟ هذا الإجراء لا يمكن التراجع عنه.')) {
+      return;
+    }
+
+    const user = AuthService.getCurrentUser();
+    if (!user) {
+      console.error('No user data available');
+      return;
+    }
+
+    // حذف تقدم المستخدم
+    const result = await AuthService.resetProgress(user.id);
+    if (result.success) {
+      // تحديث الواجهة بعد الحذف
+      await this.updateProgress();
+      const infoProgress = document.getElementById('infoProgress');
+      if (infoProgress) {
+        const totalArticles = document.querySelectorAll('.course-item').length - 2;
+        infoProgress.innerHTML = `
+          <div class="progress-bar">
+            <div class="progress" style="width: 0%"></div>
+          </div>
+          <span>0 من ${totalArticles} درسًا مكتملًا (0%)</span>
+          <div class="user-info-buttons">
+            <button id="showStatsBtn" title="إحصائيات التقدم"><i class="fas fa-chart-line"></i></button>
+            <button id="showTipsBtn" title="نصائح للتعلم الفعال"><i class="fas fa-lightbulb"></i></button>
+            <button id="resetProgressBtn" title="حذف التقدم"><i class="fas fa-trash-alt"></i></button>
+          </div>
+        `;
+        // إعادة ربط مستمعات الأحداث بعد تحديث DOM
+        const showStatsBtn = document.getElementById('showStatsBtn');
+        const showTipsBtn = document.getElementById('showTipsBtn');
+        const resetProgressBtn = document.getElementById('resetProgressBtn');
+        if (showStatsBtn) showStatsBtn.onclick = this.showStatsModal.bind(this);
+        if (showTipsBtn) showTipsBtn.onclick = this.showTipsModal.bind(this);
+        if (resetProgressBtn) resetProgressBtn.onclick = this.resetProgress.bind(this);
+      }
+      alert('تم حذف تقدمك بنجاح!');
+    } else {
+      console.error('Failed to reset progress:', result.message);
+      alert('حدث خطأ أثناء حذف التقدم. حاول مرة أخرى.');
+    }
   },
 
   handleLogout: function() {
@@ -310,7 +429,19 @@ export const EventHandlers = {
             <div class="progress" style="width: ${progressPercent}%"></div>
           </div>
           <span>${completedArticles} من ${totalArticles} درسًا مكتملًا (${progressPercent}%)</span>
+          <div class="user-info-buttons">
+            <button id="showStatsBtn" title="إحصائيات التقدم"><i class="fas fa-chart-line"></i></button>
+            <button id="showTipsBtn" title="نصائح للتعلم الفعال"><i class="fas fa-lightbulb"></i></button>
+            <button id="resetProgressBtn" title="حذف التقدم"><i class="fas fa-trash-alt"></i></button>
+          </div>
         `;
+        // إعادة ربط مستمعات الأحداث
+        const showStatsBtn = document.getElementById('showStatsBtn');
+        const showTipsBtn = document.getElementById('showTipsBtn');
+        const resetProgressBtn = document.getElementById('resetProgressBtn');
+        if (showStatsBtn) showStatsBtn.onclick = this.showStatsModal.bind(this);
+        if (showTipsBtn) showTipsBtn.onclick = this.showTipsModal.bind(this);
+        if (resetProgressBtn) resetProgressBtn.onclick = this.resetProgress.bind(this);
       }
     } else {
       console.error('Failed to update progress:', progressData.message);

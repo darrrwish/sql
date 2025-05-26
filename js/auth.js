@@ -127,6 +127,27 @@ export const AuthService = {
       console.error('Error fetching progress:', error, error.data);
       return { success: false, message: `فشل في جلب التقدم: ${error.message}` };
     }
+  },
+
+  async resetProgress(userId) {
+    try {
+      console.log(`Resetting progress for user: ${userId}`);
+      // استرجاع جميع سجلات التقدم للمستخدم
+      const records = await this.pb.collection('user_progress').getList(1, 50, {
+        filter: `user_id ~ "${userId}"`
+      });
+
+      // حذف كل سجل تقدم
+      for (const record of records.items) {
+        await this.pb.collection('user_progress').delete(record.id);
+      }
+
+      console.log('Progress reset successfully');
+      return { success: true };
+    } catch (error) {
+      console.error('Error resetting progress:', error);
+      return { success: false, message: `فشل في حذف التقدم: ${error.message}` };
+    }
   }
 };
 
