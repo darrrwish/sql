@@ -1592,7 +1592,7 @@ pre {
   background-color: var(--code-bg-dark); /* استخدام المتغير الجديد */
   border: 1px solid var(--dart-blue-light);
   border-radius: 8px;
-  padding: 1rem;
+  padding: 0rem;
   overflow-x: auto;
   margin-top: 1rem;
   color: var(--text-light);
@@ -1747,7 +1747,7 @@ body.light-mode .sql-btn:hover {
 /* ✅ نتيجة التشغيل */
 .sql-result {
   display: none; /* ❌ مخفي افتراضيًا */
-  padding: 1rem;
+  padding: 0.5rem;
   margin-top: 0.5rem;
   background-color: var(--code-bg-dark);
   color: var(--text-light);
