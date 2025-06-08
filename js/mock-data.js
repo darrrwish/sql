@@ -20,13 +20,14 @@ export const mockData = {
       { id: 4, name: 'مينا فادي', specialty: 'قلب', phone: '01011223344' },
       { id: 5, name: 'شهاب عبد الله', specialty: 'باطنة', phone: '01122334455' }
     ],
-    visits: [
-      { id: 1, patient_id: 1, doctor_id: 3, visit_date: '2024-04-28', notes: 'سعال وارتفاع حرارة' },
-      { id: 2, patient_id: 2, doctor_id: 5, visit_date: '2024-04-30', notes: 'ضغط مرتفع وصداع' },
-      { id: 3, patient_id: 3, doctor_id: 5, visit_date: '2024-05-01', notes: 'دوخة وألم بالرأس' },
-      { id: 4, patient_id: 4, doctor_id: 1, visit_date: '2024-05-03', notes: 'تحليل سكر' },
-      { id: 5, patient_id: 5, doctor_id: 5, visit_date: '2024-05-04', notes: 'ضغط مرتفع' }
-    ],
+visits: [
+  { id: 1, patient_id: 1, doctor_id: 3, visit_date: '2024-04-28', notes: 'سعال وارتفاع حرارة', fee: 150 },
+  { id: 2, patient_id: 2, doctor_id: 5, visit_date: '2024-04-30', notes: 'ضغط مرتفع وصداع', fee: 200 },
+  { id: 3, patient_id: 3, doctor_id: 5, visit_date: '2024-05-01', notes: 'دوخة وألم بالرأس', fee: 180 },
+  { id: 4, patient_id: 4, doctor_id: 1, visit_date: '2024-05-03', notes: 'تحليل سكر', fee: 220 },
+  { id: 5, patient_id: 5, doctor_id: 5, visit_date: '2024-05-04', notes: 'ضغط مرتفع', fee: 190 }
+],
+
     medications: [
       { id: 1, patient_id: 1, medication: 'أموكسيسيللين', dose: '500mg/8h', start_date: '2024-04-28', end_date: '2024-05-05' },
       { id: 2, patient_id: 2, medication: 'أملوديبين', dose: '5mg/24h', start_date: '2024-04-30', end_date: null },
