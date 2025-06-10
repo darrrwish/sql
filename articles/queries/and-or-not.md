@@ -22,6 +22,7 @@
 ```sql
 SELECT * FROM patients
 WHERE has_diabetes = 1 AND has_high_pressure = 1;
+```
 
 النتيجة: المرضى اللي الشرطين صح عندهم.
 
@@ -39,7 +40,7 @@ WHERE has_diabetes = 1 AND has_high_pressure = 1;
 ```sql
 SELECT * FROM patients
 WHERE has_diabetes = 1 OR has_high_pressure = 1;
-
+```
 النتيجة: أي مريض عنده سكر أو ضغط أو الاتنين.
 
 
@@ -52,15 +53,16 @@ WHERE has_diabetes = 1 OR has_high_pressure = 1;
 مثال:
 
 عايزين نعرض المرضى اللي ما عندهمش سكر:
-
+```sql
 SELECT * FROM patients
 WHERE NOT has_diabetes = 1;
+```
 
 أو ممكن نكتبها كده:
-
+```
 SELECT * FROM patients
 WHERE has_diabetes != 1;
-
+```
 النتيجة: المرضى اللي مش عندهم سكر.
 
 
@@ -74,11 +76,11 @@ AND دايمًا بياخد أولوية أعلى من OR في التنفيذ.
 
 
 مثال مع أقواس:
-
+```
 SELECT * FROM patients
 WHERE (has_diabetes = 1 OR has_high_pressure = 1)
 AND age > 60;
-
+```
 المعنى هنا: نعرض المرضى الكبار في السن اللي عندهم سكر أو ضغط.
 
 
