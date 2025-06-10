@@ -36,6 +36,7 @@ WHERE has_diabetes = 1 AND has_high_pressure = 1;
 
 عايزين نعرض المرضى اللي عندهم سكر أو ضغط عالي:
 
+```sql
 SELECT * FROM patients
 WHERE has_diabetes = 1 OR has_high_pressure = 1;
 
