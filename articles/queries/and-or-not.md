@@ -18,7 +18,7 @@
 يستخدم لدمج شرطين أو أكثر، ويجب أن تتحقق جميع الشروط حتى يظهر الصف في النتائج.
 
 ### **بناء الجملة:**
-```
+```javascript
 SELECT * FROM table_name 
 WHERE condition1 AND condition2 AND condition3 ...;
 ```
