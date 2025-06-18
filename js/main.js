@@ -6,6 +6,249 @@ import { ArticleManager } from './article.js';
 import { SQLRunner } from './sql-runner.js';
 import { EventHandlers } from './event-handlers.js';
 
+// دالة لإنشاء مشغل فيديو
+function createVideoPlayer(videoSource, thumbnailUrl = null) {
+  const videoPlayer = document.createElement('div');
+  videoPlayer.className = 'video-player';
+  
+  // عنصر الفيديو
+  const videoContainer = document.createElement('div');
+  videoContainer.className = 'video-container';
+  
+  const video = document.createElement('video');
+  video.src = videoSource;
+  video.preload = 'metadata';
+  
+  // عناصر التحكم
+  const controls = document.createElement('div');
+  controls.className = 'video-controls';
+  
+  // زر التشغيل/الإيقاف
+  const playButton = document.createElement('button');
+  playButton.innerHTML = '<i class="fas fa-play"></i>';
+  playButton.className = 'play-button';
+  
+  // شريط التقدم
+  const progressContainer = document.createElement('div');
+  progressContainer.className = 'video-progress';
+  
+  const progressFilled = document.createElement('div');
+  progressFilled.className = 'video-progress-filled';
+  progressContainer.appendChild(progressFilled);
+  
+  // وقت الفيديو
+  const timeDisplay = document.createElement('span');
+  timeDisplay.className = 'video-time';
+  timeDisplay.textContent = '00:00 / 00:00';
+  
+  // التحكم في الصوت
+  const volumeContainer = document.createElement('div');
+  volumeContainer.className = 'video-volume';
+  
+  const volumeButton = document.createElement('button');
+  volumeButton.innerHTML = '<i class="fas fa-volume-up"></i>';
+  
+  const volumeSlider = document.createElement('div');
+  volumeSlider.className = 'video-volume-slider';
+  
+  const volumeFilled = document.createElement('div');
+  volumeFilled.className = 'video-volume-filled';
+  volumeSlider.appendChild(volumeFilled);
+  
+  volumeContainer.appendChild(volumeButton);
+  volumeContainer.appendChild(volumeSlider);
+  
+  // زر ملء الشاشة
+  const fullscreenButton = document.createElement('button');
+  fullscreenButton.innerHTML = '<i class="fas fa-expand"></i>';
+  
+  // تجميع عناصر التحكم
+  controls.appendChild(playButton);
+  controls.appendChild(progressContainer);
+  controls.appendChild(timeDisplay);
+  controls.appendChild(volumeContainer);
+  controls.appendChild(fullscreenButton);
+  
+  // الصورة المصغرة (إن وجدت)
+  if (thumbnailUrl) {
+    const thumbnail = document.createElement('div');
+    thumbnail.className = 'video-thumbnail';
+    thumbnail.style.backgroundImage = `url(${thumbnailUrl})`;
+    thumbnail.innerHTML = '<i class="fas fa-play"></i>';
+    
+    thumbnail.addEventListener('click', () => {
+      thumbnail.style.display = 'none';
+      video.play();
+      playButton.innerHTML = '<i class="fas fa-pause"></i>';
+    });
+    
+    videoContainer.appendChild(thumbnail);
+  }
+  
+  videoContainer.appendChild(video);
+  videoPlayer.appendChild(videoContainer);
+  videoPlayer.appendChild(controls);
+  
+  // أحداث التحكم
+  let isDraggingProgress = false;
+  let isDraggingVolume = false;
+  
+  // تشغيل/إيقاف الفيديو
+  playButton.addEventListener('click', () => {
+    if (video.paused) {
+      video.play();
+      playButton.innerHTML = '<i class="fas fa-pause"></i>';
+    } else {
+      video.pause();
+      playButton.innerHTML = '<i class="fas fa-play"></i>';
+    }
+  });
+  
+  video.addEventListener('play', () => {
+    playButton.innerHTML = '<i class="fas fa-pause"></i>';
+  });
+  
+  video.addEventListener('pause', () => {
+    playButton.innerHTML = '<i class="fas fa-play"></i>';
+  });
+  
+  // تحديث شريط التقدم
+  video.addEventListener('timeupdate', () => {
+    if (!isDraggingProgress) {
+      const percent = (video.currentTime / video.duration) * 100;
+      progressFilled.style.width = `${percent}%`;
+    }
+    
+    // تحديث الوقت
+    const currentMinutes = Math.floor(video.currentTime / 60);
+    const currentSeconds = Math.floor(video.currentTime % 60);
+    const durationMinutes = Math.floor(video.duration / 60);
+    const durationSeconds = Math.floor(video.duration % 60);
+    
+    timeDisplay.textContent = 
+      `${currentMinutes.toString().padStart(2, '0')}:${currentSeconds.toString().padStart(2, '0')} / 
+       ${durationMinutes.toString().padStart(2, '0')}:${durationSeconds.toString().padStart(2, '0')}`;
+  });
+  
+  // النقر على شريط التقدم
+  progressContainer.addEventListener('click', (e) => {
+    const rect = progressContainer.getBoundingClientRect();
+    const pos = (e.clientX - rect.left) / rect.width;
+    video.currentTime = pos * video.duration;
+  });
+  
+  // السحب على شريط التقدم
+  progressContainer.addEventListener('mousedown', () => {
+    isDraggingProgress = true;
+  });
+  
+  document.addEventListener('mousemove', (e) => {
+    if (isDraggingProgress) {
+      const rect = progressContainer.getBoundingClientRect();
+      let pos = (e.clientX - rect.left) / rect.width;
+      
+      if (pos < 0) pos = 0;
+      if (pos > 1) pos = 1;
+      
+      progressFilled.style.width = `${pos * 100}%`;
+      video.currentTime = pos * video.duration;
+    }
+  });
+  
+  document.addEventListener('mouseup', () => {
+    isDraggingProgress = false;
+  });
+  
+  // التحكم في الصوت
+  video.volume = 0.8; // مستوى صوت افتراضي
+  
+  volumeButton.addEventListener('click', () => {
+    if (video.volume > 0) {
+      video.volume = 0;
+      volumeButton.innerHTML = '<i class="fas fa-volume-mute"></i>';
+      volumeFilled.style.width = '0%';
+    } else {
+      video.volume = 0.8;
+      volumeButton.innerHTML = '<i class="fas fa-volume-up"></i>';
+      volumeFilled.style.width = '80%';
+    }
+  });
+  
+  // النقر على شريط الصوت
+  volumeSlider.addEventListener('click', (e) => {
+    const rect = volumeSlider.getBoundingClientRect();
+    let pos = (e.clientX - rect.left) / rect.width;
+    
+    if (pos < 0) pos = 0;
+    if (pos > 1) pos = 1;
+    
+    video.volume = pos;
+    volumeFilled.style.width = `${pos * 100}%`;
+    
+    if (pos === 0) {
+      volumeButton.innerHTML = '<i class="fas fa-volume-mute"></i>';
+    } else if (pos < 0.5) {
+      volumeButton.innerHTML = '<i class="fas fa-volume-down"></i>';
+    } else {
+      volumeButton.innerHTML = '<i class="fas fa-volume-up"></i>';
+    }
+  });
+  
+  // السحب على شريط الصوت
+  volumeSlider.addEventListener('mousedown', () => {
+    isDraggingVolume = true;
+  });
+  
+  document.addEventListener('mousemove', (e) => {
+    if (isDraggingVolume) {
+      const rect = volumeSlider.getBoundingClientRect();
+      let pos = (e.clientX - rect.left) / rect.width;
+      
+      if (pos < 0) pos = 0;
+      if (pos > 1) pos = 1;
+      
+      video.volume = pos;
+      volumeFilled.style.width = `${pos * 100}%`;
+      
+      if (pos === 0) {
+        volumeButton.innerHTML = '<i class="fas fa-volume-mute"></i>';
+      } else if (pos < 0.5) {
+        volumeButton.innerHTML = '<i class="fas fa-volume-down"></i>';
+      } else {
+        volumeButton.innerHTML = '<i class="fas fa-volume-up"></i>';
+      }
+    }
+  });
+  
+  document.addEventListener('mouseup', () => {
+    isDraggingVolume = false;
+  });
+  
+  // ملء الشاشة
+  fullscreenButton.addEventListener('click', () => {
+    if (video.requestFullscreen) {
+      video.requestFullscreen();
+    } else if (video.webkitRequestFullscreen) {
+      video.webkitRequestFullscreen();
+    } else if (video.msRequestFullscreen) {
+      video.msRequestFullscreen();
+    }
+  });
+  
+  return videoPlayer;
+}
+
+// دالة لتحويل روابط الفيديو إلى مشغلات
+function initVideoPlayers() {
+  document.querySelectorAll('.video-embed').forEach(embed => {
+    const videoSource = embed.getAttribute('data-src');
+    const thumbnail = embed.getAttribute('data-thumbnail');
+    
+    const videoPlayer = createVideoPlayer(videoSource, thumbnail);
+    embed.replaceWith(videoPlayer);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', async function () {
   hljs.highlightAll();
   SQLRunner.init();
@@ -32,10 +275,8 @@ document.addEventListener('DOMContentLoaded', async function () {
   // تحديث التقدم فور تحميل الصفحة مع التأكد من وجود العناصر
   if (AuthService.isAuthenticated()) {
     try {
-      // إضافة تأخير بسيط لضمان تحميل DOM بالكامل
       setTimeout(async () => {
         await EventHandlers.updateProgress(lastArticle);
-        // التأكد من أن الشريط مرئي
         const courseLevels = document.querySelectorAll('.course-level');
         if (courseLevels.length === 0) {
           console.error('Course levels not found in DOM');
@@ -48,7 +289,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             progressBar.style.transition = 'opacity 0.3s ease-in, width 0.5s ease-in-out';
           }
         });
-      }, 500); // تأخير 500 مللي ثانية لضمان تحميل DOM
+      }, 500);
     } catch (error) {
       console.error('Error updating progress on page load:', error);
     }
@@ -99,5 +340,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     item.addEventListener('click', EventHandlers.handleArticleClick);
   });
 
-  window.addEventListener('resize', SidebarManager.handleVisibility);
+  // استدعاء الدالة لتحويل الفيديوهات إلى مشغلات
+  initVideoPlayers();
 });
