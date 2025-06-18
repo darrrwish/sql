@@ -841,13 +841,15 @@ body.light-mode .theme-toggle:hover {
   margin: 1.5rem 0;
   font-size: 0.95rem;
   direction: rtl;
+    text-align: center;
+
 }
 
 .markdown-content th {
   background-color: var(--dart-blue-light);
   color: white;
   padding: 0.75rem;
-  text-align: right;
+  text-align: center;
   font-weight: bold;
 }
 
@@ -1166,6 +1168,8 @@ blockquote footer {
   display: block;
   overflow-x: auto;
   white-space: nowrap;
+    text-align: center;
+
 }
 
 /* تحسينات للأكواد */
@@ -1639,6 +1643,8 @@ body.light-mode pre {
 .markdown-content table {
   margin-top: 0.7rem;
   margin-bottom: 0.7rem;
+    text-align: center;
+
 }
 
 /* تقليل المسافات للأسطر الأفقية */
@@ -2278,22 +2284,7 @@ label {
   text-align: center !important;
 }
 
-/* إصلاح مشكلة التجاوز */
-.markdown-content table {
-  float: none !important;
-  display: table !important;
-}
 
-/* التأكد من أن الجدول لا يأخذ العرض الكامل */
-.markdown-content table:not(.sql-table) {
-  width: auto !important;
-}
-
-/* تنسيق خاص للجداول الناتجة عن SQL Runner */
-.sql-table {
-  margin: 1rem auto !important;
-  display: table !important;
-}
 
 
 
