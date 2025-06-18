@@ -2245,3 +2245,54 @@ label {
   color: var(--dart-blue-light);
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ///////////////////////////////////////////////////////////////////////// */
+
+/* تنسيق الجداول في منتصف الصفحة */
+.markdown-content table {
+  margin-left: auto;
+  margin-right: auto;
+  width: auto !important;
+  max-width: 100%;
+  text-align: center;
+  direction:rtl ;
+  unicode-bidi: plaintext;
+}
+
+.markdown-content th,
+.markdown-content td {
+  text-align: center !important;
+}
+
+/* إصلاح مشكلة التجاوز */
+.markdown-content table {
+  float: none !important;
+  display: table !important;
+}
+
+/* التأكد من أن الجدول لا يأخذ العرض الكامل */
+.markdown-content table:not(.sql-table) {
+  width: auto !important;
+}
+
+/* تنسيق خاص للجداول الناتجة عن SQL Runner */
+.sql-table {
+  margin: 1rem auto !important;
+  display: table !important;
+}
+
+
