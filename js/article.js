@@ -1,3 +1,4 @@
+// article.js
 import { AuthService } from './auth.js';
 import { EventHandlers } from './event-handlers.js';
 
@@ -102,22 +103,25 @@ export const ArticleManager = {
             if (result.success) {
               completeButton.disabled = true;
               completeButton.style.opacity = '0.5';
-              contentDiv.innerHTML += `
-                <div class="alert alert-success">
-                  <i class="fas fa-check-circle"></i> تم تسجيل إكمال الدرس بنجاح!
-                </div>
-              `;
+              // Add success message without rewriting the entire contentDiv
+              const successMessage = document.createElement('div');
+              successMessage.className = 'alert alert-success';
+              successMessage.innerHTML = '<i class="fas fa-check-circle"></i> تم تسجيل إكمال الدرس بنجاح!';
+              contentDiv.appendChild(successMessage);
+              // Reinitialize SQLRunner to ensure code blocks are still functional
+              import('./sql-runner.js').then(({ SQLRunner }) => {
+                SQLRunner.init();
+              });
               console.log(`Article ${articleName} marked as complete`);
             } else {
               throw new Error(result.message || 'فشل في تسجيل إكمال الدرس');
             }
           } catch (error) {
             console.error('Error marking article complete:', error);
-            contentDiv.innerHTML += `
-              <div class="alert alert-danger">
-                <i class="fas fa-exclamation-circle"></i> ${error.message || 'فشل في تسجيل إكمال الدرس. حاول مرة أخرى.'}
-              </div>
-            `;
+            const errorMessage = document.createElement('div');
+            errorMessage.className = 'alert alert-danger';
+            errorMessage.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${error.message || 'فشل في تسجيل إكمال الدرس. حاول مرة أخرى.'}`;
+            contentDiv.appendChild(errorMessage);
           }
         });
 
