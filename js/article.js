@@ -69,6 +69,8 @@ export const ArticleManager = {
       });
 
       initVideoPlayers(); // لتفعيل الفيديوهات في المقال الجديد
+      await EventHandlers.updateProgress(articleName);
+
 
       // Apply syntax highlighting and direction to code blocks
       document.querySelectorAll('pre code').forEach(block => {
