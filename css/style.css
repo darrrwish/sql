@@ -2494,3 +2494,69 @@ body.light-mode .video-volume-filled {
   display: table !important;
 } */
 
+
+
+/* باقي الكود يبقى كما هو حتى قسم الـ hr */
+
+/* تنسيق الجداول الأصلي */
+.markdown-content table {
+  margin-left: auto;
+  margin-right: auto;
+  width: auto !important;
+  max-width: 100%;
+  text-align: center;
+  direction: rtl;
+  unicode-bidi: plaintext;
+}
+
+.markdown-content th,
+.markdown-content td {
+  text-align: center !important;
+}
+
+/* تنسيق الأسطر الأفقية العادية (---) */
+.markdown-content hr {
+  border: none;
+  border-top: 2px solid var(--dart-blue-light);
+  margin: 1rem 0;
+  opacity: 0.4;
+  transition: all 0.3s ease;
+}
+
+body.light-mode .markdown-content hr {
+  border-top: 1px solid var(--dart-blue);
+  opacity: 0.5;
+}
+
+/* فاصل جديد لـ ---- بين العناصر تحت العنوان الفرعي */
+.markdown-content hr.subsection-divider {
+  border: none;
+  border-top: 2px dashed var(--dart-blue-light); /* خط متقطع أنيق */
+  margin: 1rem 10rem;
+  opacity: 0.7;
+  height: 1rem;
+  position: relative;
+  text-align: center;
+
+}
+
+body.light-mode .markdown-content hr.subsection-divider {
+  border-top: 2px dashed var(--dart-blue);
+}
+
+
+
+
+/* ضمان أن الفاصل يظهر فقط بين العناصر تحت العنوان الفرعي */
+.markdown-content h2 + hr.subsection-divider,
+.markdown-content h3 + hr.subsection-divider {
+  display: none; /* إخفاء الفاصل مباشرة بعد العنوان */
+}
+
+.markdown-content p + hr.subsection-divider,
+.markdown-content ul + hr.subsection-divider,
+.markdown-content ol + hr.subsection-divider {
+  margin-top: 1rem; /* تقليل المسافة فوق الفاصل */
+}
+
+/* باقي الكود يبقى كما هو بدون تغيير */

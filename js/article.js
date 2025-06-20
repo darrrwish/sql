@@ -10,7 +10,6 @@ export const ArticleManager = {
       return;
     }
 
-    
     try {
       // Check authentication and verification for non-home articles
       if (articleName !== 'home') {
@@ -61,7 +60,9 @@ export const ArticleManager = {
       }
 
       const markdown = await response.text();
-      contentDiv.innerHTML = marked.parse(markdown, {
+      // Replace ---- with <hr class="subsection-divider"> for custom styling
+      const modifiedMarkdown = markdown.replace(/----/g, '<hr class="subsection-divider">');
+      contentDiv.innerHTML = marked.parse(modifiedMarkdown, {
         langPrefix: 'language-',
         highlight: (code, lang) => {
           const language = hljs.getLanguage(lang) ? lang : 'plaintext';
@@ -71,7 +72,6 @@ export const ArticleManager = {
 
       initVideoPlayers(); // لتفعيل الفيديوهات في المقال الجديد
       await EventHandlers.updateProgress(articleName);
-
 
       // Apply syntax highlighting and direction to code blocks
       document.querySelectorAll('pre code').forEach(block => {
@@ -109,12 +109,10 @@ export const ArticleManager = {
             if (result.success) {
               completeButton.disabled = true;
               completeButton.style.opacity = '0.5';
-              // Add success message without rewriting the entire contentDiv
               const successMessage = document.createElement('div');
               successMessage.className = 'alert alert-success';
               successMessage.innerHTML = '<i class="fas fa-check-circle"></i> تم تسجيل إكمال الدرس بنجاح!';
               contentDiv.appendChild(successMessage);
-              // Reinitialize SQLRunner to ensure code blocks are still functional
               import('./sql-runner.js').then(({ SQLRunner }) => {
                 SQLRunner.init();
               });
