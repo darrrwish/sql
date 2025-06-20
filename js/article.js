@@ -10,6 +10,7 @@ export const ArticleManager = {
       return;
     }
 
+    
     try {
       // Check authentication and verification for non-home articles
       if (articleName !== 'home') {
