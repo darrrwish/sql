@@ -1,6 +1,6 @@
-// article.js
 import { AuthService } from './auth.js';
 import { EventHandlers } from './event-handlers.js';
+import { initVideoPlayers } from './main.js';
 
 export const ArticleManager = {
   load: async (articleName) => {
@@ -68,14 +68,17 @@ export const ArticleManager = {
         }
       });
 
+      initVideoPlayers(); // لتفعيل الفيديوهات في المقال الجديد
+
       // Apply syntax highlighting and direction to code blocks
       document.querySelectorAll('pre code').forEach(block => {
         block.setAttribute('dir', 'ltr');
         hljs.highlightElement(block);
       });
 
-      // Add complete lesson button for authenticated users (non-home articles)
-      if (AuthService.isAuthenticated() && AuthService.isVerified() && articleName !== 'home') {
+      // Add complete lesson button for authenticated users (excluding home, roadmap, and contents)
+      if (AuthService.isAuthenticated() && AuthService.isVerified() && 
+          articleName !== 'home' && articleName !== 'road-map' && articleName !== 'content') {
         const completeButton = document.createElement('button');
         completeButton.className = 'complete-lesson-btn';
         completeButton.innerHTML = '<i class="fas fa-check-circle"></i>';
