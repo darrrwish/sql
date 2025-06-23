@@ -1810,3 +1810,73 @@ body.light-mode ::-webkit-scrollbar-thumb:hover {
   background: var(--hover-scrollbar);
 }
 
+.markdown-content table {
+  margin: 0; /* إزالة الهوامش لضمان شغل الصفحة بالكامل */
+  width: 100%; /* يمتد الجدول ليشغل العرض الكامل */
+  max-width: 100vw; /* يضمن استخدام عرض الشاشة الكلي */
+  border-collapse: separate; /* تغيير إلى separate للسماح بـ border-radius */
+  border-spacing: 0; /* إزالة المسافة بين الخلايا */
+  font-size: 0.95rem;
+  text-align: center; /* محاذاة النصوص في المنتصف */
+  direction: rtl; /* الاتجاه من اليمين لليسار (يمكن تغييره إلى ltr إذا لزم) */
+  table-layout: fixed; /* توزيع الأعمدة بالتساوي */
+  border-radius: 10px; /* إضافة زوايا مستديرة للجدول */
+  overflow: hidden; /* لضمان أن الزوايا المستديرة تطبق على المحتوى */
+}
+
+.markdown-content th,
+.markdown-content td {
+  padding: 0.75rem; /* تباعد داخلي معتدل */
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  text-align: center !important;
+  vertical-align: middle;
+  direction: auto; /* يتكيف مع اتجاه النص */
+  word-wrap: break-word; /* يسمح بكسر الكلمات الطويلة */
+}
+
+.markdown-content th {
+  background-color: #2E7D32;
+  color: white;
+  font-weight: bold;
+  width: 1%; /* يسمح بتوزيع متساوٍ */
+  white-space: nowrap; /* يمنع كسر العناوين */
+}
+
+body.light-mode .markdown-content th {
+  background-color: #4CAF50;
+}
+
+.markdown-content tr:nth-child(even) {
+  background-color: rgba(76, 175, 80, 0.05);
+}
+
+body.light-mode .markdown-content tr:nth-child(even) {
+  background-color: rgba(46, 125, 50, 0.05);
+}
+
+.markdown-content tr:hover {
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+/* تحسينات الاستجابة */
+@media (max-width: 768px) {
+  .markdown-content table {
+    font-size: 0.9rem; /* تقليل حجم الخط */
+  }
+
+  .markdown-content th,
+  .markdown-content td {
+    padding: 0.5rem; /* تقليل التباعد */
+  }
+}
+
+@media (max-width: 480px) {
+  .markdown-content table {
+    font-size: 0.85rem; /* تقليل إضافي */
+  }
+
+  .markdown-content th,
+  .markdown-content td {
+    padding: 0.4rem;
+  }
+}
