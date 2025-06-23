@@ -447,14 +447,14 @@ body.light-mode .markdown-content ol {
   unicode-bidi: plaintext;
   display: block;
   overflow-x: auto;
-  white-space: nowrap;
+  white-space:normal;
   text-align: center;
 }
 
 .markdown-content th {
   background-color: #2E7D32;
   color: white;
-  padding: 0.75rem;
+  /* padding: 0.75rem; */
   text-align: center;
   font-weight: bold;
 }
@@ -464,7 +464,7 @@ body.light-mode .markdown-content th {
 }
 
 .markdown-content td {
-  padding: 0.75rem;
+  /* padding: 0.75rem; */
   border: 1px solid rgba(76, 175, 80, 0.3);
   text-align: center !important;
   vertical-align: middle;
@@ -1809,3 +1809,4 @@ body.light-mode ::-webkit-scrollbar-thumb {
 body.light-mode ::-webkit-scrollbar-thumb:hover {
   background: var(--hover-scrollbar);
 }
+
