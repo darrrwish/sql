@@ -50,6 +50,7 @@ SELECT id, (fee * 2) AS double_fee
 FROM visits;
 ```
 
+
 ---
 
 ## ثانيًا: العوامل الخاصة بالبت (Bitwise Operators)
